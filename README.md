@@ -1,2 +1,2 @@
 # project-alexandrite
-Open SUSEベースのLinuxディストリビューション
+kiwiを利用してビルドするOpen SUSEベースのLinuxディストリビューション

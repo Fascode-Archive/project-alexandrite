@@ -1,1 +1,2 @@
 # project-alexandrite
+Open SUSEベースのLinuxディストリビューション

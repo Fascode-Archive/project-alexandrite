@@ -1,4 +1,4 @@
-# project-alexandrite
+# alexandrite os
 kiwiを利用してビルドするOpen SUSEベースの安定していて美しいLinuxディストリビューション
 
 ## 特徴

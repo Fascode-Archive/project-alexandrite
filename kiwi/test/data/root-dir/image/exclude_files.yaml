@@ -1,4 +1,0 @@
-exclude:
-- /usr/bin/qemu-binfmt
-- /usr/bin/qemu-x86_64-binfmt
-- /usr/bin/qemu-x86_64

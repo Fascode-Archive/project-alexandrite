@@ -1,5 +1,0 @@
-iso:
-  - tool_category: foo
-
-container:
-  - compress: foo

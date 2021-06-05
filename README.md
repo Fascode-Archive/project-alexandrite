@@ -11,3 +11,10 @@ kiwiを利用してビルドするOpen SUSEベースの安定していて美し�
 
 ### Alpha2
 インストーラーを実装予定。それ以外は未定
+
+## ビルド方法
+### 依存関係
+kiwi-ng (インストールについてのヘルプは https://osinside.github.io/kiwi/installation.html を参照してください)
+
+### 手順
+build.shを実行すれば自動的にビルドが完了します。

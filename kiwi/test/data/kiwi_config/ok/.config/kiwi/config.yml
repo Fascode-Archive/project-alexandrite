@@ -1,0 +1,26 @@
+xz:
+  - options: -a -b xxx
+
+bundle:
+  - compress: true
+
+obs:
+  - download_url: http://example.com
+  - api_url: https://api.example.com
+  - public: true
+  - user:
+      - user_name: user_credentials
+
+iso:
+  - tool_category: cdrtools
+
+oci:
+  - archive_tool: umoci
+
+container:
+  - compress: none
+
+runtime_checks:
+  - disable:
+      - check_dracut_module_for_oem_install_in_package_list
+      - check_container_tool_chain_installed

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<image schemaversion="7.4" name="LimeJeOS-openSUSE-13.2" displayname="Bob">
+    <drivers>
+        <file name="crypto/*"/>
+        <file name="drivers/acpi/*"/>
+        <file name="bar"/>
+    </drivers>
+    <strip type="delete">
+        <file name="del-a"/>
+        <file name="del-b"/>
+    </strip>
+    <strip type="tools">
+        <file name="tool-a"/>
+        <file name="tool-b"/>
+    </strip>
+    <strip type="libs">
+        <file name="lib-a"/>
+        <file name="lib-b"/>
+    </strip>
+    <description type="system">
+        <author>Marcus Schäfer</author>
+        <contact>ms@suse.com</contact>
+        <specification>
+            openSUSE 13.2 JeOS, is a small text based image
+        </specification>
+    </description>
+    <profiles>
+        <profile name="metadata" description="Inlude some preferences metadata"/>
+        <profile name="noVersion" description="Does not include version element"/>
+        <profile name="xenDom0Flavour" description="Disk Xen dom0"/>
+        <profile name="xenDomUFlavour" description="Disk Xen domU"/>
+        <profile name="ec2Flavour" description="Disk with EC2/Xen kernel"/>
+        <profile name="docker" description="docker image">
+            <requires profile="noVersion"/>
+        </profile>
+        <profile name="vmxFlavour" description="Disk with default kernel" import="true">
+            <requires profile="metadata"/>
+        </profile>
+        <profile name="vmxSimpleFlavour" description="Disk no resize"/>
+        <profile name="wsl_launcher" description="Appx invalid launcher name"/>
+        <profile name="wsl_id" description="Appx invalid id"/>
+    </profiles>
+    <preferences profiles="noVersion">
+        <locale>de_DE</locale>
+        <packagemanager>zypper</packagemanager>
+    </preferences>
+    <preferences profiles="metadata">
+        <version>1.13.2</version>
+        <packagemanager>zypper</packagemanager>
+        <locale>en_US</locale>
+        <keytable>us.map.gz</keytable>
+        <timezone>Europe/Berlin</timezone>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <bootsplash-theme>openSUSE</bootsplash-theme>
+        <bootloader-theme>openSUSE</bootloader-theme>
+    </preferences>
+    <preferences profiles="wsl_launcher">
+        <type image="appx" metadata_path="/usr/share/wsl-appx">
+            <containerconfig name="Tumbleweed">
+                <history author="KIWI-Team" application_id="tumbleweed" package_version="2003.12.0.0" launcher="Invalid-Launcher">Tumbleweed JeOS text based</history>
+            </containerconfig>
+        </type>
+    </preferences>
+    <preferences profiles="wsl_id">
+        <type image="appx" metadata_path="/usr/share/wsl-appx">
+            <containerconfig name="Tumbleweed">
+                <history author="KIWI-Team" application_id="invalid-id" package_version="2003.12.0.0" launcher="openSUSE-Tumbleweed.exe">Tumbleweed JeOS text based</history>
+            </containerconfig>
+        </type>
+    </preferences>
+    <preferences profiles="docker">
+        <type image="docker">
+            <containerconfig name="container_name" additionaltags="foo,bar"/>
+        </type>
+    </preferences>
+    <preferences profiles="ec2Flavour">
+        <type image="oem" filesystem="ext3" bootprofile="ec2" bootkernel="ec2k" kernelcmdline="xencons=xvc0 console=xvc0 multipath=off splash" firmware="ec2">
+            <oemconfig>
+                <oem-resize>false</oem-resize>
+            </oemconfig>
+        </type>
+    </preferences>
+    <preferences profiles="xenDomUFlavour">
+        <type image="oem" filesystem="ext3" bootprofile="xen" bootkernel="xenk" kernelcmdline="splash">
+            <oemconfig>
+                <oem-resize>false</oem-resize>
+            </oemconfig>
+            <machine memory="512" xen_loader="pvgrub">
+                <vmdisk id="0" device="/dev/xvda" controller="ide"/>
+                <vmnic interface=""/>
+            </machine>
+        </type>
+    </preferences>
+    <preferences profiles="xenDom0Flavour">
+        <type image="oem" filesystem="ext3" boot="oemboot/example-distribution" bootprofile="xen" bootkernel="xenk" installiso="true" kernelcmdline="splash" xen_server="true" firmware="bios">
+            <oemconfig>
+                <oem-systemsize>2048</oem-systemsize>
+                <oem-swap>true</oem-swap>
+            </oemconfig>
+        </type>
+    </preferences>
+    <preferences profiles="vmxSimpleFlavour">
+        <type image="oem" filesystem="ext3" format="vmdk" kernelcmdline="splash" bootpartition="false">
+            <oemconfig>
+                <oem-resize>false</oem-resize>
+            </oemconfig>
+            <systemdisk name="systemVG">
+                <volume name="foo" label="SWAP"/>
+            </systemdisk>
+            <machine memory="512" guestOS="suse" HWversion="4">
+                <vmdisk id="0" controller="ide"/>
+                <vmnic driver="e1000" interface="0" mode="bridged"/>
+            </machine>
+        </type>
+    </preferences>
+    <preferences profiles="vmxFlavour">
+        <type image="oem" primary="true" boot="oemboot/example-distribution" firmware="efi" kernelcmdline="splash" vga="0x303" editbootconfig="my_edit_boot_script" editbootinstall="my_edit_boot_install" filesystem="btrfs" initrd_system="dracut" installiso="true">
+            <size unit="G" additive="true">1</size>
+            <systemdisk name="mydisk">
+                <volume name="root" size="6G" mountpoint="/" label="foo"/>
+                <volume name="foo" size="all"/>
+                <volume name="bar" freespace="all"/>
+            </systemdisk>
+            <machine memory="512" xen_loader="pvgrub">
+                <vmdisk id="0" device="/dev/xvda" controller="ide"/>
+                <vmnic interface=""/>
+            </machine>
+            <oemconfig>
+                <oem-systemsize>2048</oem-systemsize>
+                <oem-swap>true</oem-swap>
+                <oem-recovery>false</oem-recovery>
+                <oem-swapname>swap</oem-swapname>
+            </oemconfig>
+        </type>
+        <type image="iso" mediacheck="true" firmware="bios"/>
+    </preferences>
+    <users>
+        <user groups="root" pwdformat="plain" password="mypwd" shell="/bin/bash" id="815" realname="Bob" home="/root" name="root"/>
+    </users>
+    <repository priority="42" imageinclude="true">
+        <source path="iso:///image/CDs/dvd.iso"/>
+    </repository>
+    <repository type="rpm-md">
+        <source path="obs://Devel:PubCloud:AmazonEC2/SLE_12_GA"/>
+    </repository>
+    <packages type="image" patternType="plusRecommended">
+        <namedCollection name="base"/>
+        <product name="openSUSE"/>
+        <package name="plymouth-branding-openSUSE" bootinclude="true"/>
+        <package name="grub2-branding-openSUSE" bootinclude="true"/>
+        <package name="ifplugd"/>
+        <package name="iputils"/>
+        <package name="vim" bootdelete="true"/>
+        <package name="openssh"/>
+        <archive name="image.tgz" bootinclude="true"/>
+        <package name="foo" arch="x86_64"/>
+    </packages>
+    <packages type="iso">
+        <package name="gfxboot-branding-openSUSE" bootinclude="true" bootdelete="true"/>
+    </packages>
+    <packages type="oem">
+        <package name="gfxboot-branding-openSUSE" bootinclude="true" bootdelete="true"/>
+    </packages>
+    <packages type="image" profiles="ec2Flavour">
+        <package name="kernel-ec2"/>
+        <package name="xen-tools" arch="x86_64"/>
+        <package name="xen" arch="x86_64"/>
+    </packages>
+    <packages type="image" profiles="xenDom0Flavour">
+        <package name="kernel-xen"/>
+        <package name="xen-tools" arch="x86_64"/>
+        <package name="xen" arch="x86_64"/>
+    </packages>
+    <packages type="image" profiles="vmxFlavour">
+        <package name="kernel-default"/>
+    </packages>
+    <packages type="bootstrap">
+        <package name="filesystem"/>
+        <namedCollection name="bootstrap-collection"/>
+        <product name="kiwi"/>
+        <archive name="bootstrap.tgz"/>
+    </packages>
+    <packages type="delete">
+        <package name="kernel-debug"/>
+    </packages>
+</image>

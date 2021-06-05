@@ -1,4 +1,5 @@
 # alexandrite os
+![image](Alexandrite.png)
 kiwiを利用してビルドするOpen SUSEベースの安定していて美しいLinuxディストリビューション
 
 ## 特徴

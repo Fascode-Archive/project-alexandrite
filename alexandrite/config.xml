@@ -15,8 +15,8 @@
     <preferences>
         <version>0.0.1</version>
         <packagemanager>zypper</packagemanager>
-        <locale>en_US</locale>
-        <keytable>us</keytable>
+        <locale>ja_JP</locale>
+        <keytable>jp</keytable>
         <timezone>Europe/Berlin</timezone>
         <rpm-excludedocs>true</rpm-excludedocs>
         <rpm-check-signatures>false</rpm-check-signatures>
@@ -65,6 +65,12 @@
         <package name="patterns-kde-kde_plasma"/>
         <package name="firefox"/>
         <package name="sddm"/>
+        <package name="dolphin"/>
+        <package name="mousepad"/>
+        <package name="vlc"/>
+        <package name="fcitx-mozc"/>
+        <package name="noto-sans-jp-fonts"/>
+        <package name="ark"/>
     </packages>
     <packages type="bootstrap">
         <package name="udev"/>

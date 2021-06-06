@@ -64,7 +64,7 @@
         <package name="nano"/>
         <package name="patterns-kde-kde_plasma"/>
         <package name="firefox"/>
-        <package name="plymouth"/>
+        <package name="sddm"/>
     </packages>
     <packages type="bootstrap">
         <package name="udev"/>

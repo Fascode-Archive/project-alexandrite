@@ -16,8 +16,8 @@
         <version>0.0.1</version>
         <packagemanager>zypper</packagemanager>
         <locale>ja_JP</locale>
-        <keytable>jp</keytable>
-        <timezone>Europe/Berlin</timezone>
+        <keytable>ja</keytable>
+        <timezone>Asia/Tokyo</timezone>
         <rpm-excludedocs>true</rpm-excludedocs>
         <rpm-check-signatures>false</rpm-check-signatures>
         <bootsplash-theme>bgrt</bootsplash-theme>
@@ -71,6 +71,10 @@
         <package name="fcitx-mozc"/>
         <package name="noto-sans-jp-fonts"/>
         <package name="ark"/>
+        <package name="konsole"/>
+        <package name="kde-gtk-config5"/>
+        <package name="kde-gtk-config5-gtk2"/>
+        <package name="kde-gtk-config5-gtk3"/>
     </packages>
     <packages type="bootstrap">
         <package name="udev"/>

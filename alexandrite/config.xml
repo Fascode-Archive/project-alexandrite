@@ -27,8 +27,8 @@
         </type>
     </preferences>
     <users>
-        <user password="root" home="/root" name="root" groups="root"/>
-        <user password="live" home="/home/user" name="user" groups="user"/>
+        <user password="root7" home="/root" name="root" groups="root"/>
+        <user password="" home="/home/user" name="user" groups="user"/>
     </users>
     <repository type="rpm-md">
         <source path="obs://openSUSE:Leap:15.3/standard"/>
@@ -64,6 +64,7 @@
         <package name="nano"/>
         <package name="patterns-kde-kde_plasma"/>
         <package name="firefox"/>
+        <package name="plymouth"/>
     </packages>
     <packages type="bootstrap">
         <package name="udev"/>

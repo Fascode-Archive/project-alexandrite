@@ -27,8 +27,8 @@
         </type>
     </preferences>
     <users>
-        <user password="root7" home="/root" name="root" groups="root"/>
-        <user password="" home="/home/user" name="user" groups="user"/>
+        <user password="$1$i4HQRS4Q$a1H4ivlyda8z057lVSmgW0" home="/root" name="root" groups="root"/>
+        <user password="$1$i4HQRS4Q$a1H4ivlyda8z057lVSmgW0" home="/home/user" name="user" groups="user"/>
     </users>
     <repository type="rpm-md">
         <source path="obs://openSUSE:Leap:15.3/standard"/>

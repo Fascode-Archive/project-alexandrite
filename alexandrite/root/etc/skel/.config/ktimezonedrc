@@ -1,4 +1,4 @@
 [TimeZones]
-LocalZone=Europe/Berlin
+LocalZone=Asia/Tokyo
 ZoneinfoDir=/usr/share/zoneinfo
 Zonetab=/usr/share/zoneinfo/zone.tab

@@ -20,6 +20,10 @@ mtime=1588690377
 done=Plasma_Fonts_Kate
 mtime=1588690377
 
+[gtkconfig.upd]
+done=gtk_theme
+mtime=1588689395
+
 [icons_remove_effects.upd]
 done=IconsRemoveEffects
 mtime=1601378301

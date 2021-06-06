@@ -61,6 +61,9 @@ plugin=org.kde.plasma.taskmanager
 immutability=1
 plugin=org.kde.plasma.kimpanel
 
+[Containments][2][Applets][6][Configuration][Appearance]
+hiddenList=/Fcitx/mozc-tool,/Fcitx/vk,/Fcitx/mozc-composition-mode,/Fcitx/logo
+
 [Containments][2][Applets][7]
 immutability=1
 plugin=org.kde.plasma.systemtray

@@ -4,6 +4,7 @@ switch-to-activity-e5bb1d9e-63b5-446d-9875-a42da6488b5e=none,none,Switch to acti
 
 [KDE Keyboard Layout Switcher]
 Switch keyboard layout to English (US)=none,none,Switch keyboard layout to English (US)
+Switch keyboard layout to Japanese=none,none,Switch keyboard layout to Japanese
 Switch to Next Keyboard Layout=Ctrl+Alt+K,none,Switch to Next Keyboard Layout
 _k_friendly_name=KDE Daemon
 
@@ -24,6 +25,7 @@ display=Display\tMeta+P,Display\tMeta+P,Switch Display
 
 [khotkeys]
 _k_friendly_name=KDE Daemon
+{acb4443c-812e-408f-9be1-c6889fca8940}=Ctrl+Alt+T,none,Launch Konsole
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=,none,検索
 
 [krunner.desktop]

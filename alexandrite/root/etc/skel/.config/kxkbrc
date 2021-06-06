@@ -1,8 +1,8 @@
 [Layout]
-DisplayNames=
-LayoutList=us
+DisplayNames=,
+LayoutList=jp,us
 LayoutLoopCount=-1
-Model=
+Model=pc105
 ResetOldOptions=false
 ShowFlag=false
 ShowLabel=true

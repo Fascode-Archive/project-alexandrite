@@ -1,5 +1,9 @@
 updateInfoAdded=true
 
+[disable_kmix.upd]
+done=PlasmaVolume_DisableKMixAutostart
+mtime=1588690517
+
 [filepicker.upd]
 done=filepicker-remove-old-previews-entry
 mtime=1604750993
@@ -23,6 +27,10 @@ mtime=1588690377
 [gtkconfig.upd]
 done=gtk_theme
 mtime=1588689395
+
+[gwenview.upd]
+done=SideBar_StatusBar_Rename,ImageView_AlphaBackgroundMode_Update,DeleteThumbnailSetting_Rename
+mtime=1591638687
 
 [icons_remove_effects.upd]
 done=IconsRemoveEffects
@@ -55,3 +63,11 @@ mtime=1601378301
 [kwin.upd]
 done=replace-scalein-with-scale,port-minimizeanimation-effect-to-js,port-scale-effect-to-js,port-dimscreen-effect-to-js,auto-bordersize,animation-speed
 mtime=1601378056
+
+[spectacle_newConfig.upd]
+done=spectacle-new-config
+mtime=1591638744
+
+[spectacle_shortcuts.upd]
+done=spectacle-migrate-shortcuts
+mtime=1591638744

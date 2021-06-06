@@ -2,11 +2,13 @@
 update_info=filepicker.upd:filepicker-remove-old-previews-entry,fonts_global.upd:Fonts_Global,fonts_global_toolbar.upd:Fonts_Global_Toolbar,icons_remove_effects.upd:IconsRemoveEffects,kwin.upd:animation-speed
 
 [ColorEffects:Disabled]
+ChangeSelectionColor=
 Color=56,56,56
 ColorAmount=0
 ColorEffect=0
 ContrastAmount=0.65
 ContrastEffect=1
+Enable=
 IntensityAmount=0.1
 IntensityEffect=2
 
@@ -22,16 +24,16 @@ IntensityAmount=0
 IntensityEffect=0
 
 [Colors:Button]
-BackgroundAlternate=189,195,199
-BackgroundNormal=239,240,241
+BackgroundAlternate=77,77,77
+BackgroundNormal=37,40,44
 DecorationFocus=61,174,233
-DecorationHover=147,206,233
+DecorationHover=61,174,233
 ForegroundActive=61,174,233
-ForegroundInactive=127,140,141
+ForegroundInactive=189,195,199
 ForegroundLink=41,128,185
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=35,38,39
+ForegroundNormal=239,240,241
 ForegroundPositive=39,174,96
 ForegroundVisited=127,140,141
 
@@ -40,73 +42,73 @@ BackgroundAlternate=59,64,69
 BackgroundNormal=49,54,59
 DecorationFocus=30,146,255
 DecorationHover=61,174,230
-ForegroundActive=147,206,233
+ForegroundActive=246,116,0
 ForegroundInactive=175,176,179
 ForegroundLink=61,174,230
-ForegroundNegative=231,76,60
-ForegroundNeutral=253,188,75
+ForegroundNegative=237,21,21
+ForegroundNeutral=201,206,59
 ForegroundNormal=239,240,241
-ForegroundPositive=46,204,113
+ForegroundPositive=17,209,22
 ForegroundVisited=61,174,230
 
 [Colors:Selection]
 BackgroundAlternate=29,153,243
 BackgroundNormal=61,174,233
 DecorationFocus=61,174,233
-DecorationHover=147,206,233
+DecorationHover=61,174,233
 ForegroundActive=252,252,252
 ForegroundInactive=239,240,241
 ForegroundLink=253,188,75
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=252,252,252
-ForegroundPositive=39,174,96
+ForegroundNormal=239,240,241
+ForegroundPositive=128,255,128
 ForegroundVisited=189,195,199
 
 [Colors:Tooltip]
 BackgroundAlternate=77,77,77
-BackgroundNormal=35,38,39
+BackgroundNormal=37,40,44
 DecorationFocus=61,174,233
-DecorationHover=147,206,233
+DecorationHover=61,174,233
 ForegroundActive=61,174,233
 ForegroundInactive=189,195,199
 ForegroundLink=41,128,185
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=252,252,252
+ForegroundNormal=239,240,241
 ForegroundPositive=39,174,96
 ForegroundVisited=127,140,141
 
 [Colors:View]
-BackgroundAlternate=239,240,241
-BackgroundNormal=252,252,252
+BackgroundAlternate=49,54,59
+BackgroundNormal=35,38,41
 DecorationFocus=61,174,233
-DecorationHover=147,206,233
+DecorationHover=61,174,233
 ForegroundActive=61,174,233
-ForegroundInactive=127,140,141
+ForegroundInactive=189,195,199
 ForegroundLink=41,128,185
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=35,38,39
+ForegroundNormal=239,240,241
 ForegroundPositive=39,174,96
 ForegroundVisited=127,140,141
 
 [Colors:Window]
-BackgroundAlternate=189,195,199
-BackgroundNormal=239,240,241
+BackgroundAlternate=77,77,77
+BackgroundNormal=49,54,59
 DecorationFocus=61,174,233
-DecorationHover=147,206,233
+DecorationHover=61,174,233
 ForegroundActive=61,174,233
-ForegroundInactive=127,140,141
+ForegroundInactive=189,195,199
 ForegroundLink=41,128,185
 ForegroundNegative=218,68,83
 ForegroundNeutral=246,116,0
-ForegroundNormal=35,38,39
+ForegroundNormal=239,240,241
 ForegroundPositive=39,174,96
 ForegroundVisited=127,140,141
 
 [General]
-ColorScheme=Breeze
+ColorScheme=MaliceGenome
 Name=Breeze
 shadeSortColumn=true
 widgetStyle=Breeze
@@ -118,12 +120,30 @@ Theme=Tela-dark
 ColorScheme=Breeze
 LookAndFeelPackage=com.github.yeyushengfan258.Reversal-dark
 contrast=4
-widgetStyle=Breeze
+widgetStyle=gtk2
+
+[KFileDialog Settings]
+Allow Expansion=false
+Automatically select filename extension=true
+Breadcrumb Navigation=true
+Decoration position=2
+LocationCombo Completionmode=5
+PathCombo Completionmode=5
+Show Bookmarks=false
+Show Full Path=false
+Show Inline Previews=true
+Show Speedbar=true
+Show hidden files=false
+Sort by=Name
+Sort directories first=true
+Sort reversed=false
+Speedbar Width=151
+View Style=DetailTree
 
 [WM]
-activeBackground=71,80,87
-activeBlend=252,252,252
-activeForeground=252,252,252
-inactiveBackground=239,240,241
+activeBackground=49,54,59
+activeBlend=255,255,255
+activeForeground=239,240,241
+inactiveBackground=49,54,59
 inactiveBlend=75,71,67
-inactiveForeground=189,195,199
+inactiveForeground=127,140,141

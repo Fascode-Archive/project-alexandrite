@@ -119,6 +119,7 @@ Theme=Tela-dark
 [KDE]
 ColorScheme=Breeze
 LookAndFeelPackage=com.github.yeyushengfan258.Reversal-dark
+SingleClick=false
 contrast=4
 widgetStyle=gtk2
 

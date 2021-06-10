@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!--
+    
+    Alexandrite OS
+    Copyright (C) 2021 naiad technology
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-->
+
 <image schemaversion="7.3" name="alexandrite-os">
     <description type="system">
         <author>nexryai</author>
         <contact>nexryai@gmail.com</contact>
-        <specification>alexandrite os</specification>
+        <specification>Alexandrite OS</specification>
     </description>
     <profiles>
         <profile name="DracutLive" description="Simple Live image" import="true"/>
@@ -20,15 +40,15 @@
         <timezone>Asia/Tokyo</timezone>
         <rpm-excludedocs>true</rpm-excludedocs>
         <rpm-check-signatures>false</rpm-check-signatures>
-        <bootsplash-theme>bgrt</bootsplash-theme>
-        <bootloader-theme>openSUSE</bootloader-theme>
+        <bootsplash-theme>naiad</bootsplash-theme>
+        <bootloader-theme>naiad</bootloader-theme>
         <type image="iso" flags="overlay" firmware="efi" kernelcmdline="console=tty1" hybridpersistent_filesystem="ext4" hybridpersistent="true" mediacheck="true">
             <bootloader name="grub2" console="serial" timeout="10"/>
         </type>
     </preferences>
     <users>
         <user password="$1$i4HQRS4Q$a1H4ivlyda8z057lVSmgW0" home="/root" name="root" groups="root"/>
-        <user password="$1$i4HQRS4Q$a1H4ivlyda8z057lVSmgW0" home="/home/user" name="user" groups="user"/>
+        <user password="$1$i4HQRS4Q$a1H4ivlyda8z057lVSmgW0" home="/home/live" name="live" groups="live"/>
     </users>
     <repository type="rpm-md">
         <source path="obs://openSUSE:Leap:15.3/standard"/>
@@ -47,6 +67,7 @@
         <package name="syslinux"/>
         <package name="lvm2"/>
         <package name="plymouth"/>
+        <package name="plymouth-plugin-script"/>
         <package name="sudo"/>
         <package name="fontconfig"/>
         <package name="fonts-config"/>

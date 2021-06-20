@@ -7,6 +7,9 @@
 
 set -e
 
+# config.xmlが入ってるディレクトリ名
+distro_dir=alexandrite
+
 function chk-command () {
     chk_command=$1
     echo "[INFO] checking $chk_command" 
@@ -29,13 +32,10 @@ current_dir=$(cd $(dirname $0);pwd)
 # ディレクトリ作成
 sudo rm -rf tmp
 mkdir tmp
-cd tmp
-mkdir out
-cd ..
+mkdir tmp/out
+
 
 # kiwiでビルド
-sudo kiwi-ng system build --description $current_dir/alexandrite/ --set-repo obs://openSUSE:Leap:15.3/standard --target-dir tmp/out
+sudo kiwi-ng system build --description $current_dir/$distro_dir/ --set-repo obs://openSUSE:Leap:15.3/standard --target-dir tmp/out
 
 echo "[INFO] Done!"
-
-

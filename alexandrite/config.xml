@@ -98,6 +98,7 @@
         <package name="gnome-screenshot"/>
         <package name="gnome-logs"/>
         <package name="gnome-shell-extensions-common"/>
+        <package name="chrome-gnome-shell"/>
         <package name="gnome-shell-extension-desktop-icons"/>
         <package name="gdm"/>
         <package name="firefox"/>

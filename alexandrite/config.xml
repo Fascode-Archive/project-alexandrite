@@ -91,6 +91,7 @@
         <package name="gnome-session"/>
         <package name="gnome-desktop"/>
         <package name="gnome-shell"/>
+        <package name="gnome-backgrounds"/>
         <package name="gnome-keyring"/>
         <package name="gnome-tweaks"/>
         <package name="gnome-system-monitor"/>

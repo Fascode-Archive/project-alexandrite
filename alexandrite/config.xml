@@ -66,6 +66,7 @@
         <package name="grub2-i386-pc"/>
         <package name="syslinux"/>
         <package name="lvm2"/>
+        <package name="pulseaudio"/>
         <package name="plymouth"/>
         <package name="plymouth-plugin-script"/>
         <package name="sudo"/>
@@ -85,6 +86,7 @@
         <package name="dracut-kiwi-live"/>
         <package name="nano"/>
         <package name="htop"/>
+        <package name="powerline"/>
         <package name="xorg-x11"/>
         <package name="xorg-x11-server"/>
         <package name="patterns-openSUSE-gnome"/>

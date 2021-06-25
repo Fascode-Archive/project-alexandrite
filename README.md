@@ -1,6 +1,7 @@
 # alexandrite os
 ![image](https://raw.githubusercontent.com/nexryai/project-alexandrite/main/img/Alexandrite.png) <br>
 kiwiを利用してビルドするOpen SUSEベースの安定していて美しいLinuxディストリビューション<br>
+<br>
 [English version](https://github.com/nexryai/project-alexandrite/blob/main/docs/README_en.md)
 
 ## 特徴

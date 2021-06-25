@@ -1,6 +1,7 @@
 # alexandrite os
 ![image](https://raw.githubusercontent.com/nexryai/project-alexandrite/main/img/Alexandrite.png) <br>
-kiwiを利用してビルドするOpen SUSEベースの安定していて美しいLinuxディストリビューション
+kiwiを利用してビルドするOpen SUSEベースの安定していて美しいLinuxディストリビューション<br>
+[English version](https://github.com/nexryai/project-alexandrite/blob/main/docs/README_en.md)
 
 ## 特徴
 サーバーやワークステーションで使用されている堅牢なOpen SUSEをベースに開発されたLinuxディストリビューション。”日常使用に最適なOS” を念頭に安定性、デザイン、必要最低限のプリインストールソフトウエア、長期使用に重点を置いて開発されています。naiad linuxで得たフィードバックや経験を活かして開発されています。エレガントなGnomeデスクトップを採用。初期状態で拡張機能が整備されているので簡単に操作できます。<br>

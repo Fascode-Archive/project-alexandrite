@@ -60,6 +60,12 @@
         <package name="plymouth-theme-bgrt"/>
         <package name="grub2-branding-openSUSE"/>
         <package name="iputils"/>
+        <package name="NetworkManager-applet"/>
+        <package name="NetworkManager-applet-lang"/>
+        <package name="NetworkManager-openvpn-gnome"/>
+        <package name="NetworkManager-openvpn-lang"/>
+        <package name="NetworkManager-lang"/>
+        <package name="NetworkManager-connection-editor"/>
         <package name="vim"/>
         <package name="grub2"/>
         <package name="grub2-x86_64-efi" arch="x86_64"/>
@@ -109,7 +115,6 @@
         <package name="noto-sans-jp-fonts"/>
         <package name="calamares"/>
         <package name="mousepad"/>
-        <package name="vlc"/>
         <package name="spectacle"/>
     </packages>
     <packages type="bootstrap">

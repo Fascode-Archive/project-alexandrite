@@ -112,8 +112,6 @@
         <package name="gdm"/>
         <package name="gdm-systemd"/>
         <package name="gdmflexiserver"/>
-        <package name="lightdm-slick-greeter"/>
-        <package name="lightdm-slick-greeter"/>
         <package name="firefox"/>
         <package name="fcitx-mozc"/>
         <package name="noto-sans-jp-fonts"/>

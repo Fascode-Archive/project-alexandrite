@@ -44,3 +44,4 @@ baseSetRunlevel 3
 
 # set plymouht theme
 plymouth-set-default-theme naiad
+

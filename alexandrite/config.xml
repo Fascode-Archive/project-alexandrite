@@ -109,6 +109,7 @@
         <package name="gnome-shell-extensions-common"/>
         <package name="chrome-gnome-shell"/>
         <package name="gnome-shell-extension-desktop-icons"/>
+        <package name="libgnomesu"/>
         <package name="gdm"/>
         <package name="gdm-systemd"/>
         <package name="gdmflexiserver"/>

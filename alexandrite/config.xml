@@ -118,6 +118,19 @@
         <package name="calamares"/>
         <package name="mousepad"/>
         <package name="spectacle"/>
+        <package name="libapparmor"/>
+        <package name="apparmor-profiles"/>
+        <package name="apparmor-utils"/>
+        <package name="apparmor-parser"/>
+        <package name="yast2-apparmor"/>
+        <package name="audit"/>
+        <package name="firewalld"/>
+        <package name="yast2-firewall"/>
+        <package name="yast2-security"/> 
+        <package name="patterns-yast-yast2_desktop"/>
+        <package name="patterns-yast-yast2_basis"/>
+        <package name="patterns-gnome-gnome_yast"/>
+        <package name="yast2-trans-ja"/>
     </packages>
     <packages type="bootstrap">
         <package name="udev"/>

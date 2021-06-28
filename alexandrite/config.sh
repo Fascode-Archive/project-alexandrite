@@ -47,3 +47,10 @@ plymouth-set-default-theme naiad
 
 # enable gdm
 ln -fs /usr/lib/systemd/system/graphical.target /etc/systemd/system/default.target
+
+# set nopassword login for live user
+groupadd nopasswdlogin
+usermod -aG nopasswdlogin live
+
+# fix sudoers file permission
+chmod 440 /etc/sudoers

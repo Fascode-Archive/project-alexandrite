@@ -45,3 +45,5 @@ baseSetRunlevel 3
 # set plymouht theme
 plymouth-set-default-theme naiad
 
+# enable gdm
+ln -fs /usr/lib/systemd/system/graphical.target /etc/systemd/system/default.target

@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Categories=Settings;System;X-SuSE-Core-System;X-SuSE-ControlCenter-System;X-GNOME-SystemSettings;
+Name=Advanced settings
+Icon=yast-control-center
+GenericName=Administrator Settings
+Exec=/usr/bin/xdg-su -c /sbin/yast2
+Encoding=UTF-8
+Comment=Manage system-wide settings
+
+Name[ja]=高度な設定
+Icon[ja]=yast-control-center
+GenericName[ja]=Administrator Settings
+Comment[ja]=高度なシステム設定
+

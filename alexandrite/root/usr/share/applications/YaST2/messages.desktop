@@ -1,0 +1,27 @@
+[Desktop Entry]
+X-SuSE-DocTeamID=ycc_messages
+Type=Application
+Categories=Settings;System;Qt;X-SuSE-YaST;X-SuSE-YaST-Misc;
+
+X-KDE-ModuleType=Library
+X-KDE-RootOnly=true
+X-KDE-HasReadOnlyMode=true
+X-SuSE-YaST-Call=view_anymsg
+
+X-SuSE-YaST-Group=Misc
+X-SuSE-YaST-Argument=/var/log/messages
+X-SuSE-YaST-RootOnly=true
+X-SuSE-YaST-AutoInst=
+X-SuSE-YaST-Geometry=
+X-SuSE-YaST-SortKey=
+X-SuSE-YaST-AutoInstResource=
+X-SuSE-YaST-Keywords=system,log,messages
+
+Icon=yast-messages
+Exec=/sbin/yast2 view_anymsg /var/log/messages
+
+Name=System Log
+GenericName=Display the system's log (/var/log/messages)
+X-KDE-SubstituteUID=true
+StartupNotify=true
+

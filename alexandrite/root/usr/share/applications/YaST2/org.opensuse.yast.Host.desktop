@@ -1,0 +1,29 @@
+[Desktop Entry]
+X-SuSE-DocTeamID=ycc_org.opensuse.yast.Host
+Type=Application
+Categories=Settings;System;Qt;X-SuSE-YaST;X-SuSE-YaST-Net_advanced;
+
+X-KDE-ModuleType=Library
+X-KDE-HasReadOnlyMode=true
+X-SuSE-YaST-Call=host
+
+X-SuSE-YaST-Group=Net_advanced
+X-SuSE-YaST-Argument=
+X-SuSE-YaST-RootOnly=true
+X-SuSE-YaST-AutoInst=all
+X-SuSE-YaST-Geometry=
+X-SuSE-YaST-SortKey=
+X-SuSE-YaST-AutoInstResource=host
+X-SuSE-YaST-AutoInstClonable=true
+X-SuSE-YaST-AutoInstSchema=host.rnc
+X-SuSE-YaST-Keywords=name,network,lan,wireless
+
+Icon=yast-host
+Exec=xdg-su -c "/sbin/yast2 host"
+
+Name=YaST Hostnames
+GenericName=Hostnames
+Comment=Assign hostnames and aliases to IP addresses
+StartupNotify=true
+
+NotShowIn=GNOME

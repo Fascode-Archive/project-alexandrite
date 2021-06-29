@@ -1,0 +1,33 @@
+[Desktop Entry]
+X-SuSE-DocTeamID=ycc_org.opensuse.yast.Users
+Type=Application
+Categories=Settings;System;Qt;X-SuSE-YaST;X-SuSE-YaST-Security;
+
+X-KDE-ModuleType=Library
+X-KDE-HasReadOnlyMode=true
+X-SuSE-YaST-Call=users
+
+X-SuSE-YaST-Group=Security
+X-SuSE-YaST-Argument=
+X-SuSE-YaST-RootOnly=true
+X-SuSE-YaST-AutoInst=all
+X-SuSE-YaST-Geometry=
+X-SuSE-YaST-SortKey=
+X-SuSE-YaST-AutoInstClonable=true
+X-SuSE-YaST-AutoInstMerge=users,groups,user_defaults,login_settings
+X-SuSE-YaST-AutoInstMergeTypes=list,list,map,map
+X-SuSE-YaST-AutoInstRequires=security
+X-SuSE-YaST-AutoInstResource=users
+X-SuSE-YaST-AutoInstSchema=users.rnc
+X-SuSE-YaST-Keywords=user,group,authentication,login,password
+X-SuSE-YaST-WSL=true
+
+Icon=yast-users
+Exec=xdg-su -c "/sbin/yast2 users"
+
+Name=YaST User and Group Management
+GenericName=User and Group Management
+Comment=Add, Edit and Delete Users or User Groups
+StartupNotify=true
+
+NotShowIn=GNOME

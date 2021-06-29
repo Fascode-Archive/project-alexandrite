@@ -1,0 +1,29 @@
+[Desktop Entry]
+X-SuSE-DocTeamID=ycc_org.opensuse.yast.Sysconfig
+Type=Application
+Categories=Settings;System;Qt;X-SuSE-YaST;X-SuSE-YaST-System;
+
+X-KDE-ModuleType=Library
+X-KDE-HasReadOnlyMode=true
+X-SuSE-YaST-Call=sysconfig
+
+X-SuSE-YaST-Group=System
+X-SuSE-YaST-Argument=
+X-SuSE-YaST-RootOnly=true
+X-SuSE-YaST-AutoInst=all
+X-SuSE-YaST-Geometry=
+X-SuSE-YaST-SortKey=
+X-SuSE-YaST-AutoInstDataType=list
+X-SuSE-YaST-AutoInstResource=sysconfig
+X-SuSE-YaST-AutoInstSchema=sysconfig.rnc
+X-SuSE-YaST-Keywords=system,sysconfig,editor,configuration
+
+Icon=yast-sysconfig
+Exec=xdg-su -c "/sbin/yast2 sysconfig"
+
+Name=YaST Sysconfig Editor
+GenericName=Sysconfig Editor
+Comment=Change settings in /etc/sysconfig configuration files
+StartupNotify=true
+
+NotShowIn=GNOME

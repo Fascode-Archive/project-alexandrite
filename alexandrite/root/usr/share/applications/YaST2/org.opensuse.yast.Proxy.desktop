@@ -1,0 +1,29 @@
+[Desktop Entry]
+X-SuSE-DocTeamID=ycc_org.opensuse.yast.Proxy
+Type=Application
+Categories=Settings;System;Qt;X-SuSE-YaST;X-SuSE-YaST-Net_advanced;
+
+X-KDE-ModuleType=Library
+X-KDE-HasReadOnlyMode=true
+X-SuSE-YaST-Call=proxy
+
+X-SuSE-YaST-Group=Net_advanced
+X-SuSE-YaST-Argument=
+X-SuSE-YaST-RootOnly=true
+X-SuSE-YaST-AutoInst=all
+X-SuSE-YaST-Geometry=
+X-SuSE-YaST-SortKey=
+X-SuSE-YaST-AutoInstResource=proxy
+X-SuSE-YaST-AutoInstClonable=true
+X-SuSE-YaST-AutoInstSchema=proxy.rnc
+X-SuSE-YaST-Keywords=network,internet,access
+
+Icon=yast-proxy
+Exec=xdg-su -c "/sbin/yast2 proxy"
+
+Name=YaST Proxy
+GenericName=Proxy
+Comment=Configure a proxy
+StartupNotify=true
+
+NotShowIn=GNOME

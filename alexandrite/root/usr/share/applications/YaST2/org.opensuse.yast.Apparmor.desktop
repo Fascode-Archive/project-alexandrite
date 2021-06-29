@@ -1,0 +1,27 @@
+[Desktop Entry]
+X-SuSE-DocTeamID=ycc_org.opensuse.yast.Apparmor
+Type=Application
+Categories=Settings;System;Qt;X-SuSE-YaST;X-SuSE-YaST-Security;
+
+X-KDE-ModuleType=Library
+X-KDE-HasReadOnlyMode=true
+X-SuSE-YaST-Call=apparmor
+
+X-SuSE-YaST-Group=Security
+X-SuSE-YaST-Argument=
+X-SuSE-YaST-RootOnly=true
+X-SuSE-YaST-AutoInst=none
+X-SuSE-YaST-Geometry=
+X-SuSE-YaST-SortKey=
+X-SuSE-YaST-AutoInstClonable=false
+X-SuSE-YaST-Keywords=security,LSM,MAC,DAC,access,control
+
+Icon=yast-apparmor
+Exec=/usr/bin/xdg-su -c '/sbin/yast2 apparmor'
+
+Name=YaST AppArmor
+GenericName=AppArmor
+Comment=AppArmor Configuration
+StartupNotify=true
+
+NotShowIn=GNOME

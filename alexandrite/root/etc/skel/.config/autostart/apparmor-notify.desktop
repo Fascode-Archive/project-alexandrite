@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=AppArmor Notify
+Comment=Receive on screen notifications of AppArmor denials
+TryExec=/usr/sbin/aa-notify
+Exec=/usr/sbin/aa-notify -p -u $USER --display $DISPLAY -f /var/log/audit/audit.log
+StartupNotify=false
+NoDisplay=true

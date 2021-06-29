@@ -54,3 +54,7 @@ usermod -aG nopasswdlogin live
 
 # fix sudoers file permission
 chmod 440 /etc/sudoers
+
+# setting audit group
+groupadd -r audit
+usermod -aG audit live

@@ -60,6 +60,7 @@
         <package name="plymouth-theme-bgrt"/>
         <package name="grub2-branding-openSUSE"/>
         <package name="iputils"/>
+        <package name="NetworkManager"/>
         <package name="NetworkManager-applet"/>
         <package name="NetworkManager-applet-lang"/>
         <package name="NetworkManager-openvpn-gnome"/>
@@ -109,6 +110,8 @@
         <package name="gnome-shell-extensions-common"/>
         <package name="chrome-gnome-shell"/>
         <package name="gnome-shell-extension-desktop-icons"/>
+        <package name="libqt5-qtstyleplugins"/>
+        <package name="libqt5-qtstyleplugins-platformtheme-gtk2"/>
         <package name="libgnomesu"/>
         <package name="gdm"/>
         <package name="gdm-systemd"/>

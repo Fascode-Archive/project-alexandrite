@@ -45,7 +45,10 @@ baseSetRunlevel 3
 # set plymouht theme
 plymouth-set-default-theme naiad
 
-# enable gdm
+# enable services
+ln -fs /usr/lib/systemd/system/NetworkManager.service /etc/systemd/system/network.service
+systemctl enable NetworkManager
+
 ln -fs /usr/lib/systemd/system/graphical.target /etc/systemd/system/default.target
 
 # set nopassword login for live user

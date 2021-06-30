@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Fcitx
+Comment=Start Input Method
+Exec=fcitx
+StartupNotify=false
+NoDisplay=true
+Terminal=false
+

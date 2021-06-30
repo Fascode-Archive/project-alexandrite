@@ -118,8 +118,11 @@
         <package name="gdm-systemd"/>
         <package name="gdmflexiserver"/>
         <package name="firefox"/>
-        <package name="fcitx-mozc"/>
-        <package name="fcitx-config-gtk3"/>
+        <package name="ibus-mozc"/>
+        <package name="ibus-gtk"/>
+        <package name="ibus-gtk3"/>
+        <package name="ibus-lang"/>
+        <package name="ibus-m17n"/>
         <package name="noto-sans-jp-fonts"/>
         <package name="adobe-sourcecodepro-fonts"/>
         <package name="calamares"/>

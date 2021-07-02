@@ -43,7 +43,7 @@ baseSetRunlevel 3
 #suseRemoveYaST
 
 # set plymouht theme
-plymouth-set-default-theme naiad
+plymouth-set-default-theme -R naiad
 
 # enable services
 ln -fs /usr/lib/systemd/system/NetworkManager.service /etc/systemd/system/network.service

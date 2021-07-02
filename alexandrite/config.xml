@@ -53,6 +53,9 @@
     <repository type="rpm-md">
         <source path="obs://openSUSE:Leap:15.3/standard"/>
     </repository>
+    <repository>
+        <source path="https://download.opensuse.org/repositories/mozilla/openSUSE_Leap_15.3"/>
+    </repository>
     <packages type="image">
         <package name="bind-utils"/>
         <package name="patterns-openSUSE-base"/>

@@ -33,7 +33,7 @@
         <profile name="Disk" description="Expandable Disk image"/>
     </profiles>
     <preferences>
-        <version>0.0.3</version>
+        <version>0.1.0</version>
         <packagemanager>zypper</packagemanager>
         <locale>ja_JP</locale>
         <keytable>ja</keytable>
@@ -60,7 +60,7 @@
         <package name="bind-utils"/>
         <package name="patterns-openSUSE-base"/>
         <package name="systemd"/>
-        <package name="plymouth-theme-bgrt"/>
+        <package name="kernel-firmware-iwlwifi"/>
         <package name="grub2-branding-openSUSE"/>
         <package name="iputils"/>
         <package name="NetworkManager"/>

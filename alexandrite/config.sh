@@ -61,3 +61,6 @@ chmod 440 /etc/sudoers
 # setting audit group
 groupadd -r audit
 usermod -aG audit live
+
+# mask systemd-udev-settle
+systemctl mask systemd-udev-settle

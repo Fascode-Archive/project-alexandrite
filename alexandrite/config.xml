@@ -125,6 +125,7 @@
         <package name="gnome-system-monitor"/>
         <package name="gnome-terminal"/>
         <package name="gnome-screenshot"/>
+        <package name="file-roller"/>
         <package name="eog"/>
         <package name="desktop-translations"/>
         <package name="gnome-shell-extensions-common"/>
@@ -143,6 +144,7 @@
         <package name="ibus-lang"/>
         <package name="ibus-m17n"/>
         <package name="noto-sans-jp-fonts"/>
+        <package name="vlgothic-fonts"/>
         <package name="adobe-sourcecodepro-fonts"/>
         <package name="calamares"/>
         <package name="mousepad"/>
@@ -161,6 +163,27 @@
         <package name="patterns-yast-yast2_basis"/>
         <package name="patterns-gnome-gnome_yast"/>
         <package name="yast2-trans-ja"/>
+        <package name="gnome-session-lang"/>
+        <package name="gnome-settings-daemon-lang"/>
+        <package name="gnome-shell-extensions-common-lang"/>
+        <package name="gnome-shell-lang"/>
+        <package name="gnome-packagekit-lang"/>
+        <package name="gnome-system-monitor-lang"/>
+        <package name="gnome-terminal-lang"/>
+        <package name="gnome-tweaks-lang"/>
+        <package name="gnome-user-share-lang"/>
+        <package name="gnome-user-docs-lang "/>
+        <package name="gnome-desktop-lang"/>
+        <package name="gnome-control-center-lang"/>
+        <package name="gnome-disk-utility-lang"/>
+        <package name="gnome-bluetooth-lang"/>
+        <package name="gnome-backgrounds-lang"/>
+        <package name="gnome-clocks-lang"/>
+        <package name="file-roller-lang"/>
+        <package name="eog-lang"/>
+        <package name="PackageKit-lang"/>
+        <package name="NetworkManager-lang"/>
+        <package name="gdm-lang"/>
     </packages>
     <packages type="bootstrap">
         <package name="udev"/>

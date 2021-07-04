@@ -125,6 +125,7 @@
         <package name="gnome-system-monitor"/>
         <package name="gnome-terminal"/>
         <package name="gnome-screenshot"/>
+        <package name="gnome-photos"/>
         <package name="desktop-translations"/>
         <package name="gnome-shell-extensions-common"/>
         <package name="chrome-gnome-shell"/>

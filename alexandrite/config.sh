@@ -42,8 +42,8 @@ baseSetRunlevel 3
 # Remove yast if not in use
 #suseRemoveYaST
 
-# set plymouht theme
-plymouth-set-default-theme -R naiad
+# set plymouth theme
+plymouth-set-default-theme -R spinner
 
 # enable services
 ln -fs /usr/lib/systemd/system/NetworkManager.service /etc/systemd/system/network.service

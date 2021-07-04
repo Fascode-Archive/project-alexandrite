@@ -40,7 +40,7 @@
         <timezone>Asia/Tokyo</timezone>
         <rpm-excludedocs>true</rpm-excludedocs>
         <rpm-check-signatures>false</rpm-check-signatures>
-        <bootsplash-theme>naiad</bootsplash-theme>
+        <bootsplash-theme>spinner</bootsplash-theme>
         <bootloader-theme>naiad</bootloader-theme>
         <type image="iso" flags="overlay" firmware="efi" kernelcmdline="console=tty1" hybridpersistent_filesystem="ext4" hybridpersistent="true" mediacheck="true">
             <bootloader name="grub2" console="serial" timeout="10"/>
@@ -63,6 +63,19 @@
         <package name="kernel-firmware-iwlwifi"/>
         <package name="grub2-branding-openSUSE"/>
         <package name="iputils"/>
+        <package name="dracut-kiwi-live"/>
+        <package name="nvme-cli"/>
+        <package name="biosdevname"/>
+        <package name="rpcbind"/>
+        <package name="mdadm"/>
+        <package name="ntfs-3g"/>
+        <package name="cifs-utils"/>
+        <package name="dmraid"/>
+        <package name="multipath-tools"/>
+        <package name="btrfsprogs"/>
+        <package name="open-iscsi"/>
+        <package name="keyutils"/>
+        <package name="nfs-client"/>
         <package name="NetworkManager"/>
         <package name="NetworkManager-applet"/>
         <package name="NetworkManager-applet-lang"/>
@@ -79,6 +92,8 @@
         <package name="pulseaudio"/>
         <package name="plymouth"/>
         <package name="plymouth-plugin-script"/>
+        <package name="plymouth-dracut"/>
+        <package name="plymouth-theme-spinner"/>
         <package name="sudo"/>
         <package name="fontconfig"/>
         <package name="fonts-config"/>
@@ -137,6 +152,7 @@
         <package name="apparmor-parser"/>
         <package name="yast2-apparmor"/>
         <package name="audit"/>
+        <package name="inotify-tools"/>
         <package name="firewalld"/>
         <package name="yast2-firewall"/>
         <package name="yast2-security"/> 

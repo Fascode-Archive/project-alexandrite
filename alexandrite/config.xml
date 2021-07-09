@@ -40,10 +40,10 @@
         <timezone>Asia/Tokyo</timezone>
         <rpm-excludedocs>true</rpm-excludedocs>
         <rpm-check-signatures>false</rpm-check-signatures>
-        <bootsplash-theme>sphere</bootsplash-theme>
+        <bootsplash-theme>naiad</bootsplash-theme>
         <bootloader-theme>naiad</bootloader-theme>
         <type image="iso" flags="overlay" firmware="efi" kernelcmdline="quiet splash" hybridpersistent_filesystem="ext4" hybridpersistent="true" mediacheck="true">
-            <bootloader name="grub2" console="serial" timeout="10"/>
+            <bootloader name="grub2" console="gfxterm" timeout="10"/>
         </type>
     </preferences>
     <users>

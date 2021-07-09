@@ -33,7 +33,7 @@
         <profile name="Disk" description="Expandable Disk image"/>
     </profiles>
     <preferences>
-        <version>0.1.1</version>
+        <version>0.2.0</version>
         <packagemanager>zypper</packagemanager>
         <locale>ja_JP</locale>
         <keytable>ja</keytable>

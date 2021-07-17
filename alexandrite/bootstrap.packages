@@ -1,0 +1,8 @@
+# bootstrap packages
+udev
+filesystem
+glibc-locale
+cracklib-dict-full
+ca-certificates
+ca-certificates-mozilla
+openSUSE-release

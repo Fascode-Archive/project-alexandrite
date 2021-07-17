@@ -5,6 +5,6 @@
 # calamares.sh
 #
 
-# congif grub
+# config grub
 sed -i -e 's/GRUB_TERMINAL="console"/GRUB_TERMINAL="gfxterm"/g' /etc/default/grub
 grub2-mkconfig -o /boot/grub2/grub.cfg

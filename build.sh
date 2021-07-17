@@ -213,7 +213,7 @@ EOF
 
 # kiwi-ngでビルド
 echo  "[INFO] kiwi-ngでのビルドを開始します"
-# sudo kiwi-ng system build --description $current_dir/tmp/config --target-dir $current_dir/out
+sudo kiwi-ng system build --description $current_dir/tmp/config --target-dir $current_dir/out
 
 if [ $? != 0 ]; then
     echo "[ERROR] kiwi-ngが終了コード0以外で終了しました。これはビルドが失敗したことを意味します。"

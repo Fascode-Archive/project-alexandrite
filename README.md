@@ -21,14 +21,17 @@ live環境のユーザー名は`live`パスワードは`root7`です。
 公開済み。beta1のplymouthの不具合を修正したもの
 
 ### beta2 (brave)
-開発中。GRUBテーマの不具合を修正し可能であればセキュアブートをサポート
+開発中。GRUBテーマの不具合を修正し可能であればセキュアブートをサポート。beaverを使用してビルドする方式に変更。
 
 ## ビルド方法
 ### 依存関係
 kiwi-ng (インストールについてのヘルプは https://osinside.github.io/kiwi/installation.html を参照してください)
 
 ### 手順
-build.shを実行すれば自動的にビルドが完了します。
+`./build.sh alexandrite`を実行すれば自動的にビルドが完了します。
+
+### beaverについて
+beaverはkiwi-ngを使いやすくする簡易的なラッパーです。AlexanditeOS向けに最適化されているため一部のkiwi-ngの機能は制限されますがAlexandrite OSを簡単に改造できます。
 
 ## その他
 このプログラムはGPLライセンスで公開されています。使用は完全な自己責任です。その他問い合わせはTwitter @nexryai までお願いします。

@@ -1,0 +1,420 @@
+// Menus & Popovers
+
+/* ::: menyer ::: */
+
+.popup-menu {
+}
+
+.popup-menu-content {
+  //background-color: darken($adwaitaDark1, 5%);
+  border-radius: 5px; // kör två lager liksom, denna och där nere för att skapa mindre genomskinlighet. Men det är lite för solidt nu.
+  color: $textIconColorBrightMediumStrong;
+  text-shadow: $textIconMediumShadow;
+  icon-shadow: $textIconMediumShadow;
+  //margin: .15em;
+   }
+   .popup-menu-item,
+   .popup-menu-item .popup-menu-icon,
+   .popup-menu-item .system-switch-user-submenu-icon,
+   .popup-menu-item .popup-menu-arrow,
+   .message-media-control,
+   .message-media-control > StIcon,
+   .message-icon-bin,
+   .message-icon-bin > StIcon {
+     background-color: transparent; //ikoner kan vara med p.g.a transparent, dom förljer bakgrundsfärg
+     color: $textIconColorBrightMediumStrong;
+     text-shadow: $textIconDefaultShadow;
+     icon-shadow: $textIconDefaultShadow;
+   }
+
+   .message-media-control:insensitive,
+   .message-media-control:insensitive > StIcon  {
+     color: $textIconColorBrightSub;
+   }
+
+
+   .popup-menu-item:hover,
+   .message-media-control:hover  {
+     background-color: darken($textIconColorBrightSub, 30%);
+     color: $textIconColorBrightStrong;
+   }
+   .media-message-cover-icon,
+   .media-message-cover-icon > StIcon,
+   .media-message-cover-icon.fallback,
+   .popup-menu-item > StIcon {
+     icon-shadow: $textIconMediumShadow;
+   }
+
+   .popup-menu-item:checked
+    {
+     //background-color: darken($textIconColorBrightMedium, 30%);
+     //@extend %darkOnBright;
+     //@extend %brightOnDark;
+     background-color: darken($textIconColorBrightSub, 40%);
+     color: $textIconColorBrightMediumStrong;
+   }
+
+   .popup-menu-item:checked .popup-menu-icon,
+   .popup-menu-item:checked .system-switch-user-submenu-icon,
+   .popup-menu-item:checked .popup-menu-arrow {
+     color: $textIconColorBrightMedium;
+     icon-shadow: $textIconDefaultShadow;
+   }
+   .popup-menu-item:checked:hover,
+   .popup-menu-item:checked:hover .popup-menu-icon,
+   .popup-menu-item:checked:hover .system-switch-user-submenu-icon,
+   .popup-menu-item:checked:hover .popup-menu-arrow {
+     color: $textIconColorBrightStrong;
+   }
+   .popup-separator-menu-item {}
+   .popup-separator-menu-item .popup-separator-menu-item-separator {
+     @extend %separatorNone;
+   }
+
+   .popup-sub-menu {
+     //background-color: $adwaitaDark2;
+     //border: none;
+     //@extend %sunkinglassShallow;
+     //border-radius: 5px;
+     @extend %brightOnDark2;
+     //border: 1px solid $textIconColorDarkNano;
+     border: 0 none transparent;
+     font-size: .95em;
+   }
+   .popup-sub-menu .popup-menu-item {
+     //background-color: $adwaitaDark1;
+     //color: $textIconColorBrightSolid;
+   }
+
+   .popup-sub-menu .popup-separator-menu-item {
+     //@extend %floatingglassClear;
+   }
+   .popup-sub-menu .popup-separator-menu-item .popup-separator-menu-item-separator {
+     @extend %separatorNone;
+   }
+
+
+
+   .popup-menu-boxpointer,
+   .candidate-popup-boxpointer { // FIXME: kan du få till en skugga om du delar upp dom?
+
+   /*  -arrow-border-radius: 6px;
+     -arrow-background-color: rgba(45,50,55,95);
+     -arrow-border-width: 4.5px;
+     -arrow-border-color: rgba(35,40,45,.45);
+     -arrow-base: 24px;Ska försöka hacka docken också
+     -arrow-rise: 8px;
+     -arrow-box-shadow: 0 0 10px rgba(250,0,0,1) !important;*/
+     -arrow-border-radius: 10px;
+     //-arrow-background-color: $menuBG;
+     -arrow-background-color: lighten($adwaitaDark1AlmostSolid95, 0%);
+     -arrow-border-width: 1px; // kan inte vara .5px på 100% displayer, hela menyn blir felskalad och uppkukad
+     -arrow-border-color: $adwaitaDarkBorder; // sexy as hell
+     //-arrow-border-color: $adwaitaBrightBorder;
+     //-arrow-border-color: darken($textIconColorBrightSub, 40%);
+     -arrow-base: 20px;
+     -arrow-rise: 10px;
+     //-arrow-box-shadow: $boxShadowMassive !important;
+     -arrow-box-shadow: 10px black;
+     -box-shadow: $boxShadowMassive;
+     -arrow-shadow: $boxShadowMassive;
+    }
+
+// GSConnect meny Tweaks // FIXME
+.gsconnect-device-section {
+  font-size: .9em !important; // problemet är att när det blir två eller fler enheter så kommer en scrollbar upp som lägger sig utanför menyområdet och det blir kaos. Att justera textstrolek kanske är smidigaste lösningen.
+}
+/*.gsconnect-device-section {
+  border: 1px solid blue;
+  padding: 0px !important;
+  padding-right: 0px !important;
+}
+// Title Bar
+.gsconnect-device-name {
+    //margin-top: 1.5em;
+    margin: 0px !important;
+    border: solid 1px yellow;
+}
+PopupMenu.PopupMenuSection {
+  background-color: yellow;
+}
+.gsconnect-device-menu .popup-separator-menu-item {
+  margin: 0 auto;
+  margin-top: .5em;
+}
+.gsconnect-device-menu .popup-menu-ornament {
+  background-color: green;
+  width: 1px !important;
+  margin: 0px !important;
+}
+.gsconnect-list-box {
+  padding-bottom: 1em;
+  margin: 0 auto;
+}
+.gsconnect-device-battery {
+    margin: 0 auto;
+    border: 1px solid red;
+}*/
+// ---- GSConnect slut
+
+// Jag kör Sliders och Scrollbars i goas.scss
+
+// Kalender & Meddelanden
+
+#calendarArea {
+  // det här är hela menyområdet inlusive allt
+}
+.datemenu-calendar-column {
+  border: none;
+}
+#calendarArea .world-clocks-header,
+#calendarArea .weather-header,
+#calendarArea .message-list-section-title,
+#calendarArea .calendar .calendar-month-label{
+  @extend %brightTitleWeak;
+}
+#calendarArea .events-section-title {
+  @extend %brightTitleStrong;
+  font-size: 1.5em; // grymt!
+}
+#calendarArea .events-section-title:hover,
+#calendarArea .events-section-title:focus {
+  color: $textIconColorBrightStrong;
+}
+#calendarArea .events-section-title:focus:hover {
+  color: $textIconColorBrightSolid;
+}
+
+#calendarArea .calendar,
+#calendarArea .events-button,
+#calendarArea .world-clocks-button,
+#calendarArea .weather-button {
+  @extend %sunkinglassShallowMoreContrastSolidBack;
+}
+
+#calendarArea .message {
+    //border: 0 none transparent !important;
+    padding: -2px !important; // annars så blir det fula kanter runt media-knapparna
+}
+#calendarArea .message,
+#calendarArea .message-title,
+#calendarArea .message-content {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  color: $textIconColorBrightMediumStrong;
+}
+#calendarArea .message-body {
+  color: $textIconColorBrightMedium;
+  font-size: .95em;
+  line-height: 1.05em;
+}
+#calendarArea .message .message-secondary-bin > .event-time {
+  color: transparent;
+  //margin-bottom: .1em;
+}
+#calendarArea .message:hover .message-secondary-bin > .event-time,
+#calendarArea .message:focus .message-secondary-bin > .event-time,
+#calendarArea .message:active .message-secondary-bin > .event-time {
+  color: $textIconColorBrightMediumStrong;
+}
+
+#calendarArea .message:hover .message-body,
+#calendarArea .message:focus:hover .message-body,
+#calendarArea .message:active:hover .message-body,
+#calendarArea .message:hover .message-title,
+#calendarArea .message:focus:hover .message-title,
+#calendarArea .message:active:hover .message-title,
+#calendarArea .message:hover .message-content,
+#calendarArea .message:focus:hover .message-content,
+#calendarArea .message:active:hover .message-content {
+  text-shadow: $textIconDefaultShadow;
+  icon-shadow: $textIconDefaultShadow;
+  color: $textIconColorBrightSolid;
+}
+#calendarArea .message:hover,
+#calendarArea .message:focus:hover,
+#calendarArea .message:active:hover {
+  /*background-color: $textIconColorBrightNano;
+  box-shadow: $textIconMediumShadow;*/
+  //@extend %dashLabelAdwaitaNotSoDark;
+  background-color: lighten($adwaitaDark2, 10%);
+  border: .05em solid darken($textIconColorBrightHypoNano, 0%);
+  box-shadow: $textIconMediumShadowBig;//0 0 .18em black;
+}
+#calendarArea .message-media-control > StIcon {
+  color: $textIconColorBrightMedium;
+  icon-shadow: $textIconDefaultShadow;
+}
+#calendarArea .message-media-control:insensitive > StIcon {
+  color: $textIconColorBrightSub;
+}
+#calendarArea .message-media-control:hover > StIcon {
+  //color: $textIconColorBrightSolid;
+  ///icon-shadow: $textIconDefaultShadow;
+  color: $textIconColorDarkSolid;
+  icon-shadow: $textIconLessShine;
+}
+#calendarArea .message-media-control:active > StIcon,
+#calendarArea .message-media-control:focus > StIcon{
+    color: $textIconColorBrightMediumStrong;
+    icon-shadow: 0 0 5px white;
+}
+.message-media-control:hover {
+  background-color: $textIconColorBrightMedium;
+  //box-shadow: 0 0 0 .5px $textIconColorBrightMediumStrong;
+  //background-color: lighten($adwaitaDark2, 20%);
+  /*border: 0 none transparent;
+  border-top: 0 none transparent;
+  border-bottom: 0 none transparent;*/
+  box-shadow: $textIconMediumShadowBig;//0 0 .18em black;
+  //box-shadow: 0 0 0 .05em darken($textIconColorBrightHypoNano, 0%);
+  //color: $textIconColorBrightSolid;
+  //@extend %calendarDayBaseSelected;
+}
+.message-media-control:active,
+.message-media-control:focus {
+  //background-color: lighten($adwaitaDark1, 0%);
+  background-color: $adwaitaDark1Half;
+
+  //background-color: $textIconColorDarkSolid;
+  //box-shadow: 0 0 0 1px $textIconColorDarkSolid;
+  /*border-left: .05em solid green;
+  border-right: .05em solid green;
+  border-top: 0 none transparent;
+  border-bottom: 0 none transparent;*/
+
+  //box-shadow: $sunkenShadowDeeper;//0 0 .18em black;
+  box-shadow: inset 0 0 1px 0 $textIconColorDarkWeak;
+  color: $textIconColorBrightSolid;
+}
+
+
+.message-media-control {
+  background-color: transparent;
+  //border: 0 none transparent;
+  //border: .05em solid transparent;
+  //border-top: 0 none transparent;
+  //border-bottom: 0 none transparent;
+}
+.message-media-control:last-child {
+  //border-right: 0 none transparent;
+    //border-radius: 0 4px 4px 0;
+}
+
+#calendarArea .calendar:hover,
+#calendarArea .calendar:focus:hover,
+#calendarArea .calendar:active:hover,
+#calendarArea .world-clocks-button:hover,
+#calendarArea .world-clocks-button:focus:hover,
+#calendarArea .world-clocks-button:active:hover,
+#calendarArea .weather-button:hover,
+#calendarArea .weather-button:focus:hover,
+#calendarArea .weather-button:active:hover {
+  @extend %sunkinglassHover;
+}
+
+#calendarArea .message:focus,
+#calendarArea .message:active,
+#calendarArea .world-clocks-button:focus,
+#calendarArea .world-clocks-button:active,
+#calendarArea .weather-button:focus,
+#calendarArea .weather-button:active {
+  @extend %sunkinglass;
+}
+
+#calendarArea .message-list-placeholder StIcon { /* ikon inga händelser */
+  width: 0px;
+  height: 0px; // den går inte att ändra färg på, så gömmer den
+ }
+#calendarArea .message-list-placeholder StLabel {
+  @extend %InvertedTitleMedium;
+  font-size: 2.5em;
+}
+
+.datemenu-today-button,
+.calendar .calendar-today {
+  /*background: $textIconColorBrightMedium;
+  color: $textIconColorDarkMedium;
+  text-shadow: $textIconDefaultShadow;
+  box-shadow: $buttonShadow;*/
+  @extend %pluggedDimmedMore;
+  color: $textIconColorDarkMediumStrong;
+  text-shadow: $textIconLessShine;
+}
+.datemenu-today-button:hover,
+.datemenu-today-button:focus,
+.calendar .calendar-today:hover,
+.calendar .calendar-today:focus {
+  //background: rgb(190,190,190);
+  //@extend %pluggedDarkHover;
+  @extend %pluggedDimmed;
+  color: $textIconColorDarkSolid !important;
+}
+.datemenu-today-button:active {
+  //background: rgb(175,175,175);
+  @extend %sunkinglass;
+}
+.datemenu-today-button:insensitive {
+  background: transparent;
+  color: $textIconColorBrightMediumStrong;
+  text-shadow: $textIconDefaultShadow;
+  box-shadow: 0 0 2px rgba(0,0,0,0);
+}
+.datemenu-today-button .day-label {
+    font-size: 1.5em;
+    font-weight: 400;
+    //color: $textIconColorBrightMedium;
+}
+  .datemenu-today-button .date-label {
+    font-size: 1.8em;
+    font-weight: 600;
+    //color: $textIconColorBrightMedium;
+    //text-shadow: $textIconDefaultShadow;
+  }
+  .datemenu-today-button:insensitive .date-label {
+      color: $textIconColorBrightMedium;
+}
+.calendar .calendar-month-label {
+    //@extend ;
+}
+
+.calendar .calendar-day-base {
+    // samtliga dagar
+    @extend %calendarDayBase;
+    //font-weight: 400;
+}
+
+.calendar .calendar-day-base:hover {
+    /*background-color: $textIconColorBrightWeak;
+    color: $textIconColorDarkMediumStrong;
+    font-weight: 600;*/
+    @extend %calendarDayBaseHover;
+}
+.calendar .calendar-day-base:focus {
+  /*background-color: $textIconColorBrightSub;
+  color: $textIconColorDarkMediumStrong;
+  font-weight: 600;*/
+  @extend %calendarDayBaseFocus;
+}
+.calendar .calendar-day-base:selected {
+  /*background-color: $textIconColorBrightMediumStrong;
+  color: $textIconColorDarkStrong;
+  font-weight: 600;*/
+  @extend %calendarDayBaseSelected;
+}
+.calendar-day-with-events {
+  //background-image: url("resource:///org/gnome/shell/theme/calendar-today.svg");
+  background-image: url("common-assets/misc/calendarDayWithEvents_v2.svg");
+}
+.calendar-day-with-events:hover,
+.calendar-day-with-events:selected,
+.calendar-day-with-events:checked,
+.calendar-day-with-events:focus,
+.calendar-today.calendar-day-with-events {
+  background-image: url("common-assets/misc/calendarDayWithEvents_Inverted.svg");
+}
+.calendar .calendar-week-number {
+    background-color: lighten($adwaitaDark1AlmostSolid95, 2%);
+    color: $textIconColorBrightWeak;
+}

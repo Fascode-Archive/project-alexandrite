@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="60"
+   height="64"
+   viewBox="0 0 15.875 16.933334"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="CarapaceDockPantheon_v1.svg"
+   inkscape:version="0.92.2 2405546, 2018-03-11">
+  <defs
+     id="defs2">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter7228"
+       x="-0.091571408"
+       width="1.1831428"
+       y="-0.20821052"
+       height="1.416421">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.50457723"
+         id="feGaussianBlur7230" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.9195959"
+     inkscape:cx="42.169149"
+     inkscape:cy="43.476192"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="2560"
+     inkscape:window-height="1488"
+     inkscape:window-x="0"
+     inkscape:window-y="56"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-280.06666)">
+    <rect
+       id="rect10"
+       width="13.224492"
+       height="5.8161583"
+       x="1.3252543"
+       y="291.77679"
+       style="fill:#32373c;fill-opacity:1;stroke:#00050a;stroke-width:0.13696691;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter7228)"
+       ry="0.5731914" />
+    <rect
+       id="rect10-3"
+       width="13.224492"
+       height="5.8161583"
+       x="1.3252554"
+       y="291.77679"
+       style="fill:#32373c;fill-opacity:1;stroke:#00050a;stroke-width:0.13696691;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       ry="0.5731914" />
+  </g>
+</svg>

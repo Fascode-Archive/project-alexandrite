@@ -1,0 +1,320 @@
+// Panel
+
+// kombinerar dynamic panel transparency med detta hack som lägger in skugga och kant-effekten i lådan bakom panelen :-) Det här hacket ska funka med andra transparency tillägg också. Fan vad fet jag är på detta, haha! :-D
+
+//Kör storlekar för objekt med text, t ex paneler i "em" så att vi stödjer skalningsfaktor för teckensnitt
+
+#panelBox {
+  background-gradient-direction: vertical;
+  background-gradient-start: rgba(5,10,15,.35);
+  background-gradient-end: rgba(60,65,70,.0);
+  /*border: .5px none rgba(0,0,0,.0);
+  border-top: .5px solid rgba(240,245,250,.15);
+  border-radius: 2px;*/
+  box-shadow:inset 0px .5px .5px rgba(245,245,250,.25);
+  //box-shadow:inset 0px .5px .5px rgba(245,5,0,.25);
+  //border-radius: 3px 3px 0 0;
+}
+
+#panel,
+#panel.trasparent,
+#panel:overview {
+    font-size: 1em !important;
+    icon-size: 1em;
+    transition-duration: 0ms !important;
+}
+#panel.transparent {
+    //background-color: rgba(0,250,0,1) !important;
+    //transition-duration: 250ms;
+    transition-duration: 0ms !important;
+}
+#overviewGroup.controls-manager:active #panelBox {
+  box-shadow:inset 0px .5px .5px rgba(5,245,0,1);
+}
+
+
+#panel .panel-button .app-menu-icon { /* program-ikoner, ligger framför namnet i panelen, men dom är inte alltid så vackra... */
+  width: 0px;
+  height: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+#panel #panelActivities.panel-button > *,
+#panel #panelActivities.panel-button > *,
+#panel:overview #panelActivities.panel-button > * {
+icon-shadow: $textIconDefaultShadow;
+text-shadow: $textIconDefaultShadow;
+width: .8em; //1.65 100%, 2.245 130%
+height: 1.65em;
+background-size: cover; // när storleken på lådan blir mindre i bredd så behövs denna
+/* FIXME:
+ Har skalat upp fötterna i Inkscape från 32px till 48px. Det verkar gå bättre för shell att skala ner fötterna vid behov än att skala upp dom.
+ */
+background-color: transparent !important;
+background-gradient-direction: none !important;
+border: 0 none transparent !important; // att behålla kanten gör foten storre och finare
+text-shadow: 0 0 transparent !important;
+transition-duration: 0ms !important;
+box-shadow: none !important;
+color: transparent;
+//margin-top: .15em;
+//background-image: none;
+}
+// fot default
+/*
+#panel #panelActivities.panel-button > * {
+background-image: url("common-assets/misc/close.svg");
+}*/
+
+
+#panel #panelActivities.panel-button > * {
+  // .9 alpha
+background-image: url("common-assets/panel/GnomeFootVit_48px_.9_ny skugga.svg");
+//background-size: contain; // contain verkar vara default
+//filter:opacity(30%) !important;
+}
+
+#panel.transparent #panelActivities.panel-button > * {
+  // .9 alpha
+//background-size: contain;
+background-image: url("common-assets/panel/GnomeFootVit_48px_.9_ny skugga.svg");
+//filter: blur(10px);
+//filter:opacity(30%);
+}
+#panel:overview #panelActivities.panel-button > * {
+  // .7 alpha
+background-image: url("common-assets/panel/GnomeFootVit_48px_.7_ny skugga.svg");
+//background-size: contain;
+}
+// fot hover
+#panel :hover #panelActivities.panel-button > * {
+  // 1 alpha
+background-image: url("common-assets/panel/GnomeFootVit_48px_1_ny skugga.svg");
+}
+#panel.transparent :hover #panelActivities.panel-button > * {
+  // 1 alpha
+background-image: url("common-assets/panel/GnomeFootVit_48px_1_ny skugga.svg");
+}
+#panel:overview :hover #panelActivities.panel-button > * {
+  // .9 alpha
+background-image: url("common-assets/panel/GnomeFootVit_48px_.9_ny skugga.svg");
+}
+#panel .popup-menu-arrow {
+  width: 0; }
+
+// lägg till :hover effekter på foten
+
+#panel,
+#panel .panel-button,
+#panel .system-status-icon,
+#panel .app-menu-icon > StIcon,
+#panel .popup-menu-arrow,
+#panel Gjs_ui_dateMenu_MessagesIndicator,
+#panel:overview,
+#panel:overview .panel-button,
+#panel:overview .system-status-icon,
+#panel:overview .app-menu-icon > StIcon,
+#panel:overview .popup-menu-arrow,
+#panel:overview Gjs_ui_dateMenu_MessagesIndicator {
+  font-size: 1em;
+  icon-size: 1em !important;
+  font-weight: $fontWeight;
+  //color: darken($textIconColorBrightSolid, 15%);
+  color: $textIconColorBrightStrong;
+  text-shadow: $textIconDefaultShadow !important;
+  icon-shadow: $textIconDefaultShadow !important;
+  //text-shadow: $textIconDefaultShine;
+  //icon-shadow: $textIconDefaultShine;
+}
+
+// Tangentbordslayout, texten är by default så liten och nedsänkt...
+#panel Gjs_status_keyboard_InputSourceIndicator StLabel {
+    //font-size: 1em !important;
+    /*vertical-align: text-top !important;
+    color: red !important;
+    background-color: blue !important;
+    padding-top: 0em !important;
+    all: initial !important; */
+    // Det verkar vara något med Lato som sänker ner viss text. NimbusSans vertikalcenterar det som på lato är nedsänkt :-/
+    //line-hight: 2.5em !important;
+    //font: NimbusSans !important;
+}
+#panel .power-status.panel-status-indicators-box {
+    spacing: 0;
+    font-size: 1.1em;
+    color: $textIconColorBrightMedium;
+}
+#panel .power-status.panel-status-indicators-box StIcon,
+#panel.transparent .power-status.panel-status-indicators-box StIcon,
+#panel:overview .power-status.panel-status-indicators-box StIcon{
+  icon-size: .8em !important; // FIXME: blir lite suddig på PBP, men bättre storlek
+ }
+ /*#panel .power-status.panel-status-indicators-box StIcon {
+     icon-size: .5em !important;
+}*/
+
+#panel {
+  background-color: $blackBezel;
+  //border-top: 1px solid transparent; // så att panel items inte hoppar runt mellan desktop och overview
+  border-left: 0px solid $overViewFrame;
+  border-bottom: 0px solid $overViewFrame;
+  border-right: 0px solid $overViewFrame;
+  transition-duration: 0ms !important; // det bidrar bara till blinking när tillägget skiftar paneler:overview
+}
+#panel .panel-corner {
+  //-panel-corner-radius: 5px;
+  -panel-corner-radius: 10px;
+  -panel-corner-background-color: $blackBezel;
+  -panel-corner-border-width: 0px;
+  -panel-corner-border-color: $overViewFrame;
+  transition-duration: 0ms !important;
+}
+#panel.transparent {
+  transition-duration: 0ms !important;
+}
+#panel.transparent .panel-corner {
+  -panel-corner-radius: 0px;
+  -panel-corner-background-color: transparent;
+  -panel-corner-border-width: 0px;
+  -panel-corner-border-color: $overViewFrame;
+}
+#panel:overview #panelBox {
+  box-shadow:inset 0px .5px .5px rgba(245,245,250,.0);
+}
+#panel:overview {
+  //transition-duration: 0ms !important;
+  //box-shadow: 0 0 0 2px rgba(250,0,0,1) !important;
+  // för att täcka ljusa kanten
+  background-color: lighten($adwaitaDark1AlmostSolid, 10%);
+  /*border-top: 1px solid $overViewFrame; // för att täcka edge i overview
+  border-left: 0px solid $overViewFrame;
+  border-bottom: 0px solid $overViewFrame;
+  border-right: 0px solid $overViewFrame;*/
+  //border: 1px solid red !important;
+  }
+  #panel:overview .panel-corner {
+    -panel-corner-radius: 5px; // den ska bara vara osynlig, men behåller kurvan för övergångens skull
+    -panel-corner-background-color: transparent;
+    -panel-corner-border-width: 0px;
+    -panel-corner-border-color: $overViewFrame;
+  }
+
+  #panel.transparent,
+  #panel.transparent .panel-button,
+  #panel.transparent .system-status-icon,
+  #panel.transparent .app-menu-icon > StIcon,
+  #panel.transparent .popup-menu-arrow,
+  #panel.transparent Gjs_ui_dateMenu_MessagesIndicator {
+    color: $textIconColorBrightStrong;
+  }
+
+// nOTERING, .PANEL-BUTTON INKLUDERAR INTE STATUSITEMS
+  #panel:overview,
+  #panel:overview .panel-button,
+  #panel:overview .system-status-icon,
+  #panel:overview .app-menu-icon > StIcon,
+  #panel:overview .popup-menu-arrow,
+  #panel:overview Gjs_ui_dateMenu_MessagesIndicator {
+    //color: darken($textIconDefaultColor, 30%);
+    color: $textIconColorBrightMedium;
+  }
+  #panel:overview .power-status.panel-status-indicators-box {
+      color: $textIconColorBrightWeak; // det är strong/medium på solid och transparent
+}
+
+    //börjar med solid panel
+    #panel :hover,
+    #panel .panel-button:hover,
+    #panel :hover .system-status-icon,
+    #panel .app-menu-icon:hover > StIcon,
+    #panel :hover .popup-menu-arrow,
+    #panel :hover .power-status.panel-status-indicators-box,
+    #panel :hover Gjs_ui_dateMenu_MessagesIndicator,
+    #panel :active,
+    #panel .panel-button:active,
+    #panel :active .system-status-icon,
+    #panel .app-menu-icon:active > StIcon,
+    #panel :active .popup-menu-arrow,
+    #panel :active Gjs_ui_dateMenu_MessagesIndicator {
+      color: $textIconColorBrightSolid;
+    }
+
+#panel .panel-button:hover,
+#panel .panel-button:hover StLabel.clock,
+#panel .panel-button StLabel.clock {
+  // ta bort shell default bakgrunder
+  @extend %panelActive;
+}
+
+    #panel .panel-button:active,
+    #panel .panel-corner:active {
+      //box-shadow: inset 0 -2px 0 0 $textIconColorBrightSolid;
+      @extend %panelActive;
+    }
+    #panel .panel-button:active StLabel.clock {
+      box-shadow: none; // den har BS by default, blir dubbel vid :active, tar bort, kör panel-button ovan som standard istället
+    }
+
+  // fortsätter med transparent
+    #panel.transparent :hover,
+    #panel.transparent .panel-button:hover,
+    #panel.transparent :hover .system-status-icon,
+    #panel.transparent .app-menu-icon:hover > StIcon,
+    #panel.transparent :hover .popup-menu-arrow,
+    #panel.transparent :hover .power-status.panel-status-indicators-box,
+    #panel.transparent :hover Gjs_ui_dateMenu_MessagesIndicator,
+    #panel.transparent :active,
+    #panel.transparent .panel-button:active,
+    #panel.transparent :active .system-status-icon,
+    #panel.transparent .app-menu-icon:active > StIcon,
+    #panel.transparent :active .popup-menu-arrow,
+    #panel.transparent :active Gjs_ui_dateMenu_MessagesIndicator {
+    color: $textIconColorBrightSolid;
+  }
+  #panel.transparent .panel-button:active {
+    //box-shadow: inset 0 -2px 0 0 $textIconColorBrightSolid;
+    @extend %panelActive;
+  }
+  //nästa är overview
+    #panel:overview :hover,
+    #panel:overview .panel-button:hover,
+    #panel:overview :hover .system-status-icon,
+    #panel:overview .app-menu-icon:hover > StIcon,
+    #panel:overview :hover .popup-menu-arrow,
+    #panel:overview :hover .power-status.panel-status-indicators-box,
+    #panel:overview :hover Gjs_ui_dateMenu_MessagesIndicator,
+    #panel:overview :active,
+    #panel:overview .panel-button:active,
+    #panel:overview :active .system-status-icon,
+    #panel:overview .app-menu-icon:active > StIcon,
+    #panel:overview :active .popup-menu-arrow,
+    #panel:overview :active Gjs_ui_dateMenu_MessagesIndicator {
+  //color: darken($textIconDefaultColor, 30%);
+  color: $textIconColorBrightStrong;
+}
+#panel:overview .panel-button:active,
+#panel:overview #panelActivities.panel-button,
+#panel:overview :active StBin {
+  //box-shadow: inset 0 -2px 0 0 $textIconColorBrightStrong;
+  @extend %panelActive;
+}
+
+/*#panel:overview #panelActivities.panel-button {
+  //border: red 1px solid;
+  box-shadow: inset 0 -1px 0 0 rgba(0,255,0,1);
+}*/
+
+
+
+ // Tray Icons Reloaded Extension
+
+ .TrayIndicator StButton {
+	padding: 0 0px !important;
+  margin: 0px !important;
+}
+.TrayIndicator {
+  border: 1px solid red !important;
+  padding: 0px !important;
+}
+/* panel transparency correction */

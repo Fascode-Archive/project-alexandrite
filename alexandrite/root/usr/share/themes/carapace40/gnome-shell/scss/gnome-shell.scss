@@ -1,0 +1,908 @@
+/* ************ Ny Carapace för Gnome 36 **************** */
+// Använd "@import 'filnamn';" för att inkludera dom i outputfilen. Dock då måste dom ligga efter eventeuellt definierade variabler, annars importeras dom innan variabeln existerar och det blir error.
+
+// Dessa kommentarer tas bort ifrån outputfilen
+// På tal om outputfil... $ sassc scss/gnome-shell.scss gnome-shell.css
+
+/* Copyright 2009, 2015 Red Hat, Inc.
+ *
+ * Portions adapted from Mx's data/style/default.css
+ *   Copyright 2009 Intel Corporation
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms and conditions of the GNU Lesser General Public License,
+ * version 2.1, as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope it will be useful, but WITHOUT ANY
+ * WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA.
+ */
+
+/* ******
+Theme by HackaN ( hackan301@gmail.com )
+****** */
+
+// Globala variabler
+$fontStack: 1em Lato, RalewayMedium, NotoSans, Cantarell, Ubuntu, Roboto;
+$hoverColor: grey;
+$primaryColor: #eee;
+$brightHoverColor: #fff;
+$fontWeight: 400;
+$normalFontSize: 1em;
+$largeFontSize: 1.1em;
+$borderWidth: .5px;
+//$menuBG: rgba(35,40,45,.95);
+$menuBG: rgba(35,35,35,.95);
+$borderColor: rgba(15,20,25,.9);
+$boxShadow: 0 0 2px 5px rgba(0,0,0,.7);
+$boxShadowLess: 0 0 2px 5px rgba(0,0,0,.2);
+$boxShadow2: 0 0 4px 2px rgba(0,0,0,1);
+$buttonShadow: 0 0 2px rgba(0,0,0,.3);
+$boxShadowMassive: 0 2px 10px rgba(0,0,0,.8);
+$boxShadowLessMassive: 0 2px 10px rgba(0,0,0,.6);
+$boxShadowBalance: 0 1px 3px rgba(0,0,0,.3);
+$overviewGlass: rgba(140,145,150,.4);
+$overviewGlassStart: rgba(140,145,150,.7);
+$overviewGlassEnd: rgba(140,145,150,.0);
+$overviewGlassNeutral: rgba(145,145,145,.4);
+
+
+$overViewFrame: rgba(25,30,35,1);
+$overViewFrameTS: rgba(25,30,35,.7);
+
+$overViewSunkBackgroundLight: rgba(30,30,30,.1);
+
+$textIconDefaultColor: #fff;
+
+// lite svårt, men 11pt så är 1px typ .063em, 1.5px .095em, 2px .126em, 2.5px .158em 3px .189em, 4px .252em, 5px .315em
+
+// vågrätt lodrätt spridning tjocklek färg
+
+$iconShadowCarapaceFullBelow: 0 -1px 5px 3px rgba(0,0,0,1);
+$iconShadowCarapaceCloseBelow: 0 -1px 5px 2px rgba(0,0,0,.9);
+$textShadowCarapaceCloseBelow: 0 -1px 3px 2px rgba(0,0,0,.8);
+$iconShadowCarapaceClose: 0 0 5px 2px rgba(0,0,0,.7);
+$iconShadowCarapaceFar: 0 0 10px 2px rgba(0,0,0,.5);
+$textShadowCarapaceFar: 0 0 5px 2px rgba(0,0,0,.5);
+$iconShadowCarapaceHalf: 0 2px 5px 3px rgba(0,0,0,.7);
+$iconShadowCarapaceFull: 0 2px 5px 3px rgba(0,0,0,1);
+$iconShadowCarapaceStraightHalf: 0 0 3px 3px rgba(0,0,0,.5);
+$iconShadowCarapaceStraightFull: 0 0 3px 3px rgba(0,0,0,.8);
+$textIconDefaultShadow: 0 1px 2.5px 1px rgba(0,0,0,.8);
+//$textIconDefaultShadow: 0 .06em .106em .06em rgba(0,0,0,.8);
+//$textIconMediumShadow: 0 1px 2.5px 1px rgba(0,0,0,.4);
+$textIconMediumShadow: 0 .06em .106em .06em rgba(0,0,0,.4);
+$textIconMediumShadowBig: 0 .06em .250em .095em rgba(0,0,0,.4);
+//$textIconSolidShadow: 0 1px 2px 2px rgba(0,0,0,1);
+$textIconSolidShadow: 0 .06em .105em .06em rgba(0,0,0,1);
+//$textIconDefaultShadowBig: 0 1px 3.5px 2px rgba(0,0,0,.8);
+$textIconDefaultShadowBig: 0 .06em .250em .095em rgba(0,0,0,.8);
+$sunkenShadow: inset 0 0 1px .5px rgba(0,0,0,.7);
+$sunkenShadowDeeper: inset 0 0 2px .5px rgba(0,0,0,.6);
+$textIconDefaultShine: 0 .5px 0 0 rgba(255,255,255,1);
+$textIconFatShine: 0 1px 0 0 rgba(255,255,255,1);
+$textIconLessShine: 0 .5px 0 0 rgba(255,255,255,.5);
+$textIconEvenLessShine: 0 .5px 0 0 rgba(250,250,250,.35);
+
+$dockDefaultIconShadow: 0 0 2.5px 1px rgba(0,0,0,.55);
+$dockHoverIconShadow: 0 0 3.5px 2px rgba(0,0,0,1);
+
+$textIconOverviewPanelColor: rgba(255,255,255,.7);
+
+$textIconRestingColor: rgba(175,180,185,1);
+$texticonUnfocusedColor: rgba(200,200,200,1);
+$textIconHoverColor: rgba(255,255,255,1);
+$textIconFocusColor: rgba(245,245,245,1);
+$backgroundHoverFocusColor: rgba(255,255,255,.6);
+
+$runningDotUnfocused: rgba(180,180,180,.7);
+$runningDotUnfocusedHover: rgba(180,180,180,1);
+$runningDotFocused: rgba(245,245,245,1);
+$runningDotFocusedHover: rgba(250,250,250,1);
+
+// ljus färg
+$backgroundAdwaitaBright: rgba(220,220,220,1);
+$textIconColorBrightHypoNano: rgba(220,220,220,.05);
+$textIconColorBrightNano: rgba(255,255,255,.1);
+$textIconColorBrightMicro: rgba(255,255,255,.2);
+$textIconColorBrightSub: rgba(255,255,255,.3);
+$textIconColorBrightWeakSub: rgba(255,255,255,.4);
+$textIconColorBrightWeak: rgba(255,255,255,.5);
+$textIconColorBrightMedium: rgba(255,255,255,.7);
+$textIconColorBrightMediumStrong: rgba(255,255,255,.85);
+$textIconColorBrightStrong: rgba(255,255,255,.9);
+$textIconColorBrightSolid: rgba(255,255,255,1);
+
+$adwaitaBrightButton: rgba(243,242,241,1);
+$adwaitaBrightBorder: rgba(205,200,195,.9);
+$adwaitaBrightBorderShadow: rgba(205,200,195,1);
+
+// mörk färg
+$backgroundAdwaitaDark: rgba(38,38,38,1);
+$textIconColorDarkPico: rgba(0,0,0,.05);
+$textIconColorDarkNano: rgba(0,0,0,.1);
+$textIconColorDarkMicro: rgba(0,0,0,.2);
+$textIconColorDarkSub: rgba(0,0,0,.3);
+$textIconColorDarkWeakSub: rgba(0,0,0,.4);
+$textIconColorDarkWeak: rgba(0,0,0,.5);
+$textIconColorDarkMediumWeak: rgba(0,0,0,.6);
+$textIconColorDarkMedium: rgba(0,0,0,.7);
+$textIconColorDarkMediumStrong: rgba(0,0,0,.8);
+$textIconColorDarkStrong: rgba(0,0,0,.9);
+$textIconColorDarkSolid: rgba(0,0,0,1);
+
+$adwaitaDark1: rgba(38,38,38,.75);
+$adwaitaDark1Half: rgba(38,38,38,.5);
+$adwaitaDark2: rgba(43,43,43,.75);
+$adwaitaDark1Sub: rgba(38,38,38,.3);
+$adwaitaDark1AlmostSolid: rgba(38,38,38,.95);
+$adwaitaDark1AlmostSolid95: rgba(38,38,38,.98);
+$adwaitaDark2AlmostSolid: rgba(43,43,43,.95);
+$adwaitaDark2AlmostSolid95: rgba(43,43,43,.98);
+$adwaitaDarkButton: rgba(52,52,52,1);
+$adwaitaDarkButtonFloating: rgba(52,52,52,.85);
+$adwaitaDarkButtonHover: rgba(57,57,57,1);
+$adwaitaDarkBorder: rgba(13,14,16,.9);
+$adwaitaDarkBorderShadow:rgba(76,76,76,1);
+
+$markingColor: rgba(230,235,240,.6);
+
+$blackBezel: rgba(0,0,0,1); // .98 -
+
+$descreteBorderDark: .5px solid rgba(0,0,0,.5);
+
+$overviewBackground: $adwaitaDarkButton;
+$overviewBackgroundFloating: $adwaitaDarkButtonFloating;
+//$overViewSunkBackground: rgba(25,30,35,.2);
+//$overViewSunkBackground: rgba(0,0,0,.2); //rgba(30,30,30,.2);
+$overViewSunkBackground: darken($overviewBackground, 3%);
+// ----- Extend/Inheritance
+// Hämta med "{@extend %<namn>;}"
+
+%standardButton {
+  //@extend %pluggedDark;
+  border: .5px solid lighten($adwaitaDarkBorder, 0%);
+  //border-radius: 5px;
+  color: $textIconColorBrightMedium;
+  text-shadow: $textIconDefaultShadow;
+  icon-shadow: $textIconDefaultShadow;
+  background-color: $adwaitaDarkButton;
+  box-shadow: inset 0 0 1px $adwaitaDarkBorderShadow;
+}
+%standardButtonHover {
+  //@extend %pluggedDark;
+  //border: .5px solid lighten($adwaitaDarkBorder, 5%);
+  //border-radius: 5px;
+  color: $textIconColorBrightMedium;
+  text-shadow: $textIconDefaultShadow;
+  icon-shadow: $textIconDefaultShadow;
+  background-color: lighten($adwaitaDarkButtonHover, 6%) !important;
+  //box-shadow: $adwaitaDarkBorderShadow;
+}
+%standardButtonDefault {
+  //@extend %standardButtonHover;
+    color: $textIconColorBrightMedium;
+  text-shadow: $textIconDefaultShadow;
+  icon-shadow: $textIconDefaultShadow;
+  background-color: lighten($adwaitaDarkButtonHover,3%);
+}
+%standardButtonActive {
+  //@extend %standardButton;
+  background-color: darken($adwaitaDarkButton, 10%);
+  box-shadow: inset 0 1px 3px 0 black;
+}
+
+%darkOnBright {
+  background-color: $textIconColorBrightMedium;
+  color: $textIconColorDarkMedium;
+  text-shadow: $textIconDefaultShine;
+  icon-shadow: $textIconDefaultShine;
+}
+%brightOnDark {
+  background-color: $textIconColorDarkSub;
+  color: $textIconColorBrightMedium;
+  text-shadow: $textIconDefaultShadow;
+  icon-shadow: $textIconDefaultShadow;
+}
+%brightOnDark2 {
+  background-color: darken($adwaitaDark1, 1%);
+  color: $textIconColorBrightMedium;
+  text-shadow: $textIconDefaultShadow;
+  icon-shadow: $textIconDefaultShadow;
+}
+
+%brightOnDarkHover {
+  background-color: darken($textIconColorBrightSub, 30%);
+  color: $textIconColorBrightStrong;
+  text-shadow: $textIconDefaultShadow;
+  icon-shadow: $textIconDefaultShadow;
+}
+%brightTitleStrong {
+  color: $textIconColorBrightStrong;
+  text-shadow: $textIconDefaultShadow;
+  font-weight: 700;
+  font-size: 1.05em;
+}
+%brightTitleSolid {
+  color: $textIconColorBrightSolid;
+  text-shadow: $textIconDefaultShadow;
+  font-weight: 700;
+  font-size: 1.05em;
+}
+%brightTitleMedium {
+  color: $textIconColorBrightMedium;
+  text-shadow: $textIconDefaultShadow;
+  font-weight: 700;
+  font-size: 1.05em;
+}
+%brightTitleWeak {
+  color: $textIconColorBrightWeak;
+  text-shadow: $textIconDefaultShadow !important;
+  font-weight: 700;
+  font-size: 1.05em;
+}
+%InvertedTitleMedium {
+  color: $textIconColorDarkMediumWeak;
+  text-shadow: $textIconEvenLessShine !important;
+  font-weight: 700;
+}
+%InvertedTitleWeak {
+  color: $textIconColorDarkWeak;
+  text-shadow: $textIconEvenLessShine !important;
+  font-weight: 700;
+}
+%InvertedTitleMediumHover {
+  color: $textIconColorDarkMedium;
+  text-shadow: $textIconLessShine !important;
+  font-weight: 700;
+}
+%flashLightFocus {
+  background-gradient-start: rgba(255,255,255,.45);
+  background-gradient-end: rgba(245,245,245,.1);
+  background-gradient-direction: radial;
+  border: .5px solid rgba(255,255,255,.1);
+}
+%flashLightSelected {
+  background-gradient-start: rgba(255,255,255,.8);
+  background-gradient-end: rgba(235,235,235,.0);
+  background-gradient-direction: radial;
+}
+%flashlightLupeGlass {
+  background-gradient-start: rgba(255,255,255,.7);
+  background-gradient-end: rgba(235,235,235,.1);
+  background-gradient-direction: radial;
+  border: .5px solid rgba(255,255,255,.2);
+}
+%flashlightLupeGlassMild {
+  background-gradient-start: rgba(255,255,255,.35);
+  background-gradient-end: rgba(235,235,235,.05);
+  background-gradient-direction: radial;
+  border: .5px solid rgba(255,255,255,.1);
+}
+%flashlightLupeGlassSharp {
+  @extend %flashlightLupeGlass;
+  border: .5px solid rgba(145,145,145,.2);
+}
+%flashLightSelectedOverview {
+  background-gradient-start: rgba(200,200,200,.1);
+  background-gradient-end: $overviewBackground;
+  background-gradient-direction: radial;
+  border: .5px solid rgba(255,255,255,.0);
+}
+%flashLightHover {
+background-gradient-start: rgba(255,255,255,.6);
+background-gradient-end: rgba(255,255,255,.1);
+background-gradient-direction: radial;
+border: .5px solid rgba(255,255,255,.11);
+}
+%flashLightComic {
+background-gradient-start: rgba(255,255,255,.6);
+background-gradient-end: rgba(255,255,255,.1);
+background-gradient-direction: radial;
+border: .5px solid $adwaitaDarkBorder;
+}
+%flashLightOff {
+background-gradient-start: rgba(255,255,255,.0);
+background-gradient-end: rgba(255,255,255,.00);
+background-gradient-direction: radial;
+border: .5px solid rgba(255,255,255,.0);
+}
+%flashLightPlate {
+background-gradient-start: rgba(43,43,43,1);
+background-gradient-end: rgba(38,38,38,1);
+background-gradient-direction: radial;
+border: .5px solid rgba(78,78,78,1);
+}
+%calendarDayBase {
+  border: .5px solid $textIconColorDarkMedium;
+  background-color: $textIconColorBrightNano;
+  width: 1rem;
+  height: 1rem; // rem = root em, för att stilen på föräldern hade en för liten text. Så vi refererar till globalt värde. Nu ska jag borsta tänderna.
+  border-radius: 1rem;
+  color: $textIconColorBrightMediumStrong;
+  box-shadow: $textIconDefaultShadow;
+  font-weight: 400;
+}
+%calendarDayBaseHover {
+    background-color: $textIconColorBrightWeak;
+    color: $textIconColorDarkMediumStrong;
+    font-weight: 600;
+}
+%calendarDayBaseFocus {
+    background-color: $textIconColorBrightSub;
+    color: $textIconColorDarkMediumStrong;
+    font-weight: 600;
+}
+%calendarDayBaseSelected {
+    background-color: $textIconColorBrightMediumStrong;
+    color: $textIconColorDarkStrong;
+    font-weight: 600;
+}
+%panelActive {
+  border: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  box-shadow: none;
+  //-panel-corner-radius: 0px;
+  //-panel-corner-background-color: rgba(15,20,30,0);
+  //-panel-corner-border-width: 0px;
+  -panel-corner-border-color: transparent;
+}
+
+%gradientDarkTop {
+  background-gradient-start: rgba(0,0,0,.4);
+  background-gradient-end: rgba(120,120,120,0);
+  background-gradient-direction: vertical;
+}
+%gradientLightTop {
+  background-gradient-start: rgba(240,240,240,.4);
+  background-gradient-end: rgba(0,0,0,0);
+  background-gradient-direction: vertical;
+}
+%gradientVagueShine {
+  background-gradient-start: rgba(255,255,255,.4);
+  background-gradient-end: rgba(255,255,255,0);
+  background-gradient-direction: radial;
+}
+%gradientVagueShadow {
+  background-gradient-start: rgba(0,0,0,.1);
+  background-gradient-end: rgba(75,75,75,0);
+  background-gradient-direction: radial;
+}
+%gradientFullShadow {
+  background-gradient-start: rgba(0,0,0,.5);
+  background-gradient-end: rgba(75,75,75,.0);
+  background-gradient-direction: radial;
+}
+%gradientHalfShadow {
+  background-gradient-start: rgba(0,0,0,.25);
+  background-gradient-end: rgba(75,75,75,0);
+  background-gradient-direction: radial;
+}
+%gradientOverviewglassShadow {
+  background-gradient-start: $overviewGlassStart;
+  background-gradient-end: $overviewGlassEnd;
+  background-gradient-direction: radial;
+}
+%adwaitaDarkSolidShadeNoDirection {
+  background-gradient-start: rgba(43,43,43,.1);
+  background-gradient-end: rgba(38,38,38,1);
+}
+%sunkinglass {
+  box-shadow: $sunkenShadow;
+  border: .5px solid rgba(240,240,240,.2);
+  background-color: $overViewSunkBackground;
+}
+%sunkinglassDashed {
+  box-shadow: $sunkenShadow;
+  border: .5px rgba(240,240,240,.2);
+  border-style: dotted;
+  background-color: $overViewSunkBackground;
+}
+%sunkinglassDimmed {
+  box-shadow: $sunkenShadow;
+  border: .5px solid rgba(240,240,240,.1);
+  background-color: $overViewSunkBackground;
+}
+%sunkinglassDimmedShallow {
+  @extend %sunkinglassDimmed;
+  background-color: lighten($overViewSunkBackground,1%);
+}
+%sunkinglassSuddle {
+  box-shadow: $sunkenShadow;
+  border: .5px solid rgba(127.5,127.5,127.5,.1);
+  background-color: $overViewSunkBackground;
+}
+%sunkinglassLight {
+  box-shadow: $sunkenShadow;
+  border: .5px solid rgba(240,240,240,.2);
+  background-color: $overViewSunkBackgroundLight;
+}
+%sunkinglassHover {
+  box-shadow: inset 0 0 1px .5px rgba(0,0,0,1);
+  border: .5px solid rgba(240,240,240,.25);
+  background-color: darken($overViewSunkBackground, 1%);
+}
+%sunkingDock {
+ box-shadow: inset 0 0 1px .5px rgba(0,0,0,.7);
+ border: .5px solid rgba(76,76,76,.1);
+ background-color: $overViewSunkBackground;
+}
+%plugged {
+  background-color: $backgroundAdwaitaBright;
+  box-shadow: outset 0 0 4px 1px rgba(0,0,0,.8);
+  border: .5px solid rgba(0,0,0,.0);
+}
+%pluggedDimmed {
+  @extend %plugged;
+  background-color: darken($backgroundAdwaitaBright, 10%);
+}
+%pluggedDimmedMore {
+    @extend %plugged;
+    background-color: darken($backgroundAdwaitaBright, 50%);
+    box-shadow: $textIconDefaultShadow;
+}
+%pluggedHover {
+  @extend %plugged;
+  background-color: lighten($backgroundAdwaitaBright, 5%);
+}
+%pluggedActive {
+  @extend %plugged;
+  background-color: lighten($backgroundAdwaitaBright, 10%);
+}
+%pluggedDark {
+  background-color: lighten($adwaitaDark2AlmostSolid, 5%);
+  box-shadow: $textIconMediumShadow;
+  border: .5px solid lighten($adwaitaDarkBorder, 10%);
+}
+%pluggedDarkHover {
+  @extend %pluggedDark;
+  background-color: lighten($adwaitaDark2AlmostSolid, 10%);
+}
+%pluggedDarkActive {
+  @extend %pluggedDark;
+  background-color: $adwaitaDark2AlmostSolid;
+}
+
+%transparentglass {
+  box-shadow: inset .5px 0 1px .5px rgba(0,0,0,.0);
+  border: .5px solid rgba(240,240,240,.0);
+  background-color: rgba(25,30,35,.0);
+}
+%sunkinglassShallow {
+  @extend %transparentglass;
+  border: .5px solid rgba(255,255,255,.05);
+  //border-top: none;
+  //border-bottom: none !important;
+  //border-left: none;
+  //border-right: none;
+  //background-color: $overViewSunkBackgroundLight;
+  box-shadow: inset 0 0 0 .5px rgba(0,0,0,.25);
+}
+%sunkinglassShallowContrast {
+  @extend %transparentglass;
+  border: .5px solid rgba(255,255,255,.05);
+  //border-top: none;
+  //border-bottom: none !important;
+  //border-left: none;
+  //border-right: none;
+  background-color: $overViewSunkBackgroundLight;
+  box-shadow: inset 0 0 0 .5px rgba(0,0,0,.25);
+}
+%sunkinglassShallowContrastSolidBack {
+  @extend %sunkinglassShallow;
+  background-color: $adwaitaDark1;
+}
+%sunkinglassShallowMoreContrastSolidBack {
+  //@extend %sunkinglassShallow;
+    border: .05em solid darken($textIconColorBrightHypoNano, 0%);
+  background-color: $adwaitaDark1;
+  box-shadow: inset 0 0 .01em .05em lighten($adwaitaDarkBorder, 3%) !important;
+}
+%sunkinglassShallowContrastSolidBackFocus {
+  @extend %sunkinglassShallowContrastSolidBack;
+  border: .5px solid rgba(255,255,255,1);
+}
+
+%floatingglassClear {
+  @extend %transparentglass;
+  border: .5px solid rgba(255,255,255,.05);
+  box-shadow: 0 0 0 .5px rgba(0,0,0,.25);
+}
+
+%floatinglassShallow {
+  @extend %transparentglass;
+  border: .5px solid rgba(255,255,255,.05);
+  background-color: $overviewGlass;
+  //border-top: none;
+  //border-bottom: none !important;
+  //border-left: none;
+  //border-right: none;
+  box-shadow: 0 0 0 .5px rgba(0,0,0,.25);
+}
+%floatinglassShallowMedium {
+  @extend %transparentglass;
+  border: .5px solid rgba(255,255,255,.05);
+  background-color: darken($overviewGlass, 10%);
+  //border-top: none;
+  //border-bottom: none !important;
+  //border-left: none;
+  //border-right: none;
+  box-shadow: 0 0 0 .5px rgba(0,0,0,.25);
+}
+%floatinglassShallowDark {
+  background-color: $overViewSunkBackground;
+  border: .5px solid darken($textIconColorBrightSub, 50%);
+  box-shadow: 0 0 0 .5px $textIconColorDarkMedium;
+}
+%floatingglass {
+  background-color: $overviewGlass;
+  border: .5px solid rgba(255,255,255,.25);
+  box-shadow: $boxShadowMassive;
+  margin: 5px;
+}
+%floatingglassFolder {
+  background-color: lighten($overviewGlass, 70%);
+  border: .5px solid rgba(255,255,255,.25);
+  box-shadow: 0 0 5px 0 black;
+  margin: 5px;
+}
+%lupeGlass {
+  background-color: transparent;
+  border: 1px solid $textIconColorDarkWeak;
+  box-shadow: inset 0 0 3px $textIconColorBrightMedium;
+}
+%lupeGlassInverted {
+  background-color: transparent;
+  border: .5px solid $textIconColorBrightWeak;
+  box-shadow: inset 0 0 3px $textIconColorDarkStrong;
+}
+%lupeoverviewGlass {
+  background-color: darken($overviewGlass, 0%); // tydligare för ljusa fönster
+  border: 2px solid $textIconColorDarkSub;
+  box-shadow: inset 0 0 0 .5px $textIconColorBrightWeakSub;
+}
+%lupeoverviewGlassLarge {
+  background-color: darken($overviewGlass, 20%);
+  border: 2.5px solid lighten($adwaitaDark2, 6%);
+  box-shadow: inset 0 0 0 .5px $textIconColorBrightWeakSub;
+}
+%lupeoverviewGlassLargeIverted {
+  //background-color: $textIconColorBrightSub;
+  background-color: darken($overviewGlass, 0%);
+  //border: .5px solid $textIconColorDarkSolid;
+  border: 2.5px solid lighten($adwaitaDark2AlmostSolid95, 6%);
+  box-shadow: inset 0 0 0 .5px $textIconColorDarkSolid;
+  //box-shadow: 0 0 2.5px 2.5px $textIconColorDarkSolid;
+}
+%lupeoverviewGlassLargeIverted2 {
+  //background-color: $textIconColorBrightSub;
+  background-color: darken($overviewGlass, 6%);
+  //border: .5px solid $textIconColorDarkSolid;
+  border: 2.5px solid lighten($adwaitaDark2AlmostSolid95, 6%);
+  box-shadow: 0 0 3px 2px $textIconColorDarkMedium;
+  //box-shadow: 0 0 2.5px 2.5px $textIconColorDarkSolid;
+}
+%dashLabelAdwaitaDark {
+  background-color: $adwaitaDark2;
+  border: 1px solid $adwaitaDarkBorder;
+  box-shadow: 0 0 3px black;
+  color: $textIconFocusColor;
+  text-shadow: $textIconSolidShadow;
+  border-radius: 4px 4px 4px 4px !important;
+  padding: 4px 10px 4px 10px !important;
+}
+%dashLabelAdwaitaNotSoDark {
+ background-color: lighten($adwaitaDark2, 10%);
+ border: 1px solid lighten($adwaitaDarkBorder, 10%);
+ box-shadow: 0 0 2px black;
+ color: $textIconFocusColor;
+ text-shadow: $textIconSolidShadow;
+}
+
+%searchEntryFlatEdgeTransparent {
+  @extend %transparentglass;
+  border: .5px solid rgba(255,255,255,.05);
+  border-top: none;
+  //border-bottom: none !important;
+  border-left: none;
+  border-right: none;
+  box-shadow: inset 0 -.5px 0 0 rgba(0,0,0,.25);
+}
+%sunkinglassShallow {
+  @extend %transparentglass;
+  border: .5px solid rgba(255,255,255,.05);
+  //border-top: none;
+  //border-bottom: none !important;
+  //border-left: none;
+  //border-right: none;
+  box-shadow: inset 0 0 0 .5px rgba(0,0,0,.25);
+}
+%searchEntryFlatEdgeTransparentHover {
+  @extend %searchEntryFlatEdgeTransparent;
+  border: rgba(255,255,255,.25);
+  box-shadow: rgba(0,0,0,.45);
+}
+%searchEntryFlatEdgeTransparentFocus {
+  //@extend %searchEntryFlatEdgeTransparent;
+  border: rgba(255,255,255,.25);
+  box-shadow: outset;
+}
+%searchEntryTextIconHidden {
+  color: transparent;
+  /*text-shadow: $textIconDefaultShadow;
+  icon-shadow: $textIconSolidShadow;
+  color: rgba(0,0,0,.6);*/
+  text-shadow: transparent;
+  icon-shadow: transparent;
+  // skuggornas styrka påverkas av color
+}
+%searchEntryTextIconDefault {
+  color: $textIconColorBrightWeak;
+  /*text-shadow: $textIconDefaultShadow;
+  icon-shadow: $textIconSolidShadow;
+  color: rgba(0,0,0,.6);*/
+  text-shadow: $textIconMediumShadow;
+  icon-shadow: $textIconMediumShadow;
+  // skuggornas styrka påverkas av color
+}
+%searchEntryTextIconDefaultHover {
+  color: $textIconColorBrightMedium;
+  //text-shadow: $textIconLessShine;
+  //icon-shadow: $textIconLessShine;
+  text-shadow: $textIconDefaultShadow;
+  icon-shadow: $textIconDefaultShadow;
+}
+%searchEntryTextIconDefaultFocus {
+  color: $textIconColorBrightStrong;
+  text-shadow: $textIconDefaultShadow;
+  icon-shadow: $textIconDefaultShadow;
+}
+%searchResultFlatTransparent {
+  @extend %transparentglass;
+  border: 0 none;
+  border-top: .5px solid rgba(255,255,255,.25);
+}
+%searchResultTransparent {
+  @extend %transparentglass;
+  border: 0 none;
+}
+%searchResultEdge {
+  @extend %transparentglass;
+  border: .5px none;
+  border-top: .5px solid rgba(255,255,255,.05);
+  box-shadow: 0 -1px 0 0 rgba(0,0,0,.95);
+  margin: 2px;
+}
+%separatorNone {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+}
+%separatorMediumStrong {
+  border: .5px none;
+  background-color: darken($textIconColorBrightSub, 30%);
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.9);
+}
+%separatorSolid {
+  border: .5px none;
+  background-color: darken($textIconColorBrightWeak, 30%);
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.95);
+}
+%searchResultDarkShade {
+  @extend %transparentglass;
+  background-gradient-start: rgba(0,0,0,.25);
+  background-gradient-end: rgba(120,120,120,0);
+  background-gradient-direction: vertical;
+  border: 0 none;
+  border-top: .5px solid rgba(255,255,255,.25);
+}
+%searchResultLightShade {
+  @extend %transparentglass;
+  border: 0 none;
+  border-top: .5px solid rgba(255,255,255,.25);
+  background-gradient-start: rgba(240,240,240,.05);
+  background-gradient-end: rgba(255,255,255,0);
+  background-gradient-direction: vertical;
+}
+
+%searchResultsLightFrame {
+  background-color: $overviewGlass;
+  border: .5px solid rgba(255,255,255,.25);
+  box-shadow: 0 0 5px 0 black;
+  padding: 10px;
+}
+%searchResults {
+  background-color: $overviewGlass;
+  border: .5px solid rgba(255,255,255,.0);
+  box-shadow: 0 0 5px 0 black;
+  padding: 10px;
+}
+%searchResultsLight {
+  background-color: darken($backgroundHoverFocusColor, 10%);
+  border: .5px solid rgba(255,255,255,.0);
+  box-shadow: 0 0 5px 0 black;
+  padding: 10px;
+}
+%searchResultsFlatEdgeTransparent {
+  @extend %transparentglass;
+  border: 0 none;
+  border-top: .5px solid rgba(0,0,0,.15);
+  box-shadow: inset 0 .5px 0 0 rgba(255,255,255,.15);
+}
+%searchResultsDarkBox {
+  @extend %sunkinglass;
+  //
+  //box-shadow: 0 0 5px .5px rgba(0,0,0,.7);
+  //border: .5px solid rgba(0,0,0,.05);
+  box-shadow: 0 0 5px .5px rgba(140,145,150,.4);
+  border: .5px solid rgba(140,145,150,.05);
+  background-color: rgba(140,145,150,.4);
+}
+%floatingDarkPlate {
+  background-color: $adwaitaDark1;
+  border: .5px solid $textIconColorBrightSub;
+  box-shadow: $boxShadowMassive;
+}
+%floatingDarkPlate2 {
+  background-color: darken($adwaitaDark1AlmostSolid, 5%);
+  border: .5px solid darken($textIconColorBrightSub, 40%);
+  box-shadow: $boxShadowMassive;
+}
+%floatingDarkPlateHover {
+  //background-color: $adwaitaDarkButtonHover;
+  //background-color: rgba(200,200,200,.3);
+  background-color: lighten($overviewBackground, 10%);
+  //border: .5px solid $adwaitaDarkBorder;
+  border: .5px solid lighten($adwaitaDark1AlmostSolid, 1%);
+  //border: .5px solid rgba(0,0,0,.55);
+  //box-shadow: $boxShadowMassive;
+  box-shadow: $boxShadowBalance;
+}
+%floatingDarkPlateSlightBorder {
+  background-color: $adwaitaDark1;
+  border: .5px solid rgba(200,200,200,.1);
+  box-shadow: $boxShadowMassive;
+}
+%floatingPlateTransparent {
+  background-color: rgba(0,0,0,0);
+  border: .5px solid rgba(0,0,0,0);
+  box-shadow: none;
+}
+%floatingPlateDiscreteLayer {
+  //background-color: rgba(255,255,255,.1);
+  background-color: lighten($overviewBackground, 5%);
+  border: .5px solid rgba(0,0,0,.4);
+  box-shadow: $boxShadowMassive;
+}
+%floatingPlateDiscreteLayerGrab {
+  //background-color: rgba(255,255,255,.1);
+  background-color: lighten($overviewBackgroundFloating, 6%);
+  border: .5px solid rgba(0,0,0,.4);
+  box-shadow: $boxShadowMassive;
+}
+%floatingPlate {
+  background-color: rgba(128,128,128,.5);
+  border: .5px solid rgba(0,0,0,.5);
+  box-shadow: $boxShadowMassive;
+}
+%floatingPlateFolder {
+  @extend %overviewTheNoise;
+  //background-color: rgba(100,100,100,.5);
+  border: .5px solid rgba(0,0,0,.5);
+  //box-shadow: $boxShadowMassive; skugga blir CP för vi har en bakgrundsbild i TheNoise
+}
+
+%popupStyle {
+  background-color: lighten($adwaitaDark1AlmostSolid95, 0%);
+  border: .5px solid darken($textIconColorBrightSub, 40%);
+  border-radius: 10px;
+  box-shadow: $boxShadowMassive;
+}
+%popupStyle2 {
+  background-color: lighten($adwaitaDark1AlmostSolid95, 0%);
+  border: .5px solid $adwaitaDarkBorder;
+  border-radius: 10px;
+  box-shadow: $boxShadowMassive;
+  color: $textIconColorBrightStrong;
+}
+%popupStyle3 {
+  @extend %popupStyle2;
+  border: 0px;
+  box-shadow: $boxShadowLessMassive;
+}
+%floatingplateSVG {
+    border-image: url("common-assets/misc/CarapaceAdwaitaOSD_v1_1px_.5pxBorder.svg") 9 9 9 9;
+}
+%overviewSpaceRoundedGlass {
+  background-color: $overviewGlass;
+  border: 2em solid rgba(25,30,35,.0);
+  border-radius: 2.15em;
+  box-shadow: inset 0 0 .5px .5px rgba(255,255,255,.25);
+}
+%overviewSpaceFlatRound {
+  //background-color: $overviewGlass;
+  background-color: lighten($adwaitaDark1, 20%);
+
+}
+%overviewSpaceAdwaitaDark {
+  background-gradient-start: lighten($adwaitaDark2, 0%);
+  background-gradient-end: lighten($adwaitaDark1AlmostSolid, 0%);
+  background-gradient-direction: radial;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-shadow: $textIconDefaultShadow;
+}
+%overviewSpaceAdwaitaDarkMovie {
+  //@extend %overviewSpaceAdwaitaDark;
+  box-shadow: none;
+  background-color: rgba(35,35,35,.8);
+  background-image: url("common-assets/misc/noise5.png");
+  background-repeat: repeat;
+}
+%overviewTheNoise {
+  background-color: $overviewBackground;
+  background-image: url("common-assets/misc/noise5.png");
+  background-repeat: repeat;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-shadow: $textIconDefaultShadow;
+}
+
+
+
+// ::: Dash :::
+
+
+// 1 (SLIM)
+%dashSVG1 {
+  border-image: url("common-assets/dash/CarapaceDockSlim_v2.svg") 9 9 9 9;
+}
+// 2 (PANTHEON)
+%dashSVG2 {
+    border-image: url("common-assets/dash/CarapaceDockPantheon_v1.svg") 9 9 9 9;
+}
+// 2 (Adwaita)
+%dashSVG3 {
+    border-image: url("common-assets/dash/CarapaceDockPantheonAdwaita_v4_1px_.5pxBorder.svg") 9 9 9 9;
+}
+%dashSVG3_scalable {
+    border-image: url("common-assets/dash/CarapaceDockPantheonAdwaita_v4_1px_.5pxBorder.svg") 30 30 9 9;
+    // 30 slice:ar tight:are, motverkar cp-kanter vid fractional skalning
+}
+// 3 (3D)
+%dashSVG4 {
+    border-image: url("common-assets/dash/CarapaceDock3D_v5.svg") 10 10 10 10;
+}
+// Pure Code
+%dashBoxPureCode {
+  //padding: 3px 3px 0px 3px; //bara sidorna
+  //border: 0px none transparent;
+  //background-clip: padding-box;
+  box-shadow: inset 0 -2em 0 0 red;
+  background-color: red;
+}
+%dashPureCode {
+  background-color: rgba(35,45,50,.0);
+  border: 0px none transparent;
+  //box-shadow: inset 0 -1.95em 0 0 $adwaitaDark2AlmostSolid95;
+}
+
+
+
+
+// importera resten...
+
+@import 'goas';
+@import 'panel';
+@import 'dock';
+@import 'menusAndPops';
+@import 'overview';
+@import 'apps';
+@import 'search';

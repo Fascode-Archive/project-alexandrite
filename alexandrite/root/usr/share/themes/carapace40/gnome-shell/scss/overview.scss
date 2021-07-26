@@ -1,0 +1,201 @@
+// Overview
+
+/* överblicken */
+
+
+// Gjs_ui_overview_OverviewActor verkar vara samma som #overview
+
+//background-image: linear-gradient(to right, #3acfd5 0%, #3a4ed5 100%), linear-gradient(to right, #3acfd5 0%, #3a4ed5 100%);
+
+// ::: Översitk generellt :::
+
+#overview {
+
+
+  // Enkel rundad, lite för platt
+  /*
+  border: 2em solid $overViewFrame;
+  border-radius: 3em;
+  box-shadow: 0 0 0 1.5em $overViewFrame;
+  padding: -2em; // återställa utrymme*/
+
+
+  // Traditionell Överblick -----------------------
+  // Blev cool med border 0px.
+  // ! Viktigt: .workspace-thumbnails background-color a: .7
+/*
+  border: 1px rgba(25,30,35,.8);
+  border-radius: 3px;
+  padding: 0px;
+  box-shadow:inset 0 0 0px 0px rgba(0,0,0,.8);
+  */
+
+  // Utzoomad Överblick --------------------------
+  // Funkar inte med runt. Du får tomma utskärningar i hörnen efter den kurvade ramen.
+  // ! Viktigt: .workspace-thumbnails background-color a: 1
+/*
+  border: 2em solid rgba(25,30,35,1);
+  border-radius: 0px;
+  box-shadow:inset 0 0 .5px .5px rgba(255,255,255,.25);
+  padding: -2em;*/
+
+  // Kurvad Överblick ----------------------------
+  //Rundad, genomskinlig ram (för att slippa snusk-mellanrum i kanterna)
+  //! Viktigt: .workspace-thumbnails background-color a: .2
+
+// *** 38 inställningar:
+  //@extend %overviewSpaceRoundedGlass;
+  //padding: -2em;/**/
+  //padding-right: 0em;
+
+//@extend %overviewSpaceAdwaitaDark;
+@extend %overviewTheNoise;
+}
+
+
+// ::: Arbetsytor :::
+
+.overview-controls {
+  //padding: 5px 0 5px 5px; // dom går medsols med början i övre vänstra hörnet eller övre kant.
+}
+
+
+.workspace-thumbnails {
+//  @extend %sunkinglass;
+  //@extend %sunkinglassShallow;
+  //spacing: 15px;  //kan behövas fixas mer
+  //padding: 10px;
+  //border-radius: 3px 0 0 3px;
+  //overflow: visible;
+
+  // Kurvar stil
+  //border: .5px solid rgba(240,240,240,.2);
+  //border-right: none;
+  //box-shadow: inset .5px 0 1px .5px rgba(0,0,0,.2);
+  //background-color: rgba(25,30,35,.2);
+
+  // Dock
+  /*
+  border: .5px solid rgba(0,0,0,.7);
+  border-right: none;
+  background-color: rgba(35,40,45,.7);
+  box-shadow: 0 0 5px 2px black;*/
+  // Dock:en behöver .overview-controls {padding: 5px 0 5px 5px;} och #overview {padding-right: 0em;}
+  background-color: rgba(230,230,230,.0);
+  margin-top: 0px;
+  padding: 0px;
+}
+
+
+.workspace-thumbnails .placeholder {
+  // nya arbetsytor
+  background-image: none; //överblicks-stil
+  /*background-color: rgba(140,145,150,.4);
+  border: 0 solid rgba(25,30,35,.0);
+  box-shadow:inset 0 0 .5px .5px rgba(255,255,255,.25);*/
+  border-radius: 5px;
+  //@extend %sunkinglass;
+  background-color: rgba(0,0,0,.0);
+  spacing: 40px;
+}
+.workspace-thumbnail {
+  //@extend %sunkinglassShallow;
+  @extend %sunkinglassDimmedShallow;
+  //background-color: rgba(0,0,0,.2);
+}
+.workspace-thumbnail:insensetive {
+  // inget här
+}
+.workspace-thumbnail-indicator {
+  border: 1px solid $markingColor;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-radius: 0px;
+  padding: 0 0 2px 0; // typ samma avstånd som från skärmkanten
+  //margin-left: 3px;
+
+  //@extend %lupeGlass;
+  // @extend %lupeGlassInverted; - ska testa med en markör under resp låda istället
+  //@extend %lupeoverviewGlass;
+  //border-radius: 3px;
+  //- helskärmsfönsters kanter sticker ut, skiter i kurva
+}
+.window-picker { // låter picker vara
+  //-horizontal-spacing: 1em;
+  //-vertical-spacing: 1.5em;
+  /*padding-left: 52px;
+  padding-right: 12px;*/
+  //padding-bottom: 1em;
+  //margin: .5em; // fixar avbruten close-button;
+  //border: 1px red solid;
+}
+
+.window-picker.external-monitor {
+  /*padding: 32px;*/
+}
+.window-clone-border {
+  /*border: 1px rgba(50,55,60,1);
+  border-radius: 2px;
+  box-shadow: $boxShadow2;
+  background-color: rgba(140,145,150,.1);*/
+
+  //@extend %lupeoverviewGlass;
+
+  //@extend %lupeoverviewGlassLarge;
+  //- den: @extend %lupeoverviewGlassLargeIverted;
+  //@extend %lupeoverviewGlassLargeIverted2;
+  border-radius: 6px 6px 3px 3px; // fönster är ju i regel kurvade upptil men inte nertill
+  border: 2px red solid !important;
+}
+.window-clone {
+  // finns inget att göra här
+}
+Gjs_ui_windowPreview_WindowPreview {
+  //border: 3px solid $adwaitaDarkBorder !important;
+  //box-shadow: 0 0 10px black !important;
+  //border-radius: 10px;
+  @extend %popupStyle3;
+
+  & StIcon.icon-dropshadow {
+    //@extend %floatingPlateDiscreteLayer;
+    @extend %flashlightLupeGlass;
+    //@extend %flashlightLupeGlassSharp;
+    //@extend %flashlightLupeGlassMild;
+    //@extend %flashLightSelected;
+    //padding: 5px;
+    border-radius: 50px; // bara så att den blir helt rund
+    icon-shadow: $iconShadowCarapaceClose;
+  }
+}
+
+.window-caption {
+  // namnen är överflödiga och gör det rörigt
+  visibility: hidden;
+  background: transparent;
+  //text-shadow: $boxShadow2;
+  text-shadow: none;
+  margin-top: 0em;
+  padding-bottom: .5em;
+  //color: $brightHoverColor;
+  color: transparent;
+  font-weight: $fontWeight;
+  //font-size: $largeFontSize;
+  font-size: 0px;
+  border: none;
+}
+.window-close {
+  background-image: url("common-assets/misc/close.svg");
+  background-size: 26px;
+  height: 26px;
+  width: 26px;
+  border: 0px;
+  border-radius: 26px;
+  box-shadow: $boxShadowLess;
+  background-color: transparent;
+  color: transparent; }
+  .window-close:hover {
+    background-image: url("common-assets/misc/close-hover.svg"); }
+  .window-close:active {
+    background-image: url("common-assets/misc/close-active.svg");
+  }

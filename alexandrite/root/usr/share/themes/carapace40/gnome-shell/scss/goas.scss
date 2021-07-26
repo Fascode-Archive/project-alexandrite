@@ -1,0 +1,340 @@
+// Globals, OSDs, App/Window -Switcher, scrollbars etc
+
+
+// Globala inställningar
+
+stage {
+  //font: $fontStack; // gnome-shell följer valt typsnitt för gränssnittet... Lite onödigt att sätta om användaren vill ha något speciellt. Sätter upp Lato som standard, om inte Lato finns så kommer shell att följa gränssnitt
+    font: 1em;
+  color: $primaryColor;
+ }
+
+MetaStage {
+  //border: 3px red solid !important;
+}
+#uiGroup Gjs_ui_layout_UiActor {
+  //border: 3px red solid !important;
+}
+
+.button,
+.modal-dialog-button,
+.modal-dialog-linked-button,
+.hotplug-notification-item,
+.notification-banner .notification-button {
+   @extend %standardButton;
+   //margin: -1px;
+   //@extend %pluggedDark;
+  }
+
+.button:hover,
+.modal-dialog-button:hover,
+.modal-dialog-linked-button:hover,
+.hotplug-notification-item:hover,
+.notification-banner .notification-button:hover {
+  @extend %standardButtonHover;
+}
+.button:active,
+.modal-dialog-button:active,
+.modal-dialog-linked-button:active,
+.hotplug-notification-item:active,
+.notification-banner .notification-button:active {
+  @extend %standardButtonActive;
+}
+.button:default,
+.modal-dialog-button:default,
+.modal-dialog-linked-button:default,
+.hotplug-notification-item:default,
+.notification-banner .notification-button:default
+.button:focus,
+.modal-dialog-button:focus,
+.modal-dialog-linked-button:focus,
+.hotplug-notification-item:focus,
+.notification-banner .notification-button:focus {
+  @extend %standardButtonDefault;
+  color: $textIconColorBrightSolid;
+  text-shadow: $textIconSolidShadow;
+}
+.button:default:hover,
+.modal-dialog-button:default:hover,
+.modal-dialog-linked-button:default:hover,
+.hotplug-notification-item:default:hover,
+.notification-banner .notification-button:default,
+.button:focus:hover,
+.modal-dialog-button:focus:hover,
+.modal-dialog-linked-button:focus:hover,
+.hotplug-notification-item:focus:hover,
+.notification-banner .notification-button:focus:hover {
+    @extend %standardButtonHover;
+}
+.button:insensitive,
+.modal-dialog-button:insensitive,
+.modal-dialog-linked-button:insensitive,
+.hotplug-notification-item:insensitive,
+.notification-banner .notification-button:insensitive {
+  color: $textIconColorDarkWeak;
+  text-shadow: $textIconFatShine !important;
+}
+.modal-dialog-button-box {
+  background-color: transparent;
+  /*padding: -1px;
+  margin: -1px;*/
+}
+// lägger raminställningarna sist så att de inte skrivs över
+.modal-dialog-button,
+.modal-dialog-linked-button,
+.hotplug-notification-item,
+.notification-banner .notification-button {
+  border-bottom: none;
+}
+.modal-dialog-button:first-child,
+.modal-dialog-linked-button:first-child,
+.hotplug-notification-item:first-child,
+.notification-banner .notification-button:first-child {
+  border-left: none;
+}
+.modal-dialog-button:last-child,
+.modal-dialog-linked-button:last-child,
+.hotplug-notification-item:last-child,
+.notification-banner .notification-button:last-child {
+  border-right: none;
+}
+
+StEntry,
+.lock-screen-entry {
+  // globala entry
+  @extend %sunkinglassShallowContrast;
+  color: $textIconColorBrightStrong;
+  text-shadow: $textIconDefaultShadow;
+}
+StEntry:focus,
+StEntry:active,
+.lock-screen-entry:focus,
+.lock-screen-entry:active {
+  @extend %sunkinglass;
+}
+
+/* Buttons */
+// FIXME:
+
+/* Check Boxes */
+// FIXME:
+
+/* Switches */
+// FIXME:
+
+/* Slider */
+.slider { // volym och skärmljus
+  height: 15px;
+  -barlevel-height: 3px;
+  -barlevel-background-color: $textIconColorBrightSub;
+  -barlevel-border-width: 0px;
+  -barlevel-border-color: transparent;
+  -barlevel-active-background-color: $textIconColorBrightStrong;
+  -barlevel-active-border-color: green; // ?
+  -barlevel-overdrive-color: #e01b24;
+  -barlevel-overdrive-border-color: #ce1921;
+  -barlevel-overdrive-separator-width: 1px;
+  -slider-handle-radius: 7.5px;
+  -slider-handle-border-width: 1px;
+  -slider-handle-border-color: $textIconColorBrightSolid;
+  color: darken($textIconColorBrightSolid, 3%);
+}
+.slider > * StIcon {
+  icon-shadow: $boxShadowMassive;
+  // försöker skapa starkare skugga på knaoppen... inte lyckats än :-(
+}
+
+/* Scrollbars */
+/*StScrollView.vfade {
+  -st-vfade-offset: 68px; }
+
+StScrollView.hfade {
+  -st-hfade-offset: 68px; }
+
+StScrollBar {
+  padding: 0; }
+  StScrollView StScrollBar {
+    min-width: 14px;
+    min-height: 14px; }
+  StScrollBar StBin#trough {
+    border-radius: 0;
+    background-color: transparent; }
+  StScrollBar StButton#vhandle, StScrollBar StButton#hhandle {
+    border-radius: 8px;
+    background-color: red;
+    margin: 3px; }
+    StScrollBar StButton#vhandle:hover, StScrollBar StButton#hhandle:hover {
+      background-color: green; }
+    StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
+      background-color: blue; }*/
+
+// ::: OSD fönster :::
+
+ /* {
+    background-color: red !important;
+}*/
+// FIXME: lägg till meddelanden och lösenordsrutor här
+.osd-window,
+.notification-banner,
+.modal-dialog,
+.nm-dialog {
+  /*box-shadow: $boxShadowMassive;
+  border: .5px solid darken($textIconColorBrightSub, 40%);
+  background-color: darken($adwaitaDark1AlmostSolid, 5%);*/
+  //@extend %floatingDarkPlate2;
+  @extend %popupStyle2;
+  //border: .5px solid $textIconColorBrightSub;
+  //@extend %dashLabelAdwaitaDark;
+  //@extend %floatingDarkPlate;
+  //@extend %flashLightPlate;
+  //@extend %floatingplateSVG;
+}
+
+.osd-window .osd-monitor-label {}
+.osd-window .level {
+  //@extend %sunkinglassShallowContrast;
+  @extend %transparentglass;
+  border-radius: 4px;
+  -barlevel-height: 4px;
+  -barlevel-background-color: $textIconColorBrightSub; //snarlik till oifylld ikon
+  -barlevel-active-background-color: $textIconColorBrightSolid;
+}
+.osd-window StIcon {
+  icon-shadow: $textIconDefaultShadow;
+}
+  .osd-window .level-bar {}
+.resize-popup {}
+
+// Switcher ::: växla program / fönster :::
+// inställningar för ikoner finns i apps.scss ".switcher-list .item-box"
+.switcher-popup {
+  //@extend %overviewSpaceFlatRound;
+  @extend %overviewSpaceAdwaitaDarkMovie;
+  spacing: 0; // så att inte fönster ligger en mil nedanför
+}
+.switcher-list {
+  background: rgba(45,50,55,0);
+  border: 1px solid rgba(230,220,0,0);
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 rgba(0,0,0,0);
+  padding: 6px; //ställer padding till 6px så att alla ikoner får plats utan att pilarna försvinner
+}
+/*.switcher-list .item-box StIco {
+  @extend %flashLightOff;
+  padding: 25px 2px 25px 5px;
+  border-radius: 120px;
+}*/
+.switcher-list .item-box {
+  @extend %flashLightOff;
+  border-radius: 120px;
+}
+.switcher-list .item-box,
+.switcher-list .item-box StIcon,
+ .switcher-list .item-box StLabel {
+  color: $textIconColorBrightWeak;
+  //text-shadow: $textIconMediumShadow;
+  font-size: 1em;
+  font-weight: 400;
+  //icon-shadow: $iconShadowCarapaceHalf;
+  text-shadow: $textShadowCarapaceFar;
+  icon-shadow: $iconShadowCarapaceFar;
+}
+.switcher-list .item-box:selected {
+  @extend %flashLightSelected;
+  //@extend %flashLightSelectedOverview;
+  //@extend %floatingDarkPlate2;
+  //@extend %sunkinglassDimmed;
+}
+.switcher-list .item-box:selected StIcon,
+.switcher-list .item-box:selected StLabel {
+  color: $textIconColorBrightSolid;
+  //icon-shadow: $iconShadowCarapaceFull;
+  //icon-shadow: $iconShadowCarapaceFullBelow;
+  text-shadow: $textShadowCarapaceCloseBelow;
+  icon-shadow: $iconShadowCarapaceCloseBelow;
+}
+
+.switcher-list .item-box:outlined
+.switcher-list .item-box:selected
+.switcher-list .item-box:selected StIcon,
+.switcher-list .item-box:outlined StIcon {
+  //color: $textIconColorBrightSolid;
+  //font-size: 1.1em;
+  //font-weight: 600;
+  //text-shadow: $textIconDefaultShadow;
+  //icon-shadow: $textIconDefaultShadowBig;
+}
+
+
+.switcher-list .thumbnail-box,
+.switcher-list .thumbnail-box:selected,
+.switcher-list .thumbnail-box:outlined,
+.switcher-list .thumbnail,
+.switcher-list .thumbnail:selected,
+.switcher-list .thumbnail:outlined {
+  //background-color: red !important;
+}
+.switcher-list .thumbnail {
+  // försöker få titel att inte ligga en mil under fönstret
+  //border: 1px red solid;
+}
+.switcher-list .thumbnail-box {
+  //border: 1px green solid;
+  // texten hamnar så långt under fönstret, ser fel ut. Mer clean:t att köra utan
+  font-size: 0;
+  color: transparent;
+}
+.switcher-list .switcher-list-item-container:selected {
+  background-color: green !important;
+}
+
+// Sliders & Scrollbars // FIXME
+/* ::: scrollvyer  ::: */
+/*
+Om du vill kunna scrolla automatiskt när man stegar med piltangenter så kan offest inte vara mer än 0px
+*/
+StScrollView.vfade {
+  //-st-vfade-offset: 0px;
+ }
+
+StScrollView.hfade {
+  //-st-hfade-offset: 0px;
+}
+
+StScrollBar {
+  padding: 8px;
+  //margin: 0px 2px;
+  //@extend %sunkinglassShallowContrastSolidBack;
+  //border-radius: 5px;
+}
+  StScrollView StScrollBar {
+    min-width: 5px;
+    min-height: 5px; }
+  StScrollBar StBin#trough {
+    //@extend %sunkinglassShallowContrastSolidBack;
+    //@extend %transparentglass;
+    @extend %sunkingDock;
+    border-radius: 5px;
+  }
+  #overview StScrollBar StBin#trough {
+    @extend %sunkinglassDimmed;
+  }
+  StScrollBar StButton#vhandle, StScrollBar StButton#hhandle {
+    /*border-radius: 2px;
+    background-color: rgba(220,220,220,.85);
+    border: 0px solid;
+    margin: 0px;
+    box-shadow: 0 0 5px rgba(0,0,0,1);*/
+    @extend %pluggedDimmed;
+   }
+   #overview StScrollBar StButton#vhandle, StScrollBar StButton#hhandle {
+     @extend %plugged;
+   }
+    StScrollBar StButton#vhandle:hover, StScrollBar StButton#hhandle:hover {
+      //background-color: rgba(145,145,145,.9)
+      @extend %pluggedHover;
+    }
+    StScrollBar StButton#vhandle:active, StScrollBar StButton#hhandle:active {
+      //background-color: rgba(175,175,175,.9);
+      @extend %pluggedActive;
+    }

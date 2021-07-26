@@ -1,0 +1,226 @@
+// Dock
+
+#dash {
+  color: rgba(255,255,255,1);
+  font-size: 1.2em;
+  padding: .3em .3em 0em 0em;
+  //background: transparent;
+  background-color: transparent !important;
+  //background-image: none;
+  border-color: transparent;
+  //border-image: none;
+  //@extend %dashSVG3
+  @extend %dashSVG3_scalable;
+  //@extend %dashPureCode;
+}
+
+/*#dashtodockBox,
+#dashtodockBox StBoxLayout {
+  @extend %dashSVG3_scalable;
+  background-color: transparent !important;
+  background-image: none;
+}*/
+
+#dash StWidget.dash-separator {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  background-color: rgba(0,0,0,0);
+}
+
+#dashtodockDashScrollview {
+  padding-left: .3em;
+}
+#dash .app-well-app .overview-icon {
+  border-radius: 0px;
+  background-color: transparent !important;
+  border-width: .5px;
+}
+#dash .app-well-app {
+  //@extend %flashLightOff;
+  border-radius: 0px;
+  border-width: 0px;
+  //@extend %gradientHalfShadow;
+  @extend %gradientVagueShadow;
+}
+
+// Skuggor och effekter på ikoner, körande och fokuserade
+// synlig bakgrund behövs för skugga. Det verkar som att bakgrundens opacitet kontrollerar skuggans opacitet. Exempel här är en svag gradient leder till en svag skugga
+#dash .app-well-app .overview-icon > * StIcon,
+#dash .app-well-app .overview-icon.fallback-app-icon > * StIcon {
+  //icon-shadow: $dockDefaultIconShadow;
+  //icon-shadow: $iconShadowCarapaceStraightHalf;
+
+  //icon-shadow: $iconShadowCarapaceClose;
+  icon-shadow: $iconShadowCarapaceFar;
+
+  //@extend %flashlightLupeGlass;
+  //icon-shadow: 0 -3px 0 5px rgba(0,0,0,1) !important;
+  //background-color: rgba(100,200,255,.1);
+  @extend %gradientVagueShadow;
+  //av någon anledning så behöver dom en definerad (synlig, minst .1) bakgrund plus stjärnan för att skuggan ska ritas... :-/
+  border-radius: 92px; // bara ifall någon galning kör as-stora ikoner
+}
+#dash .focused.app-well-app .overview-icon > * StIcon,
+#dash .focused.app-well-app .overview-icon.fallback-app-icon > * StIcon {
+  //@extend %gradientHalfShadow;
+  @extend %gradientFullShadow;
+  //@extend %gradientVagueShine;
+  border-radius: 92px; // bara ifall någon galning kör as-stora ikoner
+
+  //icon-shadow: $iconShadowCarapaceStraightHalf;
+  icon-shadow: $iconShadowCarapaceClose;
+}
+/*#dash .dash-item-container {
+  @extend %gradientVagueShadow;
+}*/
+
+// markering för :hover, har kvar denna för att vara övertydlig med startar-ikoner. Har gjort en fetare effekt med running-dot nedan. Det blir också övertydligt vilka program som körs och vilka som bara är startare :-)
+
+#dash .app-well-app:hover .overview-icon {
+  //box-shadow: inset 0 -.8em 0 0 $textIconColorBrightNano;
+}
+#dash .app-well-app:hover {
+  //@extend %flashLightHover;
+  //box-shadow: inset 0 -1em 0 0 $textIconColorDarkMicro;
+}
+//#dash .focused.app-well-app .overview-icon {
+  //box-shadow: inset 0 -.9em 0 0 $textIconColorDarkMicro;
+  //background-color: red;
+  //border-radius: 96px;
+  //@extend %gradientFullShadow;
+  //@extend %gradientOverviewglassShadow;
+
+//}
+#dash .app-well-app:selected,
+#dash .app-well-app:active {
+  //@extend %flashLightSelected;
+  box-shadow: inset 0 -.95em 0 0 rgba(20,20,20,.4);
+  // :hover :focus :activ är egentligen onödiga, dom blir :hover-färg när man går till menyn iaf
+}
+#dash .focused.app-well-app .overview-icon {
+  //box-shadow: inset 0 -.8em 0 0 darken($textIconColorBrightNano, 5%); // ljus mörk ram
+  //box-shadow: inset 0 -.8em 0 0 darken($textIconColorBrightNano, 5%);
+}
+#dash .focused.app-well-app {
+  //@extend %flashLightFocus;
+  //box-shadow: inset 0 -1em 0 0 $textIconColorDarkNano; // ljus mörk ram
+
+  //box-shadow: inset 0 -.95em 0 0 $textIconColorDarkPico;
+  //box-shadow: inset 0 -.95em 0 0 $adwaitaDark1;
+
+  //padding: 1px;
+  /*background-gradient-start: $overviewGlassStart; //.5
+  background-gradient-end: $overviewGlassEnd;
+  background-gradient-direction: radial;*/
+  //@extend %gradientFullShadow;
+}
+#dash .focused StWidget {
+  //box-shadow: inset 0 .9em 0 0 $textIconColorBrightMedium;
+}
+/*#dash .focused.app-well-app > * StIcon {
+  icon-shadow: $textIconDefaultShadowBig;
+}*/
+// gör visa program här
+
+#dash .default .app-well-app-running-dot {
+  /*width: 32px;
+  height: 2px;*/
+  border-radius: .2em; // 3px
+  width: .38em; // 6px
+  height: .18em; // 2.5px
+  background-color: lighten($adwaitaDark2AlmostSolid, 5%);
+  //margin-bottom: 0px; /*sänker indikatorn iom att vi gjorde lådorna mindre*/
+  /*background: red;
+  box-shadow: 0 0 1px 1px rgba(0,0,0,.8);*/
+  //@extend %sunkingDock;
+}
+#dash .running1 .app-well-app-running-dot {
+  background: $runningDotUnfocused;
+}
+#dash .running1:hover .app-well-app-running-dot {
+  //background: $runningDotUnfocused;
+  width: .38em*7.5; // 46px (46/6=7.65, så .38*7.5=2.85) 46 istället för 48 för att undvika flyttningar när docken är proppfull
+}
+#dash .focused.running1 .app-well-app-running-dot {
+  background: $runningDotFocused;
+}
+#dash .focused.running1:hover .app-well-app-running-dot {
+  background: $runningDotFocused;
+}
+
+
+#dash .running2 .app-well-app-running-dot {
+  width: .38em*2;
+  background: $runningDotUnfocused;
+}
+#dash .running2:hover .app-well-app-running-dot {
+  background: $runningDotUnfocused;
+  width: .38em*7.5;
+}
+#dash .focused.running2 .app-well-app-running-dot {
+  background: $runningDotFocused;
+}
+#dash .focused.running2:hover .app-well-app-running-dot {
+  background: $runningDotFocused;
+}
+
+#dash .running3 .app-well-app-running-dot {
+  width: .38em*3;
+  background: $runningDotUnfocused;
+}
+#dash .running3:hover .app-well-app-running-dot {
+  background: $runningDotUnfocused;
+  width: .38em*7.5;
+}
+#dash .focused.running3 .app-well-app-running-dot {
+  background: $runningDotFocused;
+}
+#dash .focused.running3:hover .app-well-app-running-dot {
+  background: $runningDotFocused;
+}
+
+#dash .running4 .app-well-app-running-dot {
+  width: .38em*4;
+  background: $runningDotUnfocused;
+}
+#dash .running4:hover .app-well-app-running-dot {
+  background: $runningDotUnfocused;
+  width: .38em*7.5;
+}
+#dash .focused.running4 .app-well-app-running-dot {
+  background: $runningDotFocused;
+}
+#dash .focused.running4:hover .app-well-app-running-dot {
+  background: $runningDotFocused;
+}
+
+.dash-label {
+  @extend %dashLabelAdwaitaDark;
+  -x-offset: -.2em; // 3px :-);
+}
+
+#dash .show-apps {
+  @extend %gradientFullShadow;
+  //border: 1px solid green;
+  margin-right: .8em;
+}
+#dash .show-apps .overview-icon {
+  // lådan för showapps
+  background-color: rgba(0,0,0,0) !important; // skriver över, ska bara dekorera knappen
+}
+#dash .show-apps .show-apps-icon {
+  // knappen för showapps
+  background-color: $adwaitaDarkButton;
+  border: 1px solid $adwaitaDarkBorder;
+  //border-radius: 5px;
+  border-radius: 5px 5px 0 0; // så svårt att välja form...
+  //box-shadow: $dockDefaultIconShadow;
+  box-shadow: inset  0 .5px 0 0 $adwaitaDarkBorderShadow;
+  color: $textIconHoverColor;
+}
+#dash .show-apps:hover .show-apps-icon {
+  background-color: $adwaitaDarkButtonHover;
+  color: $textIconFocusColor;
+}
+
+// dashToPanel ... Skter i den, det finns gott om tweaks inbyggt i den. I övrigt så följer den panel-färg vilket är rimligt.

@@ -1,0 +1,393 @@
+// Apps
+// ::: Ikonnät :::
+
+.icon-grid,
+.icon-grid .overview-icon,
+.app-folder-popup,
+.app-folder-popup-bin,
+.app-folder-dialog,
+.app-folder-dialog .icon-grid,
+.app-folder-dialog .icon-grid .overview-icon {
+  //icon-size: 5em;
+  //spacing: 5px !important; // lägre värde = större ikoner. Denna gör ikoner i mappar små
+  //-shell-grid-horizontal-item-size: 8em !important; //122px
+  //-shell-grid-vertical-item-size: 8em !important; //122px
+  //border: 1px solid green;
+//  font-size: .9em;
+}
+ /*.icon-grid .overview-icon,
+ .app-folder-dialog .icon-grid {
+   icon-size: 96px;
+   spacing: 0px !important; // lägre värde = större ikoner
+   -shell-grid-horizontal-item-size: 122px;
+   -shell-grid-vertical-item-size: 122px;
+ }*/
+ .app-display {
+   //margin-left: 2em; // så att ikoner blir centerade
+   // margin-bottom: 2em !important; // går ej att hindra storleksändring
+   //border: 1px solid green;
+ }
+
+
+
+ .icon-grid .app-well-app .overview-icon,
+ .search-section .app-well-app .overview-icon {
+   //@extend %flashLightOff;
+   //border-radius: 120px;
+   //border: .5px solid rgba(240,240,240,.0);
+   @extend %floatingPlateTransparent;
+ }
+
+
+// pausar och ser om jag kan färga på annat sätt. Vid :hover så pajar extend
+ .icon-grid .app-well-app .overview-icon StLabel,
+ .icon-grid .app-well-app .overview-icon StIcon,
+ .search-section .app-well-app .overview-icon StLabel,
+ .search-section .app-well-app .overview-icon StIcon,
+ .app-folder-dialog .app-well-app .overview-icon StIcon,
+ .app-folder-dialog .app-well-app .overview-icon StLabel {
+   color: $textIconColorBrightMediumStrong;
+   text-shadow: $textIconMediumShadow;
+   font-size: .9em;
+   font-weight: 400;
+   //icon-shadow: $textIconMediumShadow;
+   icon-shadow: $iconShadowCarapaceHalf;
+   //margin: 0;
+ }
+
+ .icon-grid .app-well-app .overview-icon StLabel,
+ .search-section .app-well-app .overview-icon StLabel {
+   //background-color: $overviewBackground;
+   @extend %floatingPlateTransparent;
+   border-radius: 5px;
+   //margin-top: -5;
+ }
+ .icon-grid .app-well-app:hover .overview-icon StLabel,
+ .icon-grid .app-well-app:selected .overview-icon StLabel,
+ .icon-grid .app-well-app:focus .overview-icon StLabel,
+ .search-section .app-well-app:hover .overview-icon StLabel,
+ .search-section .app-well-app:selected .overview-icon StLabel,
+ .search-section .app-well-app:focus .overview-icon StLabel {
+   @extend %floatingDarkPlateHover;
+   //padding: 0 3px 0 3px;
+ }
+ .search-section .app-well-app:hover .overview-icon StLabel,
+ .search-section .app-well-app:selected .overview-icon StLabel,
+ .search-section .app-well-app:focus .overview-icon StLabel {
+   color: #fff;
+ }
+ .icon-grid .app-well-app .overview-icon StIcon,
+ .search-section .app-well-app .overview-icon StIcon {
+   //background-color: $overviewBackground;
+   //@extend %flashLightOff;
+   @extend %floatingPlateTransparent;
+   border-radius: 128px;
+   padding: 4px;
+   //margin-bottom: 0;
+ }
+ .icon-grid .app-well-app:hover .overview-icon StIcon,
+ .icon-grid .app-well-app:selected .overview-icon StIcon,
+ .icon-grid .app-well-app:focus .overview-icon StIcon,
+ .search-section .app-well-app:hover .overview-icon StIcon,
+ .search-section .app-well-app:selected .overview-icon StIcon,
+ .search-section .app-well-app:focus .overview-icon StIcon {
+   //@extend %flashLightHover;
+   //@extend %flashLightComic;
+   //@extend %floatingDarkPlateHover;
+   @extend %floatingPlateDiscreteLayer;
+ }
+
+
+ .icon-grid .app-well-app:hover .overview-icon {
+   //@extend %flashLightHover;
+   //@extend %floatinglassShallow;
+   //@extend %floatingPlate; -- testar att bara lägga bakgrund som individuella brickor på ikon och text
+ }
+
+/*
+ // något med text ändring pajar expandering av etiketter
+ .icon-grid .app-well-app:hover .overview-icon StLabel,
+ .icon-grid .app-well-app:selected .overview-icon StLabel,
+ .icon-grid .app-well-app:focus .overview-icon StLabel,
+ .icon-grid .app-well-app:hover .overview-icon StIcon,
+ .icon-grid .app-well-app:selected .overview-icon StIcon,
+ .icon-grid .app-well-app:focus .overview-icon StIcon,*/
+
+
+
+
+ //.icon-grid .app-well-app:selected .overview-icon,
+
+ .icon-grid .app-well-app:focus .overview-icon,
+ .icon-grid .app-well-app:active .overview-icon {
+   //@extend %flashLightFocus;
+   @extend %sunkinglassDimmed;
+   //@extend %flashLightSelectedOverview;
+ }
+.search-section .app-well-app:active .overview-icon,
+.search-section .app-well-app:focus .overview-icon,
+.search-section .app-well-app:selected .overview-icon {
+  //@extend %flashLightSelectedOverview;
+  font-weight: 600;
+}
+
+ .icon-grid .app-well-app-running-dot,
+ .search-section .app-well-app-running-dot,
+ .app-folder-dialog .app-well-app-running-dot {
+   width: 30px;
+   height: 3px;
+   margin-bottom: 0px; // kan ej vara negativ, försvinner då
+   margin-top: 2px;
+   border-radius: 3px;
+   @extend %sunkinglass;
+ }
+ .icon-grid .app-well-app:hover .app-well-app-running-dot,
+ .icon-grid .app-well-app:focus .app-well-app-running-dot,
+ .icon-grid .app-well-app:selected .app-well-app-running-dot,
+ .search-section .app-well-app:hover .app-well-app-running-dot,
+ .search-section .app-well-app:focus .app-well-app-running-dot,
+ .search-section .app-well-app:selected .app-well-app-running-dot {
+   /*width: 30px;
+   height: 3px;
+   margin-bottom: 0px; //kan ej vara negativ, försvinner då
+   border-radius: 3px;*/
+   @extend %plugged;
+ }
+
+ .app-well-app.app-folder {
+   // när man lyfter/flyttar en mapp i nätet
+   //@extend %overviewSpaceAdwaitaDarkMovie;
+   @extend %floatingPlateDiscreteLayerGrab;
+   /*background-color: lighten($adwaitaDark1AlmostSolid,15%);
+   background-image: url("common-assets/misc/noise5.png");*/
+   //box-shadow:inset 0 0 0 1px lighten($adwaitaDark1, 25%);
+   // vågrätt lodrätt spridning tjocklek
+   border-radius: 6px;
+ }
+
+.icon-grid .app-well-app.app-folder,
+.icon-grid .app-well-app.app-folder > .overview-icon {
+  // .app-well-app.app-folder är för när man flyttar mappar.
+  // vi återställer .app-folder när dom är i ikonnätet så vi inte får spökeffekter
+  background-color: transparent;
+  background-gradient-direction: none;
+  border: 0 solid transparent;
+  //background-color: yellow;
+}
+
+.icon-grid .app-well-app.app-folder > .overview-icon {
+  @extend %transparentglass; // för att räta till spökritning av flashlight på mappar
+}
+ .icon-grid .app-well-app.app-folder > .overview-icon StBoxLayout {
+   @extend %sunkinglassDimmed;
+   //background-color: rgba(0,0,0,.2);
+   border-radius: 5px;
+   //padding: 4px;
+ }
+ .app-folder-icon {} // kan köra med denna istället för den ovan
+ .icon-grid .app-well-app.app-folder:hover > .overview-icon StBoxLayout {
+   @extend %sunkinglassHover;
+   border-radius: 6px;
+   padding-bottom: 0;
+   //padding: 15px;
+ }
+ .icon-grid .app-well-app.app-folder:hover > .overview-icon StBoxLayout StIcon,
+ .icon-grid .app-well-app-folder:selected > .overview-icon StBoxLayout StIcon,
+ .icon-grid .app-well-app-folder:focus > .overview-icon StBoxLayout StIcon,
+ .icon-grid .app-well-app.app-folder:hover > .overview-icon StBoxLayout StLabel,
+ .icon-grid .app-well-app-folder:selected > .overview-icon StBoxLayout StLabel,
+ .icon-grid .app-well-app-folder:focus > .overview-icon StBoxLayout Stlabel {
+   // försöker korrigera tillbaka för ikoner och skyltar i mappar
+   background-color: transparent;
+   border: transparent;
+ }
+
+/*
+ .icon-grid .app-folder:drop .overview-icon {
+   background-color: green !important;
+ }*/
+
+
+ //.icon-grid .app-folder:drop .overview-icon,
+ .icon-grid .app-well-app:drop .overview-icon,
+ .icon-grid .app-well-app.app-folder:drop > .overview-icon {
+   // första när nya mappar kan skapas, andra när saker kan läggas till i existerande mappar
+   border-radius: 10px;
+   @extend %sunkinglassDimmed;
+   //background-color: $overViewSunkBackground;
+ }
+
+
+ .icon-grid .app-folder:focus:active .overview-icon,
+ .icon-grid .app-well-app:focus:active .overview-icon,
+ .icon-grid .app-well-app.app-folder:focus:active > .overview-icon {
+   background-color: red !important;
+ }
+
+/* .icon-grid .app-well-app.app-folder:drop .overview-icon StLabel {
+// vet inte vad jag använde denna till. Den funkar inte i 40 iaf
+   //@extend %dashLabelAdwaitaNotSoDark;
+   //@extend %plugged;
+   color: $textIconColorBrightStrong;
+   text-shadow: $textIconDefaultShadow;
+   // vet inte, vill nog ha etiketten lite mer neutral...
+   border-radius: 6px;
+   margin-top: .5em;
+ }*/
+ .icon-grid .app-well-app.app-folder:drop > .overview-icon StBoxLayout {
+   // för att gömma inre låda, låta lådan växa för att markera att den öppnas
+   @extend %transparentglass;
+   transition-duration: 200ms;
+ }
+
+ .app-folder-popup {
+   // denna verkar vara borta
+   -arrow-border-radius: 6px;
+   -arrow-background-color: rgba(25,30,235,1);
+   -arrow-background-color: rgba(25,30,235,1);
+   -arrow-border-color: rgba(40,40,240,1);
+   -arrow-border-width: .5px;
+   -arrow-base: 0;
+   -arrow-rise: 0;
+   icon-size: 48px !important;
+ }
+
+ .app-folder-dialog {
+   /*background-color: rgba(200,0,0,1);
+   padding: 0px !important;
+   spacing: 40px !important;
+   margin: 0px !important;*/
+   //@extend %floatingglassFolder;
+
+   //@extend %pluggedDark;
+   //@extend %popupStyle2;
+   @extend %floatingPlateFolder;
+ }
+ .app-folder-dialog .icon-grid {
+   //@extend %sunkinglassShallowContrastSolidBack;
+   // hade en tanke om att dekorera grid i mappen, men grid ädnrar storlek i takt med mängd ikoner... blir o-clean:t
+   //spacing: 3em !important;
+   //-shell-grid-horizontal-item-size: 128px !important;
+   //-shell-grid-vertical-item-size: 128px !important;
+ }
+ .app-folder-dialog .icon-grid .overview-icon > * StIcon {
+   //icon-size: 96px !important;
+ }
+
+ .app-folder-dialog .app-well-app .overview-icon StLabel,
+ .app-folder-dialog .app-well-app .overview-icon StIcon {
+   color: $textIconColorBrightMedium;
+   text-shadow: $textIconMediumShadow;
+   //font-size: 1em;
+   icon-shadow: $textIconMediumShadow;
+   //font-size: 1em;
+   //font-weight: 400;
+ }
+ .app-folder-dialog .app-well-app .overview-icon StBoxLayout StLabel {
+  // icon-size: 24px !important;
+  // spacing: 0px !important;
+  font-size: 1.1em;
+ }
+ .app-folder-dialog-container {
+   //border: 1px solid green;
+  //padding: 0px !important;
+   //margin: 0px !important;
+   //margin-top: 0px !important;
+   //icon-size: 48px !important;
+ }
+
+ .app-folder-dialog .folder-name-container .folder-name-label {
+   color: $textIconColorBrightMedium;
+ }
+
+
+
+ .app-folder-dialog {
+   // dekoreingen av mappar i nätet förändrar utrymmet i mapparna av någon anledning
+   padding: 0 !important; // återställer här
+   padding-bottom: 5px !important; // men indikatorn hamnar intill nederkanten, justerar här
+ }
+
+ .app-folder-dialog .app-well-app .overview-icon StIcon {
+   icon-shadow: $iconShadowCarapaceHalf; // testar
+ }
+
+ .app-folder-popup-bin {
+   //padding: 300px !important; /*annars så får vi en scrollbar på vissa*/
+  // background-color: rgba(200,0,0,1) !important;
+   //icon-size: 48px !important;
+ }
+// Försöker fixa stroleksförändring i nätet när en mapp öppnas. app-view-controls åker ner när mappen öppnas, ska försöka att omplacera den så att all-apps alltid är "rätt" storlek.
+
+StScrollView.all-apps {
+  //border: 1px solid yellow;
+}
+
+.app-view-controls {
+  //border: green solid 1px;
+  //padding: .5em;
+  margin-top: 1em;
+  padding: 0px;
+  padding-bottom: 0px;
+  //@extend %sunkinglass;
+  @extend %sunkinglassShallow;
+  border-radius: 20px;
+}
+
+.app-view-control:first-child,
+.app-view-control:last-child {
+  //@extend %sunkinglass;
+  @extend %transparentglass;
+  color: $textIconColorBrightWeak;
+  border-radius: 20px;
+  margin: 0px;
+  padding: 2px 12px;
+  font-size: .9em;
+}
+.app-view-control:first-child:hover,
+.app-view-control:last-child:hover {
+  color: $textIconColorBrightStrong;
+}
+.app-view-control:first-child:checked,
+.app-view-control:last-child:checked {
+  @extend %pluggedDark;
+  color: $textIconColorBrightMedium;
+  //color: $textIconColorBrightStrong;
+}
+.app-view-control:first-child:checked:hover,
+.app-view-control:last-child:checked:hover {
+  //color: $textIconColorBrightWeak;
+  //@extend %plugged;
+}
+.page-indicator {}
+
+.page-indicator .page-indicator-icon {
+  //@extend %sunkinglass;
+  @extend %plugged;
+}
+.page-indicator .page-indicator-icon:focus {
+  @extend %plugged; // finns ingen matchning ":"
+}
+.page-indicators {
+  // lådan till indikatorerna
+  @extend %sunkinglassDimmed;
+  border-radius: 20px;
+  padding: 0;
+  margin: 0;
+}
+StButton.page-indicator {
+  // låda för indikator
+  padding: 4px 6px 3px 6px;
+  margin: 0;
+}
+StButton.page-indicator StWidget.page-indicator-icon {
+  // indicatorn
+  @extend %plugged;
+  width: 12px;
+  height: 3px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+StButton.page-indicator:hover StWidget.page-indicator-icon {
+  //
+}

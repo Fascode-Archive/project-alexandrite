@@ -73,6 +73,8 @@ nautilus-evince
 eog
 desktop-translations
 gnome-shell-extensions-common
+gnome-menus
+alacarte
 chrome-gnome-shell
 gnome-shell-extension-desktop-icons
 libqt5-qtstyleplugins
@@ -94,6 +96,7 @@ noto-sans-jp-regular-fonts
 noto-sans-tc-regular-fonts
 noto-serif-jp-regular-fonts
 cantarell-fonts
+wqy-microhei-fonts
 adobe-sourcecodepro-fonts
 calamares
 mousepad

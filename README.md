@@ -7,7 +7,7 @@ kiwiを利用してビルドするOpen SUSEベースの安定していて美し�
 ## 特徴
 サーバーやワークステーションで使用されている堅牢なOpen SUSEをベースに開発されたLinuxディストリビューション。”日常使用に最適なOS” を念頭に安定性、デザイン、必要最低限のプリインストールソフトウエア、長期使用に重点を置いて開発されています。naiad linuxで得たフィードバックや経験を活かして開発されています。エレガントなGnomeデスクトップを採用。初期状態で拡張機能が整備されているので簡単に操作できます。<br>
 <br>
-![image](https://raw.githubusercontent.com/nexryai/project-alexandrite/main/img/desktop1.png) <br>
+![image](https://raw.githubusercontent.com/nexryai/project-alexandrite/main/img/desktop1.png) <br> <br>
 ![image](https://raw.githubusercontent.com/nexryai/project-alexandrite/main/img/desktop2.png)
 
 ## 重要な通知

@@ -97,6 +97,7 @@ gdm
 gdm-systemd
 gdmflexiserver
 firefox
+MozillaFirefox-branding-upstream
 ibus-mozc
 ibus-gtk
 ibus-gtk3

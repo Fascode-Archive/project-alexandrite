@@ -3,6 +3,8 @@ patterns-openSUSE-base
 systemd
 kernel-firmware-iwlwifi
 grub2-branding-openSUSE
+trustedgrub2
+trustedgrub2-i386-pc
 iputils
 dracut-kiwi-live
 nvme-cli

@@ -41,6 +41,8 @@ beaverはkiwi-ngを使いやすくする簡易的なラッパーです。Alexand
 現在開発中のAlexandriteOS 0.30では大幅な変更が予定されています。
 ### ベースのLeapからtumbleweedへの変更
 既定のレポジトリをOpenSUSE tumbleweed（OpenSUSEのローリングリリース版）に変更します。AlexandriteOS自体は厳密にはローリングリリースではありませんが、一度インストールしたシステムは常に最新のソフトウエアが提供されサポート期限という概念が消滅することになります。
+### TrustedBootの導入
+TPMを利用してブートプロセスの整合性を確認するTrustedBootを導入します。
 ### XorgからWaylandへの変更
 XorgからよりモダンでセキュアなWaylandへの変更を行います。
 ### beaverの変更

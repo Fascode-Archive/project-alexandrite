@@ -156,8 +156,8 @@ cat <<EOF >  tmp/config/config.xml
         </type>
     </preferences>
     <users>
-        <user password="$root_password" home="/root" name="root" groups="root"/>
-        <user password="$liveuser_password" home="/home/$liveuser_name" name="$liveuser_name" groups="$liveuser_name"/>
+        <user password="$root_password" pwdformat="plain" home="/root" name="root" groups="root"/>
+        <user password="$liveuser_password" pwdformat="plain" home="/home/$liveuser_name" name="$liveuser_name" groups="$liveuser_name"/>
     </users>
     <repository type="$repotype">
         <source path="$url1"/>

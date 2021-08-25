@@ -1,8 +1,8 @@
-[repo-update]
+[download.opensuse.org-tumbleweed]
 name=メインの更新用リポジトリ
 enabled=1
 autorefresh=1
-baseurl=https://ftp.riken.jp/Linux/opensuse/update/leap/$releasever/oss
+baseurl=http://download.opensuse.org/update/tumbleweed/
 path=/
 type=rpm-md
 keeppackages=0

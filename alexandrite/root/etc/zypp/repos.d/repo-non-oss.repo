@@ -1,8 +1,0 @@
-[repo-non-oss]
-name=非オープンソースリポジトリ
-enabled=1
-autorefresh=1
-baseurl=https://ftp.riken.jp/Linux/opensuse/distribution/leap/$releasever/repo/non-oss/
-path=/
-type=rpm-md
-keeppackages=0

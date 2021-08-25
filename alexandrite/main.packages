@@ -1,10 +1,9 @@
+kernel-default
 bind-utils
 patterns-openSUSE-base
 systemd
 kernel-firmware-iwlwifi
 grub2-branding-openSUSE
-trustedgrub2
-trustedgrub2-i386-pc
 iputils
 dracut-kiwi-live
 nvme-cli
@@ -47,7 +46,6 @@ less
 bash-completion
 dhcp-client
 which
-kernel-default
 shim
 timezone
 dracut-kiwi-live
@@ -55,6 +53,7 @@ nano
 htop
 powerline
 wayland-devel
+xorg-x11-server-wayland
 libwayland-server0
 libwayland-egl1
 libwayland-cursor0
@@ -66,7 +65,7 @@ libQt5WaylandCompositor5
 libgstwayland-1_0-0
 kwayland 
 wayland-protocols-devel
-xorg-x11-server-wayland
+xwayland
 patterns-openSUSE-gnome
 gnome-session
 gnome-session-wayland
@@ -79,6 +78,7 @@ gnome-tweaks
 gnome-system-monitor
 gnome-terminal
 gnome-screenshot
+gnome-extensions
 file-roller
 nautilus-extension-terminal
 nautilus-extension-seahorse
@@ -98,7 +98,7 @@ libgnomesu
 gdm
 gdm-systemd
 gdmflexiserver
-firefox
+MozillaFirefox
 MozillaFirefox-branding-upstream
 ibus-mozc
 ibus-gtk
@@ -117,7 +117,6 @@ adobe-sourcecodepro-fonts
 calamares
 mousepad
 spectacle
-libapparmor
 apparmor-profiles
 apparmor-utils
 apparmor-parser

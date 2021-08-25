@@ -1,0 +1,8 @@
+[download.opensuse.org-non-oss]
+name=メインリポジトリ (非オープンソース)
+enabled=1
+autorefresh=1
+baseurl=https://ftp.riken.jp/Linux/opensuse/tumbleweed/repo/non-oss/
+path=/
+type=rpm-md
+keeppackages=0

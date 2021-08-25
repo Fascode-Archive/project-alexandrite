@@ -12,7 +12,7 @@ gnome-desktop-lang
 gnome-control-center-lang
 gnome-disk-utility-lang
 gnome-bluetooth-lang
-gnome-backgrounds-lang
+# gnome-backgrounds-lang
 file-roller-lang
 eog-lang
 seahorse-lang

@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-11 13:17+0300\n"
+"POT-Creation-Date: 2021-04-15 13:20+0300\n"
 "PO-Revision-Date: 2018-05-17 09:27+0200\n"
-"Last-Translator: Jimmy Scionti <jimmy.scionti@gmail.com>\n"
+"Last-Translator: Robin <bisio.97@gmail.com>\n"
 "Language-Team: jimmy.scionti@gmail.com\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -18,47 +18,63 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: extension.js:81
+#: extension.js:87
 msgid "Text will be here"
 msgstr "Il testo sarà qui"
 
-#: extension.js:123
+#: extension.js:129
 msgid "Type here to search..."
 msgstr "Digita qui per cercare…"
 
-#: extension.js:190
+#: extension.js:198
 msgid "Private mode"
 msgstr "Modalità privata"
 
-#: extension.js:197 prefs.js:106
+#: extension.js:205 prefs.js:110
 msgid "Clear history"
 msgstr "Cancella la cronologia"
 
-#: extension.js:202
+#: extension.js:210
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: extension.js:349
+#: extension.js:339
+msgid "Clear all?"
+msgstr "Cancellare tutto?"
+
+#: extension.js:340
+msgid "Are you sure you want to delete all clipboard items?"
+msgstr "Si è certi di voler eliminare tutti gli appunti nella cronologia?"
+
+#: extension.js:341
+msgid "This operation cannot be undone."
+msgstr "Questa operazione non può essere annullata."
+
+#: extension.js:343
+msgid "Clear"
+msgstr "Elimina"
+
+#: extension.js:343 extension.js:495
+msgid "Cancel"
+msgstr "Annulla"
+
+#: extension.js:357
 msgid "Clipboard history cleared"
 msgstr "Cronologia cancellata"
 
-#: extension.js:467
+#: extension.js:494
 msgid "Copied to clipboard"
 msgstr "Copiato negli appunti"
 
-#: extension.js:468
-msgid "Cancel"
-msgstr ""
-
-#: prefs.js:104
+#: prefs.js:108
 msgid "Toggle the menu"
 msgstr "Mostra/nascondi il menu"
 
-#: prefs.js:108
+#: prefs.js:112
 msgid "Previous entry"
 msgstr "Voce precedente"
 
-#: prefs.js:110
+#: prefs.js:114
 msgid "Next entry"
 msgstr "Voce successiva"
 
@@ -88,7 +104,7 @@ msgstr "Mostra una notifica quando copi"
 
 #: prefs.js:153
 msgid "Move item to the top after selection"
-msgstr ""
+msgstr "Porta l'elemento in cima dopo la selezione"
 
 #: prefs.js:158
 msgid "Keyboard shortcuts"
@@ -103,24 +119,28 @@ msgid "What to show in top bar"
 msgstr "Cosa mostrare sul pannello"
 
 #: prefs.js:173
-msgid "Remove whitespace around text"
-msgstr ""
+#, fuzzy
+msgid "Remove down arrow in top bar"
+msgstr "Numero di caratteri sul pannello"
 
 #: prefs.js:178
-msgid "Enable Deletion"
-msgstr ""
+msgid "Remove whitespace around text"
+msgstr "Rimuovi lo spazio bianco intorno al testo"
 
-#: prefs.js:225
+#: prefs.js:233
 msgid "Icon"
-msgstr ""
+msgstr "Icona"
 
-#: prefs.js:226
+#: prefs.js:234
 msgid "Clipboard Content"
-msgstr ""
+msgstr "Contenuto Clipboard"
 
-#: prefs.js:227
+#: prefs.js:235
 msgid "Both"
-msgstr ""
+msgstr "Entrambi"
+
+#~ msgid "Enable Deletion"
+#~ msgstr "Abilita cancellazione"
 
 #~ msgid "Disable cache file"
 #~ msgstr "Disabilità la cache dei file"

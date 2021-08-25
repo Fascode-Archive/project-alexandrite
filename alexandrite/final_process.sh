@@ -62,3 +62,6 @@ systemctl mask systemd-udev-settle
 # GRUB setting
 #sed -i -e 's/GRUB_TERMINAL="console"/GRUB_TERMINAL="gfxterm"/g' /etc/default/grub
 #grub2-mkconfig -o /boot/grub2/grub.cfg
+
+# update dconf
+dconf update

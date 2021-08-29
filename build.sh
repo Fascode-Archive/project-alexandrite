@@ -51,19 +51,19 @@ fi
 
 # 設定読み込み
 echo "[INFO] base.confを読み込んでいます..."
-. ./base.conf
+source "./base.conf"
 
 
 # ローカライズ確認
-if [ -d I18n/${locale} ]; then
-    echo "[INFO] ローカライズ設定に $locale を使用します"
+if [ -d "I18n/${locale}" ]; then
+    echo "[INFO] ローカライズ設定に ${locale} を使用します"
 else
     echo  "[ERROR] ローカライズに必要なディレクトリが見つかりません。中止します。"
     exit 1
 fi
 
-if [ -f I18n/$locale/locale.conf ]; then
-   echo "[INFO] ローカライズの設定ファイルに $locale/locale.conf を使用します。"
+if [ -f "I18n/${locale}/locale.conf" ]; then
+   echo "[INFO] ローカライズの設定ファイルに ${locale}/locale.conf を使用します。"
 else
    echo "[ERROR] ローカライズ設定ファイルが存在しません。中止します。"
    exit 1

@@ -11,7 +11,7 @@
 # set -e
 
 function chk-command () {
-    chk_command=$1
+    local chk_command="${1}"
     echo "[INFO] checking $chk_command"
     if type "${chk_command}" > /dev/null 2>&1; then
       echo ">>> ok"
@@ -20,7 +20,6 @@ function chk-command () {
       ccho "[ERROR] $chk_command が使用できないため続行できません。中止します。"
       exit 1
     fi
-
 }
 
 target="${1-""}"

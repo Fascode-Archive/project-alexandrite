@@ -31,7 +31,7 @@ chk-command kiwi-ng
 [[ -z "${target}" ]] && echo "[ERROR] ターゲットを指定してください" >&2 && exit 1
 
 # プロファイルをチェック
-if [ -d ${target} ]; then
+if [ -d "${target}" ]; then
     echo "[INFO] ディレクトリ $target に移動します"
     cd "${target}" || exit 1
 else

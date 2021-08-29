@@ -6,3 +6,7 @@ cracklib-dict-full
 ca-certificates
 ca-certificates-mozilla
 openSUSE-release
+gawk
+grep
+gzip
+xz

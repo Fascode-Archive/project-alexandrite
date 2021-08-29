@@ -29,7 +29,6 @@ current_dir=$(cd $(dirname $0);pwd)
 chk-command kiwi-ng
 
 # プロファイルをチェック
-
 if [ -d ${target} ]; then
     echo "[INFO] ディレクトリ $target に移動します"
     cd $target
@@ -47,9 +46,11 @@ else
    exit 1
 fi
 
+
 # 設定読み込み
 echo "[INFO] base.confを読み込んでいます..."
 . ./base.conf
+
 
 # ローカライズ確認
 if [ -d I18n/${locale} ]; then
@@ -69,6 +70,7 @@ fi
 # ローカライズ設定読み込み
 . ./I18n/$locale/locale.conf
 
+
 # 一時ディレクトリ作成
 cd ..
 echo "[INFO] 一時ディレクトリを作成します。"
@@ -77,6 +79,7 @@ mkdir tmp
 mkdir out
 mkdir tmp/kiwi
 mkdir tmp/config
+
 
 # 上書きファイルへのシンボリックリンクを貼る
 echo  "[INFO] プロファイルからkiwi-ng向けの設定ファイルを生成しています。"
@@ -98,6 +101,8 @@ mv tmp/config/final_process.sh tmp/config/config.sh
 # sh/lndir.sh $current_dir/$target/root tmp/config/root
 # sh/lndir.sh $current_dir/$target/I18n/$locale/root tmp/config/root
 
+
+
 # パッケージの数をカウント
 packages_main_counts=$(sed '/^#/d' $target/main.packages | wc -l)
 packages_bootstrap_counts=$(sed '/^#/d' $target/bootstrap.packages | wc -l)
@@ -114,6 +119,8 @@ echo "$(sed '/^#/d' $target/bootstrap.packages)" > tmp/beaver/bootstrap.packages
 
 touch tmp/beaver/bootstrap.packages.tmp
 echo "$(sed '/^#/d' $target/I18n/$locale/locale.packages)" > tmp/beaver/locale.packages.tmp
+
+
 
 # xmlファイル生成
 touch tmp/config/config.xml
@@ -149,13 +156,14 @@ cat <<EOF >  tmp/config/config.xml
         </type>
     </preferences>
     <users>
-        <user password="$root_password" home="/root" name="root" groups="root"/>
-        <user password="$liveuse_password" home="/home/$liveuser_name" name="$liveuser_name" groups="$liveuser_name"/>
+        <user password="$root_password" pwdformat="plain" home="/root" name="root" groups="root"/>
+        <user password="$liveuser_password" pwdformat="plain" home="/home/$liveuser_name" name="$liveuser_name" groups="$liveuser_name"/>
     </users>
     <repository type="$repotype">
         <source path="$url1"/>
     </repository>
 EOF
+
 
 
 # レポジトリ追記
@@ -175,6 +183,7 @@ done
 echo "    <packages type=\"image\">" >> tmp/config/config.xml
 
 
+
 # main.packagesのパッケージを追記
 packages_main_counts=$(expr $packages_main_counts + 1)
 while [[ $packages_main_counts -gt 0 ]]
@@ -191,11 +200,13 @@ do
     packages_locale_counts=$(expr $packages_locale_counts - 1)
 done
 
+
 # テンプレを追記
 cat <<EOF >>  tmp/config/config.xml
     </packages>
     <packages type="bootstrap">
 EOF
+
 
 # bootstrap.packagesのパッケージを追記
 packages_bootstrap_counts=$(expr $packages_bootstrap_counts + 1)
@@ -205,19 +216,22 @@ do
     packages_bootstrap_counts=$(expr $packages_bootstrap_counts - 1)
 done
 
+
 # テンプレを追記
 cat <<EOF >>  tmp/config/config.xml
     </packages>
 </image>
 EOF
 
+
 # kiwi-ngでビルド
 echo  "[INFO] kiwi-ngでのビルドを開始します"
 sudo kiwi-ng system build --description $current_dir/tmp/config --target-dir $current_dir/out
 
 if [ $? != 0 ]; then
-    echo "[ERROR] kiwi-ngが終了コード0以外で終了しました。これはビルドが失敗したことを意味します。"
+    echo "[ERROR] kiwi-ngが終了コード0以外で終了しました。これはビルドが失敗したことを意味します。詳細なログを閲覧するには out/build/image-root.log を参照してください。"
     exit 1
 fi
+
 
 echo "[INFO] Done!"

@@ -1,0 +1,8 @@
+[download.opensuse.org-tumbleweed]
+name=メインの更新用リポジトリ
+enabled=1
+autorefresh=1
+baseurl=http://download.opensuse.org/update/tumbleweed/
+path=/
+type=rpm-md
+keeppackages=0

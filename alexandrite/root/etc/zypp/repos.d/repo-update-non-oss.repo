@@ -1,8 +1,0 @@
-[repo-update-non-oss]
-name=更新リポジトリ (非オープンソース)
-enabled=1
-autorefresh=1
-baseurl=https://ftp.riken.jp/Linux/opensuse/update/leap/$releasever/non-oss/
-path=/
-type=rpm-md
-keeppackages=0

@@ -1,8 +1,0 @@
-[openSUSE_Leap_15.3]
-name=mozilla
-enabled=1
-autorefresh=1
-baseurl=https://download.opensuse.org/repositories/mozilla/openSUSE_Leap_15.3/
-path=/
-type=rpm-md
-keeppackages=0

@@ -10,18 +10,20 @@ const Gettext = imports.gettext;
 const _ = Gettext.domain('clipboard-indicator').gettext;
 
 var Fields = {
-    INTERVAL           : 'refresh-interval',
-    HISTORY_SIZE       : 'history-size',
-    PREVIEW_SIZE       : 'preview-size',
-    CACHE_FILE_SIZE    : 'cache-size',
-    CACHE_ONLY_FAVORITE : 'cache-only-favorites',
-    DELETE             : 'enable-deletion',
-    NOTIFY_ON_COPY     : 'notify-on-copy',
-    MOVE_ITEM_FIRST    : 'move-item-first',
-    ENABLE_KEYBINDING  : 'enable-keybindings',
-    TOPBAR_PREVIEW_SIZE: 'topbar-preview-size',
-    TOPBAR_DISPLAY_MODE_ID    : 'display-mode',
-    STRIP_TEXT         : 'strip-text'
+    INTERVAL               : 'refresh-interval',
+    HISTORY_SIZE           : 'history-size',
+    PREVIEW_SIZE           : 'preview-size',
+    CACHE_FILE_SIZE        : 'cache-size',
+    CACHE_ONLY_FAVORITE    : 'cache-only-favorites',
+    DELETE                 : 'enable-deletion',
+    NOTIFY_ON_COPY         : 'notify-on-copy',
+    CONFIRM_ON_CLEAR       : 'confirm-clear',
+    MOVE_ITEM_FIRST        : 'move-item-first',
+    ENABLE_KEYBINDING      : 'enable-keybindings',
+    TOPBAR_PREVIEW_SIZE    : 'topbar-preview-size',
+    TOPBAR_DISPLAY_MODE_ID : 'display-mode',
+    DISABLE_DOWN_ARROW     : 'disable-down-arrow',
+    STRIP_TEXT             : 'strip-text'
 };
 
 const SCHEMA_NAME = 'org.gnome.shell.extensions.clipboard-indicator';
@@ -47,7 +49,10 @@ const App = new Lang.Class({
     Name: 'ClipboardIndicator.App',
     _init: function() {
         this.main = new Gtk.Grid({
-            margin: 10,
+            margin_top: 10,
+            margin_bottom: 10,
+            margin_start: 10,
+            margin_end: 10,
             row_spacing: 12,
             column_spacing: 18,
             column_homogeneous: false,
@@ -94,9 +99,10 @@ const App = new Lang.Class({
         let rendererText = new Gtk.CellRendererText();
         this.field_display_mode.pack_start (rendererText, false);
         this.field_display_mode.add_attribute (rendererText, "text", 0);
-
+        this.field_disable_down_arrow = new Gtk.Switch();
         this.field_cache_disable = new Gtk.Switch();
         this.field_notification_toggle = new Gtk.Switch();
+        this.field_confirm_clear_toggle = new Gtk.Switch();
         this.field_strip_text = new Gtk.Switch();
         this.field_move_item_first = new Gtk.Switch();
         this.field_keybinding = createKeybindingWidget(SettingsSchema);
@@ -145,6 +151,11 @@ const App = new Lang.Class({
             hexpand: true,
             halign: Gtk.Align.START
         });
+        let confirmClearLabel = new Gtk.Label({
+            label: _("Show confirmation on Clear History"),
+            hexpand: true,
+            halign: Gtk.Align.START
+        });
         let moveFirstLabel  = new Gtk.Label({
             label: _("Move item to the top after selection"),
             hexpand: true,
@@ -165,6 +176,11 @@ const App = new Lang.Class({
             hexpand: true,
             halign: Gtk.Align.START
         });
+        let disableDownArrowLabel = new Gtk.Label({
+            label: _("Remove down arrow in top bar"),
+            hexpand: true,
+            halign: Gtk.Align.START
+        });
         let stripTextLabel = new Gtk.Label({
             label: _("Remove whitespace around text"),
             hexpand: true,
@@ -177,8 +193,8 @@ const App = new Lang.Class({
                 let inputWidget = input;
 
                 if (input instanceof Gtk.Switch) {
-                    inputWidget = new Gtk.HBox();
-                    inputWidget.pack_end(input, false, false, 0);
+                    inputWidget = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL,});
+                    inputWidget.append(input);
                 }
 
                 if (label) {
@@ -193,18 +209,20 @@ const App = new Lang.Class({
             };
         })(this.main);
 
-        addRow(sizeLabel,           this.field_size);
-        addRow(previewLabel,        this.field_preview_size);
-        addRow(intervalLabel,       this.field_interval);
-        addRow(cacheSizeLabel,      this.field_cache_size);
-        addRow(cacheDisableLabel,   this.field_cache_disable);
-        addRow(notificationLabel,   this.field_notification_toggle);
-        addRow(displayModeLabel,    this.field_display_mode);
-        addRow(topbarPreviewLabel,  this.field_topbar_preview_size);
-        addRow(stripTextLabel,      this.field_strip_text);
-        addRow(moveFirstLabel,      this.field_move_item_first);
-        addRow(keybindingLabel,     this.field_keybinding_activation);
-        addRow(null,                this.field_keybinding);
+        addRow(sizeLabel,             this.field_size);
+        addRow(previewLabel,          this.field_preview_size);
+        addRow(intervalLabel,         this.field_interval);
+        addRow(cacheSizeLabel,        this.field_cache_size);
+        addRow(cacheDisableLabel,     this.field_cache_disable);
+        addRow(notificationLabel,     this.field_notification_toggle);
+        addRow(confirmClearLabel,     this.field_confirm_clear_toggle);
+        addRow(displayModeLabel,      this.field_display_mode);
+        addRow(disableDownArrowLabel, this.field_disable_down_arrow);
+        addRow(topbarPreviewLabel,    this.field_topbar_preview_size);
+        addRow(stripTextLabel,        this.field_strip_text);
+        addRow(moveFirstLabel,        this.field_move_item_first);
+        addRow(keybindingLabel,       this.field_keybinding_activation);
+        addRow(null,                  this.field_keybinding);
 
         SettingsSchema.bind(Fields.INTERVAL, this.field_interval, 'value', Gio.SettingsBindFlags.DEFAULT);
         SettingsSchema.bind(Fields.HISTORY_SIZE, this.field_size, 'value', Gio.SettingsBindFlags.DEFAULT);
@@ -212,13 +230,13 @@ const App = new Lang.Class({
         SettingsSchema.bind(Fields.CACHE_FILE_SIZE, this.field_cache_size, 'value', Gio.SettingsBindFlags.DEFAULT);
         SettingsSchema.bind(Fields.CACHE_ONLY_FAVORITE, this.field_cache_disable, 'active', Gio.SettingsBindFlags.DEFAULT);
         SettingsSchema.bind(Fields.NOTIFY_ON_COPY, this.field_notification_toggle, 'active', Gio.SettingsBindFlags.DEFAULT);
+        SettingsSchema.bind(Fields.CONFIRM_ON_CLEAR, this.field_confirm_clear_toggle, 'active', Gio.SettingsBindFlags.DEFAULT);
         SettingsSchema.bind(Fields.MOVE_ITEM_FIRST, this.field_move_item_first, 'active', Gio.SettingsBindFlags.DEFAULT);
         SettingsSchema.bind(Fields.TOPBAR_DISPLAY_MODE_ID, this.field_display_mode, 'active', Gio.SettingsBindFlags.DEFAULT);
+        SettingsSchema.bind(Fields.DISABLE_DOWN_ARROW, this.field_disable_down_arrow, 'active', Gio.SettingsBindFlags.DEFAULT);
         SettingsSchema.bind(Fields.TOPBAR_PREVIEW_SIZE, this.field_topbar_preview_size, 'value', Gio.SettingsBindFlags.DEFAULT);
         SettingsSchema.bind(Fields.STRIP_TEXT, this.field_strip_text, 'active', Gio.SettingsBindFlags.DEFAULT);
         SettingsSchema.bind(Fields.ENABLE_KEYBINDING, this.field_keybinding_activation, 'active', Gio.SettingsBindFlags.DEFAULT);
-
-        this.main.show_all();
     },
     _create_display_mode_options : function(){
         let options = [{ name: _("Icon") },
@@ -256,7 +274,7 @@ function addKeybinding(model, settings, id, description) {
     if (accelerator == null)
         [key, mods] = [0, 0];
     else
-        [key, mods] = Gtk.accelerator_parse(settings.get_strv(id)[0]);
+        [,key, mods] = Gtk.accelerator_parse(settings.get_strv(id)[0]);
 
     // Add a row for the keybinding.
     let row = model.insert(100); // Erm...

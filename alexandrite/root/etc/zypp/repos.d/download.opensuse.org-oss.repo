@@ -1,0 +1,8 @@
+[download.opensuse.org-oss]
+name=メインリポジトリ (オープンソース)
+enabled=1
+autorefresh=1
+baseurl=https://ftp.riken.jp/Linux/opensuse/tumbleweed/repo/oss/
+path=/
+type=rpm-md
+keeppackages=0

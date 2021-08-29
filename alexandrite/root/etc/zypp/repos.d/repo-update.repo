@@ -1,8 +1,0 @@
-[repo-update]
-name=メインの更新用リポジトリ
-enabled=1
-autorefresh=1
-baseurl=https://ftp.riken.jp/Linux/opensuse/update/leap/$releasever/oss
-path=/
-type=rpm-md
-keeppackages=0

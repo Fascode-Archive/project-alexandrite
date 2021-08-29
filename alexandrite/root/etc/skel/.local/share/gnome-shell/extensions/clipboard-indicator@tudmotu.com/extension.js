@@ -1,4 +1,5 @@
 const Clutter    = imports.gi.Clutter;
+const Config     = imports.misc.config;
 const Gio        = imports.gi.Gio;
 const Lang       = imports.lang;
 const Mainloop   = imports.mainloop;
@@ -29,6 +30,7 @@ const INDICATOR_ICON = 'edit-paste-symbolic';
 const ExtensionUtils = imports.misc.extensionUtils;
 const Me = ExtensionUtils.getCurrentExtension();
 const Utils = Me.imports.utils;
+const ConfirmDialog = Me.imports.confirmDialog;
 const Prefs = Me.imports.prefs;
 const prettyPrint = Utils.prettyPrint;
 const writeRegistry = Utils.writeRegistry;
@@ -43,8 +45,10 @@ let MOVE_ITEM_FIRST      = false;
 let ENABLE_KEYBINDING    = true;
 let PRIVATEMODE          = false;
 let NOTIFY_ON_COPY       = true;
+let CONFIRM_ON_CLEAR     = true;
 let MAX_TOPBAR_LENGTH    = 15;
 let TOPBAR_DISPLAY_MODE  = 1; //0 - only icon, 1 - only clipbord content, 2 - both
+let DISABLE_DOWN_ARROW   = false;
 let STRIP_TEXT           = false;
 
 const ClipboardIndicator = Lang.Class({
@@ -56,7 +60,8 @@ const ClipboardIndicator = Lang.Class({
     _selectionOwnerChangedId: null,
     _historyLabelTimeoutId: null,
     _historyLabel: null,
-    _buttonText:null,
+    _buttonText: null,
+    _disableDownArrow: null,
 
     destroy: function () {
         this._disconnectSettings();
@@ -84,8 +89,9 @@ const ClipboardIndicator = Lang.Class({
             y_align: Clutter.ActorAlign.CENTER
         });
         hbox.add_child(this._buttonText);
-        hbox.add(PopupMenu.arrowIcon(St.Side.BOTTOM));
-        this.actor.add_child(hbox);
+        this._downArrow = PopupMenu.arrowIcon(St.Side.BOTTOM);
+        hbox.add(this._downArrow);
+        this.add_child(hbox);
 
         this._createHistoryLabel();
         this._loadSettings();
@@ -122,7 +128,9 @@ const ClipboardIndicator = Lang.Class({
                 style_class: 'search-entry',
                 can_focus: true,
                 hint_text: _('Type here to search...'),
-                track_hover: true
+                track_hover: true,
+                x_expand: true,
+                y_expand: true
             });
 
             that.searchEntry.get_clutter_text().connect(
@@ -130,7 +138,7 @@ const ClipboardIndicator = Lang.Class({
                 Lang.bind(that, that._onSearchTextChanged)
             );
 
-            that._entryItem.actor.add(that.searchEntry, { expand: true });
+            that._entryItem.add(that.searchEntry);
 
             that.menu.addMenuItem(that._entryItem);
 
@@ -268,14 +276,12 @@ const ClipboardIndicator = Lang.Class({
 
         let icofavBtn = new St.Button({
             style_class: 'ci-action-btn',
-            x_fill: true,
             can_focus: true,
-            child: iconfav
+            child: iconfav,
+            x_align: Clutter.ActorAlign.END,
+            x_expand: true,
+            y_expand: true
         });
-
-        icofavBtn.set_x_align(Clutter.ActorAlign.END);
-        icofavBtn.set_x_expand(true);
-        icofavBtn.set_y_expand(true);
 
         menuItem.actor.add_child(icofavBtn);
         menuItem.icofavBtn = icofavBtn;
@@ -293,14 +299,12 @@ const ClipboardIndicator = Lang.Class({
 
         let icoBtn = new St.Button({
             style_class: 'ci-action-btn',
-            x_fill: true,
             can_focus: true,
-            child: icon
+            child: icon,
+            x_align: Clutter.ActorAlign.END,
+            x_expand: false,
+            y_expand: true
         });
-
-        icoBtn.set_x_align(Clutter.ActorAlign.END);
-        icoBtn.set_x_expand(false);
-        icoBtn.set_y_expand(true);
 
         menuItem.actor.add_child(icoBtn);
         menuItem.icoBtn = icoBtn;
@@ -332,8 +336,20 @@ const ClipboardIndicator = Lang.Class({
 
         this._updateCache();
     },
+  
+    _confirmRemoveAll: function () {
+        const title = _("Clear all?");
+        const message = _("Are you sure you want to delete all clipboard items?");
+        const sub_message = _("This operation cannot be undone.");
 
-    _removeAll: function () {
+        ConfirmDialog.openConfirmDialog(title, message, sub_message, _("Clear"), _("Cancel"), () => {
+            let that = this;
+            that._clearHistory();
+        }
+      );
+    },
+
+    _clearHistory: function () {
         let that = this;
         // We can't actually remove all items, because the clipboard still
         // has data that will be re-captured on next refresh, so we remove
@@ -343,11 +359,20 @@ const ClipboardIndicator = Lang.Class({
             if (!mItem.currentlySelected) {
                 let idx = that.clipItemsRadioGroup.indexOf(mItem);
                 mItem.destroy();
-                that.clipItemsRadioGroup.splice(idx,1);
+                that.clipItemsRadioGroup.splice(idx, 1);
             }
         });
         that._updateCache();
-        that._showNotification(_("Clipboard history cleared"));
+        that._showNotification(_("Clipboard history cleared"));    },
+
+    _removeAll: function () {
+        var that = this;
+
+        if (CONFIRM_ON_CLEAR) {
+            that._confirmRemoveAll();
+        } else {
+            that._clearHistory();
+        }
     },
 
     _removeEntry: function (menuItem, event) {
@@ -401,6 +426,9 @@ const ClipboardIndicator = Lang.Class({
     _selectMenuItem: function (menuItem, autoSet) {
         let fn = Lang.bind(menuItem, this._onMenuItemSelected);
         fn(autoSet);
+        if(TOPBAR_DISPLAY_MODE === 1 || TOPBAR_DISPLAY_MODE === 2) {
+            this._updateButtonText(menuItem.label.text);
+        }
     },
 
     _onMenuItemSelectedAndMenuClose: function (autoSet) {
@@ -607,7 +635,10 @@ const ClipboardIndicator = Lang.Class({
         }
 
         notification.setTransient(true);
-        this._notifSource.notify(notification);
+        if (Config.PACKAGE_VERSION < '3.38')
+            this._notifSource.notify(notification);
+        else
+            this._notifSource.showNotification(notification);
     },
 
     _createHistoryLabel: function () {
@@ -666,9 +697,11 @@ const ClipboardIndicator = Lang.Class({
         DELETE_ENABLED       = this._settings.get_boolean(Prefs.Fields.DELETE);
         MOVE_ITEM_FIRST      = this._settings.get_boolean(Prefs.Fields.MOVE_ITEM_FIRST);
         NOTIFY_ON_COPY       = this._settings.get_boolean(Prefs.Fields.NOTIFY_ON_COPY);
+        CONFIRM_ON_CLEAR     = this._settings.get_boolean(Prefs.Fields.CONFIRM_ON_CLEAR);
         ENABLE_KEYBINDING    = this._settings.get_boolean(Prefs.Fields.ENABLE_KEYBINDING);
         MAX_TOPBAR_LENGTH    = this._settings.get_int(Prefs.Fields.TOPBAR_PREVIEW_SIZE);
         TOPBAR_DISPLAY_MODE  = this._settings.get_int(Prefs.Fields.TOPBAR_DISPLAY_MODE_ID);
+        DISABLE_DOWN_ARROW   = this._settings.get_boolean(Prefs.Fields.DISABLE_DOWN_ARROW);
         STRIP_TEXT           = this._settings.get_boolean(Prefs.Fields.STRIP_TEXT);
     },
 
@@ -744,6 +777,11 @@ const ClipboardIndicator = Lang.Class({
         if(TOPBAR_DISPLAY_MODE === 2){
             this.icon.visible = true;
             this._buttonText.visible = true;
+        }
+        if(!DISABLE_DOWN_ARROW) {
+            this._downArrow.visible = true;
+        } else {
+            this._downArrow.visible = false;
         }
     },
 

@@ -12,9 +12,10 @@ gnome-desktop-lang
 gnome-control-center-lang
 gnome-disk-utility-lang
 gnome-bluetooth-lang
-gnome-backgrounds-lang
+# gnome-backgrounds-lang
 file-roller-lang
 eog-lang
+seahorse-lang
 PackageKit-lang
 NetworkManager-lang
 gdm-lang
@@ -22,3 +23,4 @@ yast2-trans-ja
 nautilus-lang
 nautilus-share-lang
 nautilus-sendto-lang
+seahorse-nautilus-lang

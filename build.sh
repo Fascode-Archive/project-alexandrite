@@ -42,7 +42,7 @@ fi
 
 echo "[INFO] プロファイルに必要なファイルを確認しています"
 
-if [ -f base.conf -a -f main.packages -a -f bootstrap.packages ]; then
+if [ -f base.conf ] && [ -f main.packages ] && [ -f bootstrap.packages ]; then
    echo "[INFO] 必要なファイルの存在を確認しました"
 else
    echo "[ERROR] プロファイルに必要なファイルが存在しません。中止します。"

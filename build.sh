@@ -13,7 +13,7 @@
 function chk-command () {
     chk_command=$1
     echo "[INFO] checking $chk_command" 
-    if type $chk_command > /dev/null 2>&1; then
+    if type "${chk_command}" > /dev/null 2>&1; then
       echo ">>> ok"     
     else
       echo ">>> not found!"

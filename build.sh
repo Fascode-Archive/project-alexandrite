@@ -4,7 +4,7 @@
 #     beaver build script
 #
 #     (c)2020-2021 naiad technology
-#         
+#
 #     build.sh
 #
 
@@ -12,15 +12,15 @@
 
 function chk-command () {
     chk_command=$1
-    echo "[INFO] checking $chk_command" 
+    echo "[INFO] checking $chk_command"
     if type "${chk_command}" > /dev/null 2>&1; then
-      echo ">>> ok"     
+      echo ">>> ok"
     else
       echo ">>> not found!"
       ccho "[ERROR] $chk_command が使用できないため続行できません。中止します。"
       exit 1
     fi
-    
+
 }
 
 target="${1-""}"
@@ -172,7 +172,7 @@ EOF
 # レポジトリ追記
 while [[ $repository_counts -gt 1 ]]
 do
-    
+
     url_name="url${repository_counts}"
     {
         echo "    <repository>"

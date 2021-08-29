@@ -23,10 +23,13 @@ function chk-command () {
     
 }
 
-target="${1}"
+target="${1-""}"
 current_dir="$(cd "$(dirname "${0}")" && pwd)"
 
 chk-command kiwi-ng
+
+# 引数をチェック
+[[ -z "${target}" ]] && echo "[ERROR] ターゲットを指定してください" >&2 && exit 1
 
 # プロファイルをチェック
 if [ -d ${target} ]; then

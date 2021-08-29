@@ -190,19 +190,19 @@ echo '    <packages type="image">' >> tmp/config/config.xml
 
 
 # main.packagesのパッケージを追記
-packages_main_counts=$(expr $packages_main_counts + 1)
+packages_main_counts=$(( packages_main_counts + 1 ))
 while [[ $packages_main_counts -gt 0 ]]
 do
     echo "        <package name=\"$(head -n $packages_main_counts tmp/beaver/main.packages.tmp | tail -n 1)\"/>" >> tmp/config/config.xml
-    packages_main_counts=$(expr $packages_main_counts - 1)
+    packages_main_counts=$(( packages_main_counts - 1 ))
 done
 
 # ローカライズパッケージを追記
-packages_locale_counts=$(expr $packages_locale_counts + 1)
+packages_locale_counts=$(( packages_locale_counts + 1 ))
 while [[ $packages_locale_counts -gt 0 ]]
 do
     echo "        <package name=\"$(head -n $packages_locale_counts tmp/beaver/locale.packages.tmp | tail -n 1)\"/>" >> tmp/config/config.xml
-    packages_locale_counts=$(expr $packages_locale_counts - 1)
+    packages_locale_counts=$(( packages_locale_counts - 1))
 done
 
 
@@ -214,11 +214,11 @@ EOF
 
 
 # bootstrap.packagesのパッケージを追記
-packages_bootstrap_counts=$(expr $packages_bootstrap_counts + 1)
+packages_bootstrap_counts=$(( packages_bootstrap_counts + 1 ))
 while [[ $packages_bootstrap_counts -gt 0 ]]
 do
     echo "        <package name=\"$(head -n $packages_bootstrap_counts tmp/beaver/bootstrap.packages.tmp | tail -n 1)\"/>" >> tmp/config/config.xml
-    packages_bootstrap_counts=$(expr $packages_bootstrap_counts - 1)
+    packages_bootstrap_counts=$(( packages_bootstrap_counts - 1 ))
 done
 
 

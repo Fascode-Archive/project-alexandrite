@@ -174,9 +174,11 @@ while [[ $repository_counts -gt 1 ]]
 do
     
     url_name="url${repository_counts}"
-    echo "    <repository>" >> tmp/config/config.xml
-    echo "        <source path=\""${!url_name}"\"/>" >> tmp/config/config.xml
-    echo "    </repository>" >> tmp/config/config.xml
+    {
+        echo "    <repository>"
+        echo "        <source path=\"""${!url_name}""\"/>"
+        echo "    </repository>"
+    } >> tmp/config/config.xml
 
     repository_counts=$(expr $repository_counts - 1)
 

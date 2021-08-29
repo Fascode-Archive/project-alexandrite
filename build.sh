@@ -185,7 +185,7 @@ do
 done
 
 # テンプレを追記
-echo "    <packages type=\"image\">" >> tmp/config/config.xml
+echo '    <packages type="image">' >> tmp/config/config.xml
 
 
 

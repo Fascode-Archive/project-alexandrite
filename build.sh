@@ -23,8 +23,8 @@ function chk-command () {
     
 }
 
-target=$1
-current_dir=$(cd $(dirname $0);pwd)
+target="${1}"
+current_dir="$(cd "$(dirname "${0}")" && pwd)"
 
 chk-command kiwi-ng
 

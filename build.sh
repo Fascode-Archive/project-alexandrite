@@ -35,7 +35,7 @@ if [ -d "${target}" ]; then
     echo "[INFO] ディレクトリ $target に移動します"
     cd "${target}" || exit 1
 else
-    echo "[ERROR] 指定したプロファイル（"$target"）が存在しません。中止します。"
+    echo "[ERROR] 指定したプロファイル（\"$target\"）が存在しません。中止します。"
     exit 1
 fi
 

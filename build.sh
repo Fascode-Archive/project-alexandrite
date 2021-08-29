@@ -107,9 +107,9 @@ mv tmp/config/final_process.sh tmp/config/config.sh
 
 
 # パッケージの数をカウント
-packages_main_counts=$(sed '/^#/d' $target/main.packages | wc -l)
-packages_bootstrap_counts=$(sed '/^#/d' $target/bootstrap.packages | wc -l)
-packages_locale_counts=$(sed '/^#/d' $target/I18n/$locale/locale.packages | wc -l)
+packages_main_counts=$(sed '/^#/d' "${target}/main.packages" | wc -l)
+packages_bootstrap_counts=$(sed '/^#/d' "${target}/bootstrap.packages" | wc -l)
+packages_locale_counts=$(sed '/^#/d' "${target}/I18n/${locale}/locale.packages" | wc -l)
 
 # コメントを除去したパッケージリストを作成
 mkdir tmp/beaver
@@ -180,7 +180,7 @@ do
         echo "    </repository>"
     } >> tmp/config/config.xml
 
-    repository_counts=$(expr $repository_counts - 1)
+    repository_counts=$(( repository_counts - 1 ))
 
 done
 

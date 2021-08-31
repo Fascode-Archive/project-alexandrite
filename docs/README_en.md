@@ -17,5 +17,5 @@ The user name for the live environment is `live` and the password is `root7`.
 kiwi-ng (For help with installation, see https://osinside.github.io/kiwi/installation.html )
 
 ### process
-Run `./build.sh alexandrite` to complete the build automatically.
+Run `./build.sh -t alexandrite` to complete the build automatically.
 

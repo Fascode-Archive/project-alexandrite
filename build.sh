@@ -10,8 +10,6 @@
 
 # set -e
 
-# shellcheck disable=SC1090 disable=SC2154 disable=SC1091
-
 function chk-command () {
     local chk_command="${1}"
     echo "[INFO] checking $chk_command"

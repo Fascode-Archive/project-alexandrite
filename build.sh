@@ -17,7 +17,7 @@ function chk-command () {
       echo ">>> ok"
     else
       echo ">>> not found!"
-      ccho "[ERROR] $chk_command が使用できないため続行できません。中止します。"
+      echo "[ERROR] $chk_command が使用できないため続行できません。中止します。"
       exit 1
     fi
 }

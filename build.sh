@@ -10,7 +10,7 @@
 
 # set -e
 
-# shellcheck disable=SC1090
+# shellcheck disable=SC1090 disable=SC2154 disable=SC1091
 
 function chk-command () {
     local chk_command="${1}"
@@ -277,13 +277,11 @@ fi
 
 # kiwi-ngでビルド
 echo  "[INFO] kiwi-ngでのビルドを開始します"
-sudo kiwi-ng system build --description $current_dir/tmp/config --target-dir $current_dir/out
 
-if [ $? != 0 ]; then
+if sudo kiwi-ng system build --description "${current_dir}/tmp/config" --target-dir "${current_dir}/out"; then
+    echo "[INFO] Done!"
+    exit 0
+else
     echo "[ERROR] kiwi-ngが終了コード0以外で終了しました。これはビルドが失敗したことを意味します。詳細なログを閲覧するには out/build/image-root.log を参照してください。"
     exit 1
-
 fi
-
-
-echo "[INFO] Done!"

@@ -91,7 +91,7 @@ else
     exit 1
 fi
 
-echo "プロファイルに必要なファイルを確認しています"
+_msg_info "プロファイルに必要なファイルを確認しています"
 
 if [ -f base.conf ] && [ -f main.packages ] && [ -f bootstrap.packages ]; then
    _msg_info "必要なファイルの存在を確認しました"

@@ -42,6 +42,7 @@ while true; do
         ;;
   esac
 done
+target="${1-""}"
 
 # カレントディレクトリ取得
 current_dir="$(cd "$(dirname "${0}")" && pwd)"

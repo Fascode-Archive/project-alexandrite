@@ -156,13 +156,13 @@ packages_locale_counts="$(sed '/^#/d' "${target}/I18n/${locale}/locale.packages"
 mkdir tmp/beaver
 
 touch tmp/beaver/main.packages.tmp
-echo "$(sed '/^#/d' $target/main.packages)" > tmp/beaver/main.packages.tmp
+sed '/^#/d' "${target}/main.packages" > tmp/beaver/main.packages.tmp
 
 touch tmp/beaver/bootstrap.packages.tmp
-echo "$(sed '/^#/d' $target/bootstrap.packages)" > tmp/beaver/bootstrap.packages.tmp
+sed '/^#/d' "${target}/bootstrap.packages" > tmp/beaver/bootstrap.packages.tmp
 
 touch tmp/beaver/bootstrap.packages.tmp
-echo "$(sed '/^#/d' $target/I18n/$locale/locale.packages)" > tmp/beaver/locale.packages.tmp
+sed '/^#/d' "${target}/I18n/${locale}/locale.packages "> tmp/beaver/locale.packages.tmp
 
 
 # xmlファイル生成

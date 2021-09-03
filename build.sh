@@ -73,7 +73,7 @@ fi
 # カレントディレクトリが取得できてるか（事故防止）
 if [[ -z "${current_dir}" ]]; then
     echo "[ERROR] カレントディレクトリの取得に失敗しました。開発者に以下のコードとコマンドラインの出力を送信してください。"
-    echo "(CriticalError: InvalidValue: current_dir="$current_dir")"
+    echo "(CriticalError: InvalidValue: current_dir=\"${current_dir}\")"
     exit 1
 fi
 

@@ -23,30 +23,28 @@ function chk-command () {
 }
 
 # オプション解析
-while getopts t:l:d OPT; do
-  case "${OPT}" in
-    "t" ) FLG_T="TRUE" ; VALUE_T="$OPTARG" ;;
-    "l" ) FLG_L="TRUE" ; VALUE_L="$OPTARG" ;;
-    "d" ) FLG_D="TRUE" ;;
+opts=("t:" "l:" "d") optl=("--target:" "--lang:" "--docker")
+getopt=(-o "$(printf "%s," "${opts[@]}")" -l "$(printf "%s," "${optl[@]}")" -- "${@}")
+getopt -Q "${getopt[@]}" || exit 1 # 引数エラー判定
+readarray -t opt < <(getopt "${getopt[@]}") # 配列に代入
+eval set -- "${opt[@]}" # 引数に設定
+unset opts optl getopt opt # 使用した配列を削除
+
+while true; do
+  case "${1}" in
+    "-t" | "--target") target="${2}"     && shift 2 ;;
+    "-l" | "--lang"  ) lang="${2}"       && shift 2 ;;
+    "-d" | "--docker") docker_build=true && shift 1 ;;
+    "--"             ) shift 1           && break   ;;
+    *) 
+        echo "Unexpected error"
+        exit 1
+        ;;
   esac
 done
 
-
-if [ "$FLG_T" = "TRUE" ]; then
-    target="${VALUE_T}"
-fi
-
-if [ "$FLG_L" = "TRUE" ]; then
-    lang="${VALUE_L}"
-fi
-
-if [ "$FLG_D" = "TRUE" ]; then
-    docker_build=true
-fi
-
-
 # カレントディレクトリ取得
-current_dir=$(cd $(dirname $0);pwd)
+current_dir="$(cd "$(dirname "${0}")" && pwd)"
 
 # sudo生存確認
 chk-command sudo

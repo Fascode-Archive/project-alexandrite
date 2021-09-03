@@ -266,7 +266,7 @@ cat <<EOF >>  tmp/config/config.xml
 EOF
 
 # dockerを準備
-if [ $docker_ready = false ]; then
+if [[ "${docker_ready}" = false ]]; then
     echo "[INFO] Dockerのコンテナを作成します"
     sudo docker pull opensuse/tumbleweed
     sudo docker run -i -t -d --name beaver_build opensuse/tumbleweed

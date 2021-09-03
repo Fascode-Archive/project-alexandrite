@@ -85,7 +85,8 @@ fi
 
 # プロファイルをチェック
 if [ -d "${target}" ]; then
-    _msg_info "ディレクトリ ${target} に移動します"
+    _msg_info "ディレクトリ ${target} を使用します"
+    target="$(realpath "${target}")"
     cd "${target}" || exit 1
 else
     _msg_error "指定したプロファイル（\"$target\"）が存在しません。中止します。"
@@ -94,7 +95,7 @@ fi
 
 _msg_info "プロファイルに必要なファイルを確認しています"
 
-if [ -f base.conf ] && [ -f main.packages ] && [ -f bootstrap.packages ]; then
+if [ -f "${target}/base.conf" ] && [ -f "${target}/main.packages" ] && [ -f "${target}/bootstrap.packages" ]; then
    _msg_info "必要なファイルの存在を確認しました"
 else
    _msg_error "プロファイルに必要なファイルが存在しません。中止します。"
@@ -104,7 +105,7 @@ fi
 
 # 設定読み込み
 _msg_info "base.confを読み込んでいます..."
-source "./base.conf"
+source "${target}/base.conf"
 
 # 引数が指定されている場合、値を上書き
 locale="${over_locale-"${locale}"}"
@@ -112,14 +113,14 @@ version="${over_version-"${version}"}"
 
 
 # ローカライズ確認
-if [ -d "I18n/${locale}" ]; then
+if [ -d "${target}/I18n/${locale}" ]; then
     _msg_info "ローカライズ設定に ${locale} を使用します"
 else
     _msg_error  "ローカライズファイルのディレクトリ（I18n/${locale}）が見つかりません。中止します。"
     exit 1
 fi
 
-if [ -f "I18n/${locale}/locale.conf" ]; then
+if [ -f "${target}/I18n/${locale}/locale.conf" ]; then
    _msg_info "ローカライズの設定ファイルに ${locale}/locale.conf を使用します。"
 else
    _msg_error "ローカライズ設定ファイル（I18n/$locale/locale.conf）が存在しません。中止します。"
@@ -127,17 +128,13 @@ else
 fi
 
 # ローカライズ設定読み込み
-. "./I18n/$locale/locale.conf"
+source "${target}/I18n/$locale/locale.conf"
 
 # 一時ディレクトリ作成
-cd ..
+cd "${current_dir}" || exit 1
 _msg_info "一時ディレクトリを作成します。"
 sudo rm -rf  tmp out
-mkdir tmp
-mkdir out
-mkdir tmp/kiwi
-mkdir tmp/config
-
+mkdir -p out tmp/kiwi tmp/config
 
 # 上書きファイルへのシンボリックリンクを貼る
 _msg_info "プロファイルからkiwi-ng向けの設定ファイルを生成しています。"
@@ -214,7 +211,7 @@ EOF
 
 
 # レポジトリ追記
-while [[ $repository_counts -gt 1 ]]; do
+while [[ "${repository_counts}" -gt 1 ]]; do
 
     url_name="url${repository_counts}"
     {

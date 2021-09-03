@@ -66,7 +66,7 @@ while read -r file; do
 		    echo "${file}:"
 		    mkdir "${file}"
 		    (
-				cd $file
+				cd "${file}" || exit 1
 		     	pwd="$(pwd)"
 				case "${DIRFROM}" in
 					/*) ;;

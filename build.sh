@@ -22,10 +22,60 @@ function chk-command () {
     fi
 }
 
-target="${1-""}"
-current_dir="$(cd "$(dirname "${0}")" && pwd)"
+# オプション解析
+while getopts t:l:d OPT; do
+  case "${OPT}" in
+    "t" ) FLG_T="TRUE" ; VALUE_T="$OPTARG" ;;
+    "l" ) FLG_L="TRUE" ; VALUE_L="$OPTARG" ;;
+    "d" ) FLG_D="TRUE" ;;
+  esac
+done
 
-chk-command kiwi-ng
+
+if [ "$FLG_T" = "TRUE" ]; then
+    target="${VALUE_T}"
+fi
+
+if [ "$FLG_L" = "TRUE" ]; then
+    lang="${VALUE_L}"
+fi
+
+if [ "$FLG_D" = "TRUE" ]; then
+    docker_build=true
+fi
+
+
+# カレントディレクトリ取得
+current_dir=$(cd $(dirname $0);pwd)
+
+# sudo生存確認
+chk-command sudo
+
+# Dockerを使うかどうか
+if [ $docker_build = true ]; then
+
+    echo "[INFO] ビルドにDockerを利用します。"
+    docker_build=true
+    chk-command docker
+
+    if [ -z "$(sudo docker container ls -q -a -f name="beaver_build")" ]; then
+        docker_ready=false
+    else
+        docker_ready=true
+    fi
+
+else
+    echo "[INFO] ローカル環境でビルドします。"
+    docker_build=false
+    chk-command kiwi-ng
+fi
+
+# カレントディレクトリが取得できてるか（事故防止）
+if [[ -z "${current_dir}" ]]; then
+    echo "[ERROR] カレントディレクトリの取得に失敗しました。開発者に以下のコードとコマンドラインの出力を送信してください。"
+    echo "(CriticalError: InvalidValue: current_dir="$current_dir")"
+    exit 1
+fi
 
 # 引数をチェック
 [[ -z "${target}" ]] && echo "[ERROR] ターゲットを指定してください" >&2 && exit 1
@@ -53,25 +103,29 @@ fi
 echo "[INFO] base.confを読み込んでいます..."
 source "./base.conf"
 
+# 引数が指定されている場合、base.confから読み取った $locale の値を上書き
+if [ -n "$lang" ]; then
+    locale=$lang
+fi
+
 
 # ローカライズ確認
-if [ -d "I18n/${locale}" ]; then
-    echo "[INFO] ローカライズ設定に ${locale} を使用します"
+if [ -d I18n/${locale} ]; then
+    echo "[INFO] ローカライズ設定に $locale を使用します"
 else
-    echo  "[ERROR] ローカライズに必要なディレクトリが見つかりません。中止します。"
+    echo  "[ERROR] ローカライズファイルのディレクトリ（I18n/${locale}）が見つかりません。中止します。"
     exit 1
 fi
 
 if [ -f "I18n/${locale}/locale.conf" ]; then
    echo "[INFO] ローカライズの設定ファイルに ${locale}/locale.conf を使用します。"
 else
-   echo "[ERROR] ローカライズ設定ファイルが存在しません。中止します。"
+   echo "[ERROR] ローカライズ設定ファイル（I18n/$locale/locale.conf）が存在しません。中止します。"
    exit 1
 fi
 
 # ローカライズ設定読み込み
 . ./I18n/$locale/locale.conf
-
 
 # 一時ディレクトリ作成
 cd ..
@@ -92,18 +146,6 @@ cp -r $target/I18n/$locale/root tmp/config/
 cp $target/final_process.sh tmp/config/
 mv tmp/config/final_process.sh tmp/config/config.sh
 
-# lndir.shが正常に作動しないため代替案を実装するまでcpで代用
-
-# cd $target
-# find root -type d | xargs -I{} mkdir -p tmp/config/root{}
-# find I18n/$locale/root -type d | xargs -I{} mkdir -p tmp/config/root{}
-
-# cd ..
-
-# sh/lndir.sh $current_dir/$target/root tmp/config/root
-# sh/lndir.sh $current_dir/$target/I18n/$locale/root tmp/config/root
-
-
 
 # パッケージの数をカウント
 packages_main_counts=$(sed '/^#/d' "${target}/main.packages" | wc -l)
@@ -123,9 +165,10 @@ touch tmp/beaver/bootstrap.packages.tmp
 echo "$(sed '/^#/d' $target/I18n/$locale/locale.packages)" > tmp/beaver/locale.packages.tmp
 
 
-
 # xmlファイル生成
 touch tmp/config/config.xml
+
+echo  "[INFO] config.xmlを生成します"
 
 # xml生成処理
 cat <<EOF >  tmp/config/config.xml
@@ -223,16 +266,24 @@ cat <<EOF >>  tmp/config/config.xml
 </image>
 EOF
 
+# dockerを準備
+if [ $docker_ready = false ]; then
+    echo "[INFO] Dockerのコンテナを作成します"
+    sudo docker pull opensuse/tumbleweed
+    sudo docker run -i -t -d --name beaver_build opensuse/tumbleweed
+    sudo docker exec -i -t beaver_build zypper -n refresh
+    sudo docker exec -i -t beaver_build zypper -n install python3-kiwi checkmedia util-linux
+fi
 
 # kiwi-ngでビルド
 echo  "[INFO] kiwi-ngでのビルドを開始します"
+sudo kiwi-ng system build --description $current_dir/tmp/config --target-dir $current_dir/out
 
-
-if sudo kiwi-ng system build --description "${current_dir}/tmp/config" --target-dir "${current_dir}/out" ; then
-    echo "[INFO] Done!"
-    exit 0
-else
+if [ $? != 0 ]; then
     echo "[ERROR] kiwi-ngが終了コード0以外で終了しました。これはビルドが失敗したことを意味します。詳細なログを閲覧するには out/build/image-root.log を参照してください。"
     exit 1
+
 fi
 
+
+echo "[INFO] Done!"

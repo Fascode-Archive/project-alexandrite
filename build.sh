@@ -26,7 +26,7 @@ function chk-command () {
 }
 
 # オプション解析
-opts=("t:" "l:" "d") optl=("--target:" "--lang:" "--docker")
+opts=("t:" "l:" "d" "v:") optl=("target:" "lang:" "docker" "version:")
 getopt=(-o "$(printf "%s," "${opts[@]}")" -l "$(printf "%s," "${optl[@]}")" -- "${@}")
 getopt -Q "${getopt[@]}" || exit 1 # 引数エラー判定
 readarray -t opt < <(getopt "${getopt[@]}") # 配列に代入
@@ -35,10 +35,11 @@ unset opts optl getopt opt # 使用した配列を削除
 
 while true; do
   case "${1}" in
-    "-t" | "--target") target="${2}"     && shift 2 ;;
-    "-l" | "--lang"  ) lang="${2}"       && shift 2 ;;
-    "-d" | "--docker") docker_build=true && shift 1 ;;
-    "--"             ) shift 1           && break   ;;
+    "-t" | "--target" ) target="${2}"       && shift 2 ;;
+    "-l" | "--lang"   ) over_locale="${2}"  && shift 2 ;;
+    "-d" | "--docker" ) docker_build=true   && shift 1 ;;
+    "-v" | "--version") over_version="${2}" && shift 2 ;;
+    "--"              ) shift 1             && break   ;;
     *) 
         echo "Unexpected error"
         exit 1
@@ -105,8 +106,9 @@ fi
 _msg_info "base.confを読み込んでいます..."
 source "./base.conf"
 
-# 引数が指定されている場合、base.confから読み取った $locale の値を上書き
-[[ -n "${lang-""}" ]] && locale="${lang}"
+# 引数が指定されている場合、値を上書き
+locale="${over_locale-"${locale}"}"
+version="${over_version-"${version}"}"
 
 
 # ローカライズ確認

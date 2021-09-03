@@ -20,8 +20,7 @@
 
 USAGE="Usage: $0 fromdir [todir]"
 
-if [ $# -lt 1 -o $# -gt 2 ]
-then
+if [ $# -lt 1 ] || [ $# -gt 2 ]; then
 	echo "$USAGE"
 	exit 1
 fi
@@ -42,46 +41,43 @@ then
 	exit 2
 fi
 
-cd $DIRTO
+cd "${DIRTO}" || exit 1
 
-if [ ! -d $DIRFROM ]
-then
+if [ ! -d "${DIRFROM}" ]; then
 	echo "$0: $DIRFROM is not a directory"
 	echo "$USAGE"
 	exit 2
 fi
 
-pwd=`pwd`
+pwd="$(pwd)"
 
-if [ `(cd $DIRFROM; pwd)` = $pwd ]
+if [ "$(cd "${DIRFROM}"; pwd)" = "${pwd}" ]
 then
 	echo "$pwd: FROM and TO are identical!"
 	exit 1
 fi
 
-for file in `ls -af $DIRFROM`
-do
-    if [ ! -d $DIRFROM/$file ]
-    then
-	    ln -s $DIRFROM/$file .
+#for file in $(ls -af "${DIRFROM}"); do
+while read -r file; do
+    if [ ! -d "${DIRFROM}/${file}" ]; then
+	    ln -s "${DIRFROM}/${file}" .
     else
-	    if [ $file != RCS -a $file != .svn -a $file != . -a $file != .. ]
-	    then
-		    echo $file:
-		    mkdir $file
-		    (cd $file
-		     pwd=`pwd`
-		     case "$DIRFROM" in
-			     /*) ;;
-			     *)  DIRFROM=../$DIRFROM ;;
-		     esac
-		     if [ `(cd $DIRFROM/$file; pwd)` = $pwd ]
-		     then
-			    echo "$pwd: FROM and TO are identical!"
-			    exit 1
-		     fi
-		     $0 $DIRFROM/$file
+	    if [ "${file}" != "RCS" ] && [ "${file}" != ".svn" ] && [ "${file}" != "." ] && [ "${file}" != ".." ]; then
+		    echo "${file}:"
+		    mkdir "${file}"
+		    (
+				cd $file
+		     	pwd="$(pwd)"
+				case "${DIRFROM}" in
+					/*) ;;
+					*)  DIRFROM=../$DIRFROM ;;
+				esac
+				if [ "$(cd "${DIRFROM/$file}"; pwd)" = "${pwd}" ]; then
+					echo "$pwd: FROM and TO are identical!"
+					exit 1
+				fi
+				$0 $DIRFROM/$file
 		    )
 	    fi
     fi
-done
+done < <(find "${DIRFROM}" -printf "%f\n")

@@ -10,6 +10,8 @@
 
 # set -e
 
+# shellcheck disable=SC1090
+
 function chk-command () {
     local chk_command="${1}"
     echo "[INFO] checking $chk_command"
@@ -50,7 +52,7 @@ current_dir="$(cd "$(dirname "${0}")" && pwd)"
 chk-command sudo
 
 # Dockerを使うかどうか
-if [ $docker_build = true ]; then
+if [ "${docker_build}" = true ]; then
 
     echo "[INFO] ビルドにDockerを利用します。"
     docker_build=true
@@ -102,13 +104,13 @@ echo "[INFO] base.confを読み込んでいます..."
 source "./base.conf"
 
 # 引数が指定されている場合、base.confから読み取った $locale の値を上書き
-if [ -n "$lang" ]; then
+if [[ -n "${lang}" ]]; then
     locale=$lang
 fi
 
 
 # ローカライズ確認
-if [ -d I18n/${locale} ]; then
+if [ -d "I18n/${locale}" ]; then
     echo "[INFO] ローカライズ設定に $locale を使用します"
 else
     echo  "[ERROR] ローカライズファイルのディレクトリ（I18n/${locale}）が見つかりません。中止します。"
@@ -123,7 +125,7 @@ else
 fi
 
 # ローカライズ設定読み込み
-. ./I18n/$locale/locale.conf
+. "./I18n/$locale/locale.conf"
 
 # 一時ディレクトリ作成
 cd ..
@@ -139,16 +141,16 @@ mkdir tmp/config
 echo  "[INFO] プロファイルからkiwi-ng向けの設定ファイルを生成しています。"
 mkdir tmp/config/root
 
-cp -r $target/root tmp/config/
-cp -r $target/I18n/$locale/root tmp/config/
-cp $target/final_process.sh tmp/config/
-mv tmp/config/final_process.sh tmp/config/config.sh
+cp -r "${target}/root" "tmp/config/"
+cp -r "${target}/I18n/${locale}/root" "tmp/config/"
+cp "${target}/final_process.sh" "tmp/config/"
+mv "tmp/config/final_process.sh" "tmp/config/config.sh"
 
 
 # パッケージの数をカウント
-packages_main_counts=$(sed '/^#/d' "${target}/main.packages" | wc -l)
-packages_bootstrap_counts=$(sed '/^#/d' "${target}/bootstrap.packages" | wc -l)
-packages_locale_counts=$(sed '/^#/d' "${target}/I18n/${locale}/locale.packages" | wc -l)
+packages_main_counts="$(sed '/^#/d' "${target}/main.packages" | wc -l)"
+packages_bootstrap_counts="$(sed '/^#/d' "${target}/bootstrap.packages" | wc -l)"
+packages_locale_counts="$(sed '/^#/d' "${target}/I18n/${locale}/locale.packages" | wc -l)"
 
 # コメントを除去したパッケージリストを作成
 mkdir tmp/beaver

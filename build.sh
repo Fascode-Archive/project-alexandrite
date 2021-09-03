@@ -10,14 +10,17 @@
 
 # set -e
 
+function _msg_error(){ echo "[ERROR] ${*}" >&2; }
+function _msg_info (){ echo "[INFO] ${*}" >&1; }
+
 function chk-command () {
     local chk_command="${1}"
-    echo "[INFO] checking $chk_command"
+    echo -n "[INFO] checking $chk_command"
     if type "${chk_command}" > /dev/null 2>&1; then
       echo ">>> ok"
     else
       echo ">>> not found!"
-      echo "[ERROR] $chk_command が使用できないため続行できません。中止します。"
+      _msg_error "${chk_command} が使用できないため続行できません。中止します。"
       exit 1
     fi
 }
@@ -42,7 +45,7 @@ while true; do
         ;;
   esac
 done
-target="${1-""}"
+#target="${1-""}"
 
 # カレントディレクトリ取得
 current_dir="$(cd "$(dirname "${0}")" && pwd)"
@@ -53,7 +56,7 @@ chk-command sudo
 # Dockerを使うかどうか
 if [ "${docker_build}" = true ]; then
 
-    echo "[INFO] ビルドにDockerを利用します。"
+    _msg_info "ビルドにDockerを利用します。"
     docker_build=true
     chk-command docker
 
@@ -64,62 +67,60 @@ if [ "${docker_build}" = true ]; then
     fi
 
 else
-    echo "[INFO] ローカル環境でビルドします。"
+    _msg_info "ローカル環境でビルドします。"
     docker_build=false
     chk-command kiwi-ng
 fi
 
 # カレントディレクトリが取得できてるか（事故防止）
 if [[ -z "${current_dir}" ]]; then
-    echo "[ERROR] カレントディレクトリの取得に失敗しました。開発者に以下のコードとコマンドラインの出力を送信してください。"
-    echo "(CriticalError: InvalidValue: current_dir=\"${current_dir}\")"
+    _msg_error "カレントディレクトリの取得に失敗しました。開発者に以下のコードとコマンドラインの出力を送信してください。"
+    _msg_error "(CriticalError: InvalidValue: current_dir=\"${current_dir}\")"
     exit 1
 fi
 
 # 引数をチェック
-[[ -z "${target}" ]] && echo "[ERROR] ターゲットを指定してください" >&2 && exit 1
+[[ -z "${target}" ]] && echo "ターゲットを指定してください" >&2 && exit 1
 
 # プロファイルをチェック
 if [ -d "${target}" ]; then
-    echo "[INFO] ディレクトリ $target に移動します"
+    _msg_info "ディレクトリ ${target} に移動します"
     cd "${target}" || exit 1
 else
-    echo "[ERROR] 指定したプロファイル（\"$target\"）が存在しません。中止します。"
+    _msg_error "指定したプロファイル（\"$target\"）が存在しません。中止します。"
     exit 1
 fi
 
-echo "[INFO] プロファイルに必要なファイルを確認しています"
+echo "プロファイルに必要なファイルを確認しています"
 
 if [ -f base.conf ] && [ -f main.packages ] && [ -f bootstrap.packages ]; then
-   echo "[INFO] 必要なファイルの存在を確認しました"
+   _msg_info "必要なファイルの存在を確認しました"
 else
-   echo "[ERROR] プロファイルに必要なファイルが存在しません。中止します。"
+   _msg_error "プロファイルに必要なファイルが存在しません。中止します。"
    exit 1
 fi
 
 
 # 設定読み込み
-echo "[INFO] base.confを読み込んでいます..."
+_msg_info "base.confを読み込んでいます..."
 source "./base.conf"
 
 # 引数が指定されている場合、base.confから読み取った $locale の値を上書き
-if [[ -n "${lang}" ]]; then
-    locale=$lang
-fi
+[[ -n "${lang-""}" ]] && locale="${lang}"
 
 
 # ローカライズ確認
 if [ -d "I18n/${locale}" ]; then
-    echo "[INFO] ローカライズ設定に $locale を使用します"
+    _msg_info "ローカライズ設定に ${locale} を使用します"
 else
-    echo  "[ERROR] ローカライズファイルのディレクトリ（I18n/${locale}）が見つかりません。中止します。"
+    _msg_error  "ローカライズファイルのディレクトリ（I18n/${locale}）が見つかりません。中止します。"
     exit 1
 fi
 
 if [ -f "I18n/${locale}/locale.conf" ]; then
-   echo "[INFO] ローカライズの設定ファイルに ${locale}/locale.conf を使用します。"
+   _msg_info "ローカライズの設定ファイルに ${locale}/locale.conf を使用します。"
 else
-   echo "[ERROR] ローカライズ設定ファイル（I18n/$locale/locale.conf）が存在しません。中止します。"
+   _msg_error "ローカライズ設定ファイル（I18n/$locale/locale.conf）が存在しません。中止します。"
    exit 1
 fi
 
@@ -128,7 +129,7 @@ fi
 
 # 一時ディレクトリ作成
 cd ..
-echo "[INFO] 一時ディレクトリを作成します。"
+_msg_info "一時ディレクトリを作成します。"
 sudo rm -rf  tmp out
 mkdir tmp
 mkdir out
@@ -137,7 +138,7 @@ mkdir tmp/config
 
 
 # 上書きファイルへのシンボリックリンクを貼る
-echo  "[INFO] プロファイルからkiwi-ng向けの設定ファイルを生成しています。"
+_msg_info "プロファイルからkiwi-ng向けの設定ファイルを生成しています。"
 mkdir tmp/config/root
 
 cp -r "${target}/root" "tmp/config/"
@@ -167,7 +168,7 @@ sed '/^#/d' "${target}/I18n/${locale}/locale.packages "> tmp/beaver/locale.packa
 # xmlファイル生成
 touch tmp/config/config.xml
 
-echo  "[INFO] config.xmlを生成します"
+_msg_info "config.xmlを生成します"
 
 # xml生成処理
 cat <<EOF >  tmp/config/config.xml
@@ -267,7 +268,7 @@ EOF
 
 # dockerを準備
 if [[ "${docker_ready}" = false ]]; then
-    echo "[INFO] Dockerのコンテナを作成します"
+    _msg_info "Dockerのコンテナを作成します"
     sudo docker pull opensuse/tumbleweed
     sudo docker run -i -t -d --name beaver_build opensuse/tumbleweed
     sudo docker exec -i -t beaver_build zypper -n refresh
@@ -275,12 +276,12 @@ if [[ "${docker_ready}" = false ]]; then
 fi
 
 # kiwi-ngでビルド
-echo  "[INFO] kiwi-ngでのビルドを開始します"
+_msg_info  "kiwi-ngでのビルドを開始します"
 
 if sudo kiwi-ng system build --description "${current_dir}/tmp/config" --target-dir "${current_dir}/out"; then
-    echo "[INFO] Done!"
+    _msg_info "Done!"
     exit 0
 else
-    echo "[ERROR] kiwi-ngが終了コード0以外で終了しました。これはビルドが失敗したことを意味します。詳細なログを閲覧するには out/build/image-root.log を参照してください。"
+    _msg_error "kiwi-ngが終了コード0以外で終了しました。これはビルドが失敗したことを意味します。詳細なログを閲覧するには out/build/image-root.log を参照してください。"
     exit 1
 fi
